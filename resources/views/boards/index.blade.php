@@ -18,7 +18,6 @@
             <th scope="col">번호</th>
             <th scope="col">이름</th>
             <th scope="col">제목</th>
-            <th scope="col">조회수</th>
             <th scope="col">등록일</th>
         </tr>
         </thead>
@@ -27,9 +26,7 @@
                 <tr>
                     <th scope="row">{{ $board->bid }}</th>
                     <td>{{$board->userid}}</td>
-                    <td>{{$board->subject}}
-                    </td>
-                    <td>{{$board->cnt}}</td>
+                    <td>{{$board->subject}}</td>
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
                 </tr>
             @endforeach
