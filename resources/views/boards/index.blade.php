@@ -27,7 +27,7 @@
                 <tr>
                     <th scope="row">{{ $board->bid }}</th>
                     <td>{{$board->userid}}</td>
-                    <td><a href="/boards/show/{{$board->bid}}/{{$pagenumber}}">{{$board->subject}}</a>
+                    <td>{{$board->subject}}
                     </td>
                     <td>{{$board->cnt}}</td>
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
