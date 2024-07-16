@@ -40,7 +40,4 @@
             @endforeach
         </tbody>
     </table>
-    <div style="position: absolute;transform: translate(50%, 50%);">
-        {!! $boards->withQueryString()->links() !!}
-    </dvi>
 @endsection
