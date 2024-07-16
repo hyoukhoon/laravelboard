@@ -22,9 +22,12 @@
         </tr>
         </thead>
         <tbody>
+            <?php
+                $idx = $boards->total()-(($boards->currentPage()-1) * 20);
+            ?>
             @foreach ($boards as $board)
                 <tr>
-                    <th scope="row">{{ $board->bid }}</th>
+                    <th scope="row">{{ $idx }}</th>
                     <td>{{$board->userid}}</td>
                     <td>{{$board->subject}}</td>
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
