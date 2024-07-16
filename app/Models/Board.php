@@ -46,7 +46,7 @@ class Board extends Model
      * @var array
      */
     protected $fillable = [
-        'content', 'multi', 'subject', 'userid'
+        'content', 'multi', 'subject', 'userid', 'cnt'
     ];
 
     /**

@@ -13,6 +13,7 @@ class BoardController extends Controller
 
     public function show($num,$page)
     {
+        Board::find($num)->increment('cnt');
         $boards = Board::findOrFail($num);
         $boards->content = htmlspecialchars_decode($boards->content);
         $boards->pagenumber = $page;
