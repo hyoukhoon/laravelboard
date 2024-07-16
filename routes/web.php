@@ -19,3 +19,4 @@ Route::get('/', function () {
 
 //게시판
 Route::get('/boards', [BoardController::class, 'index'])->name('boards.index');
+Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('boards.show');

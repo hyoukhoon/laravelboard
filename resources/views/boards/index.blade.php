@@ -23,13 +23,14 @@
         </thead>
         <tbody>
             <?php
+                $pagenumber = $_GET["page"]??1;
                 $idx = $boards->total()-(($boards->currentPage()-1) * 20);
             ?>
             @foreach ($boards as $board)
                 <tr>
                     <th scope="row">{{ $idx-- }}</th>
                     <td>{{ $board->userid }}</td>
-                    <td>{{ $board->subject }}</td>
+                    <td><a href="/boards/show/{{$board->num}}/{{$pagenumber}}">{{ $board->subject }}</a></td>
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
                 </tr>
             @endforeach
