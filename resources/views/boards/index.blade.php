@@ -30,7 +30,7 @@
                 <tr>
                     <th scope="row">{{ $idx-- }}</th>
                     <td>{{ $board->userid }}</td>
-                    <td><a href="/boards/show/{{$board->num}}/{{$pagenumber}}">{{ $board->subject }}</a></td>
+                    <td><a href="/boards/show/{{$board->bid}}/{{$pagenumber}}">{{ $board->subject }}</a></td>
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
                 </tr>
             @endforeach
