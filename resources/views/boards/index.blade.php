@@ -31,12 +31,11 @@
             @foreach ($boards as $key => $board)
                 <tr>
                     <th scope="row">{{ $idx-- }}</th>
-                    <td>{{$board->name}}</td>
-                    <td><a href="/boards/show/{{$board->num}}/{{$pagenumber}}">{{$board->subject}}</a>
-                        {{ $board->memo_cnt?"[".$board->memo_cnt."]":"" }}
+                    <td>{{$board->userid}}</td>
+                    <td><a href="/boards/show/{{$board->bid}}/{{$pagenumber}}">{{$board->subject}}</a>
                     </td>
                     <td>{{$board->cnt}}</td>
-                    <td>{{ disptime($board->reg_date) }}</td>
+                    <td>{{ date("Y-m-d",strtotime($board->reg_date)) }}</td>
                 </tr>
             @endforeach
         </tbody>
