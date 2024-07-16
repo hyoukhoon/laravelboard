@@ -24,13 +24,9 @@
         </tr>
         </thead>
         <tbody>
-            <?php
-            $pagenumber = $_GET["page"]??1;
-            $idx = $boards->total()-(($boards->currentPage()-1) * 20);
-            ?>
             @foreach ($boards as $key => $board)
                 <tr>
-                    <th scope="row">{{ $idx-- }}</th>
+                    <th scope="row">{{ $board->bid }}</th>
                     <td>{{$board->userid}}</td>
                     <td><a href="/boards/show/{{$board->bid}}/{{$pagenumber}}">{{$board->subject}}</a>
                     </td>
