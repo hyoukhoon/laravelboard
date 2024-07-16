@@ -11,10 +11,10 @@ class BoardController extends Controller
         return view('boards.index', compact('boards'));
     }
 
-    public function show($num,$page)
+    public function show($bid,$page)
     {
-        Board::find($num)->increment('cnt');
-        $boards = Board::findOrFail($num);
+        Board::find($bid)->increment('cnt');
+        $boards = Board::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
         $boards->pagenumber = $page;
 
