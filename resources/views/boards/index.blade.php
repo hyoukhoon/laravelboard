@@ -22,7 +22,7 @@
         </tr>
         </thead>
         <tbody>
-            @foreach ($params as $board)
+            @foreach ($boards as $board)
                 <tr>
                     <th scope="row">{{ $board->bid }}</th>
                     <td>{{$board->userid}}</td>
