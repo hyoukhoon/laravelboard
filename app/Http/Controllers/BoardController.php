@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class BoardController extends Controller
 {
     public function index(){
-        $boards = Board::orderBy('bid','desc');
+        $boards = Board::orderBy('bid','desc')->paginate(20);
         return view('boards.index', compact('boards'));
     }
 }
