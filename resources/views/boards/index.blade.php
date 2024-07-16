@@ -24,8 +24,24 @@
         </tr>
         </thead>
         <tbody>
-        
+            <?php
+            $pagenumber = $_GET["page"]??1;
+            $idx = $boards->total()-(($boards->currentPage()-1) * 20);
+            ?>
+            @foreach ($boards as $key => $board)
+                <tr>
+                    <th scope="row">{{ $idx-- }}</th>
+                    <td>{{$board->name}}</td>
+                    <td><a href="/boards/show/{{$board->num}}/{{$pagenumber}}">{{$board->subject}}</a>
+                        {{ $board->memo_cnt?"[".$board->memo_cnt."]":"" }}
+                    </td>
+                    <td>{{$board->cnt}}</td>
+                    <td>{{ disptime($board->reg_date) }}</td>
+                </tr>
+            @endforeach
         </tbody>
     </table>
-
+    <div style="position: absolute;transform: translate(50%, 50%);">
+        {!! $boards->withQueryString()->links() !!}
+    </dvi>
 @endsection
