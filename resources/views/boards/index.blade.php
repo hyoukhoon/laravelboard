@@ -35,7 +35,7 @@
                     <td><a href="/boards/show/{{$board->bid}}/{{$pagenumber}}">{{$board->subject}}</a>
                     </td>
                     <td>{{$board->cnt}}</td>
-                    <td>{{ date("Y-m-d",strtotime($board->reg_date)) }}</td>
+                    <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
                 </tr>
             @endforeach
         </tbody>
