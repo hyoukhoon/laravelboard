@@ -35,7 +35,7 @@
             @endforeach
         </tbody>
     </table>
-    <div style="text-align:center;">
+    <div>
         {!! $boards->withQueryString()->links() !!}
     </dvi>
 @endsection
