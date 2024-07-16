@@ -27,9 +27,9 @@
             ?>
             @foreach ($boards as $board)
                 <tr>
-                    <th scope="row">{{ $idx }}</th>
-                    <td>{{$board->userid}}</td>
-                    <td>{{$board->subject}}</td>
+                    <th scope="row">{{ $idx-- }}</th>
+                    <td>{{ $board->userid }}</td>
+                    <td>{{ $board->subject }}</td>
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
                 </tr>
             @endforeach
