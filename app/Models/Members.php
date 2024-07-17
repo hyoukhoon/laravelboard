@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string   $username
  * @property DateTime $regdate
  */
-class Members extends Model
+class Members extends Authenticatable
 {
     /**
      * The database table used by the model.
@@ -34,7 +34,7 @@ class Members extends Model
      * @var array
      */
     protected $fillable = [
-        'email', 'passwd', 'regdate', 'userid', 'username'
+        'email', 'passwd', 'regdate', 'userid', 'username','remember_token'
     ];
 
     /**

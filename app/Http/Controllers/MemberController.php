@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Members;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MemberController extends Controller
 {
@@ -50,6 +51,25 @@ class MemberController extends Controller
             return response()->json(array('msg'=> "이미 사용중인 이메일입니다.", 'result'=>false), 200);
         }else{
             return response()->json(array('msg'=> "사용할 수 있는 이메일입니다.", 'result'=>true), 200);
+        }
+    }
+
+    public function loginok(Request $request){
+        $email = $request->email;
+        $passwd = $request->passwd;
+        $passwd = hash('sha512',$passwd);
+        $remember = $request->remember;
+        $loginInfo = array(
+            'email' => $email,
+            'passwd' => $passwd
+        );
+
+        $ismember = Members::where($loginInfo)->first();
+        if($ismember){
+            Auth::login($ismember, $remember);
+            return redirect() -> route('boards.index');
+        }else{
+            return redirect() -> route('auth.login');
         }
     }
 }

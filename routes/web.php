@@ -17,3 +17,4 @@ Route::get('/login', [MemberController::class, 'login'])->name('auth.login');
 Route::get('/signup', [MemberController::class, 'signup'])->name('auth.signup');
 Route::post('/signupok', [MemberController::class, 'signupok'])->name('auth.signupok');
 Route::post('/emailcheck', [MemberController::class, 'emailcheck'])->name('auth.emailcheck');
+Route::post('/loginok', [MemberController::class, 'loginok']) -> name('auth.loginok');
