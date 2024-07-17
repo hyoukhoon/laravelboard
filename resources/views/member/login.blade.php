@@ -117,5 +117,5 @@
   
 </form>
 </main>
-
+{{ session()->get('jsAlert') }}
 @endsection
