@@ -87,7 +87,7 @@
       -webkit-overflow-scrolling: touch;
     }
   </style>
-@if(Session::has('jsAlert'))
+@if(session()->get('jsAlert'))
   <script type="text/javascript" >
     alert({{ session()->get('jsAlert') }});
   </script>
@@ -117,5 +117,4 @@
   
 </form>
 </main>
-{{ session()->get('jsAlert') }}
 @endsection
