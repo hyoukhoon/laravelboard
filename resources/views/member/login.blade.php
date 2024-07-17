@@ -114,7 +114,7 @@
 </main>
 @if(Session::has('jsAlert'))
   <script type="text/javascript" >
-    alert({{ session()->get('jsAlert') }});
+    alert("{{ session()->get('jsAlert') }}");
   </script>
 @endif
 @endsection
