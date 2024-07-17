@@ -4,14 +4,14 @@
     @section('header')
     <header class="w-2/3 mx-auto mt-16 text-right">
         @guest()
-            <a href="{{route('auth.login')}}" class="text-xl">로그인</a> / 
-            <a href="{{route('auth.signup')}}" class="text-xl">회원가입</a>
+            <a href="/login" class="text-xl">로그인</a> / 
+            <a href="/signup" class="text-xl">회원가입</a>
         @endguest
         @auth()
             <form action="/logout" method="post" class="inline-block">
                 @csrf
                 <span class="text-xl text-blue-500">{{auth()->user()->nickName}}</span> / 
-                <a href="{{route('auth.logout')}}"><button class="text-xl">로그아웃</button></a>
+                <a href="/logout"><button class="text-xl">로그아웃</button></a>
             </form>
         @endauth
     </header>
