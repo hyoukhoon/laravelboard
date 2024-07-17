@@ -1,6 +1,20 @@
 @extends('boards.layout')
 @section('content')
     <h2 class="mt-4 mb-3">게시판 목록</h2>
+    @section('header')
+    <header class="w-2/3 mx-auto mt-16 text-right">
+        @guest()
+            <a href="{{route('auth.login')}}" class="text-xl">로그인</a> / 
+            <a href="{{route('auth.signup')}}" class="text-xl">회원가입</a>
+        @endguest
+        @auth()
+            <form action="/logout" method="post" class="inline-block">
+                @csrf
+                <span class="text-xl text-blue-500">{{auth()->user()->nickName}}</span> / 
+                <a href="{{route('auth.logout')}}"><button class="text-xl">로그아웃</button></a>
+            </form>
+        @endauth
+    </header>
     <div style="text-align:right;">
         <button class="text-xl">등록</button></a>
     </div>
