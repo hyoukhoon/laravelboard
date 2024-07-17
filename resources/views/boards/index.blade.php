@@ -1,9 +1,10 @@
 @extends('boards.layout')
-@section('content')
 
-    @section('header')
-    <header class="w-2/3 mx-auto mt-16 text-right">
-        @guest()
+@section('header')
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <span class="fs-4">게시판 목록</span>
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            @guest()
             <a href="/login" class="text-xl">로그인</a> / 
             <a href="/signup" class="text-xl">회원가입</a>
         @endguest
@@ -14,9 +15,12 @@
                 <a href="/logout"><button class="text-xl">로그아웃</button></a>
             </form>
         @endauth
-    </header>
-    @endsection
-    <h2 class="mt-4 mb-3">게시판 목록</h2>
+        </nav>
+    </div>
+@endsection
+
+@section('content')
+
     <div style="text-align:right;">
         <button class="text-xl">등록</button></a>
     </div>

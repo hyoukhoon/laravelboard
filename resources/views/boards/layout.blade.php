@@ -11,10 +11,10 @@
     <title>게시판</title>
 </head>
 <body>
-<div>
-    @yield('header')
-</div>
 <div class="container">
+    <header>
+        @yield('header')
+    </header>
     @yield('content')
 </div>
 
