@@ -94,5 +94,29 @@
             }
         });
     });
+
+    $("#email").on("keyup", function() {
+        var email=$("#email").val();
+        var data = {
+            email : email
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('auth.emailcheck') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                if(data.result==true){
+                    $("#emailmsg").html("<font color='blue'>"+data.msg+"</font>");
+                }else{
+                    $("#emailmsg").html("<font color='red'>"+data.msg+"</font>");
+                }
+            },
+            error: function(data) {
+            console.log("error" +JSON.stringify(data));
+            }
+        });
+    });
   </script>
 @endsection  

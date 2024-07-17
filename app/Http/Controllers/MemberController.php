@@ -41,4 +41,15 @@ class MemberController extends Controller
             return response()->json(array('msg'=> "실패했습니다. 관리자에게 문의해주세요.", 'result'=>false), 200);
         }
     }
+
+    public function emailcheck(Request $request){
+        $email = $request->email;
+        
+        $rs = Members::where('email',$email)->count();
+        if($rs){
+            return response()->json(array('msg'=> "이미 사용중인 이메일입니다.", 'result'=>false), 200);
+        }else{
+            return response()->json(array('msg'=> "사용할 수 있는 이메일입니다.", 'result'=>true), 200);
+        }
+    }
 }

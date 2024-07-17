@@ -16,4 +16,4 @@ Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('
 Route::get('/login', [MemberController::class, 'login'])->name('auth.login');
 Route::get('/signup', [MemberController::class, 'signup'])->name('auth.signup');
 Route::post('/signupok', [MemberController::class, 'signupok'])->name('auth.signupok');
-
+Route::post('/emailcheck', [MemberController::class, 'emailcheck'])->name('auth.emailcheck');
