@@ -55,4 +55,40 @@
       </div>
     </div>
   </section>
+  <script>
+    $("#signup").click(function () {
+		    var name=$("#name").val();
+        var email=$("#email").val();
+        var password1=$("#password1").val();
+        var password2=$("#password2").val();
+        if(password1!=password2){
+          alert('비밀번호를 다시 확인해 주십시오.');
+          return false;
+        }
+        var data = {
+          name : name,
+          email : email,
+          password : password1
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('auth.signupok') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                if(data.result==true){
+                    alert(data.msg);
+                    location.href='/board';
+                }else{
+                    alert(data.msg);
+                    return false;
+                }
+            },
+            error: function(data) {
+            console.log("error" +JSON.stringify(data));
+            }
+        });
+    });
+  </script>
 @endsection  
