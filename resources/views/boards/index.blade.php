@@ -11,7 +11,7 @@
         @auth()
             <form action="/logout" method="post" class="inline-block">
                 @csrf
-                <span class="text-xl text-blue-500">{{auth()->user()->nickName}}</span> / 
+                <span class="text-xl text-blue-500">{{auth()->user()->userid}}</span> / 
                 <a href="/logout"><button class="text-xl">로그아웃</button></a>
             </form>
         @endauth

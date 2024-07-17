@@ -72,4 +72,9 @@ class MemberController extends Controller
             return redirect() -> route('auth.login');
         }
     }
+
+    public function logout(){
+        auth() -> logout();
+        return redirect() -> route('boards.index');
+    }
 }
