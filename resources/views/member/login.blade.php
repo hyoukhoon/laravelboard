@@ -112,9 +112,9 @@
 
 </form>
 </main>
-@if(Session::has('jsAlert'))
+@if(Session::has('loginFail'))
   <script type="text/javascript" >
-    alert("{{ session()->get('jsAlert') }}");
+    alert("{{ session()->get('loginFail') }}");
   </script>
 @endif
 @endsection
