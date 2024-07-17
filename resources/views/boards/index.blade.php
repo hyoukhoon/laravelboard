@@ -20,11 +20,9 @@
 @endsection
 
 @section('content')
-
     <div style="text-align:right;">
         <button class="text-xl">등록</button></a>
     </div>
-    
     <table class="table table-striped table-hover">
         <colgroup>
             <col width="10%"/>
