@@ -18,14 +18,22 @@ class MemberController extends Controller
     public function signupok(Request $request){
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
+        $uid = explode("@",$request->email);
         $form_data = array(
+            'userid' => $uid[0],
             'email' => $request->email,
             'passwd' => $passwd,
             'name' => $request->name,
             'username' => $request->name
         );
 
-        $rs=Members::create($form_data);
+        $ms = Members::where('email',$request->email)->count();
+        if($ms){
+            return response()->json(array('msg'=> "이미 사용중인 이메일입니다.", 'result'=>false), 200);
+            exit;
+        }
+
+        $rs = Members::create($form_data);
         
         if($rs){
             return response()->json(array('msg'=> "가입해 주셔서 감사합니다.", 'result'=>true), 200);

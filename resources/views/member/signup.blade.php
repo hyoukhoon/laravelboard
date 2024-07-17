@@ -83,7 +83,7 @@
             success: function(data) {
                 if(data.result==true){
                     alert(data.msg);
-                    location.href='/board';
+                    location.href='/boards';
                 }else{
                     alert(data.msg);
                     return false;
