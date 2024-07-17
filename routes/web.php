@@ -20,3 +20,7 @@ Route::get('/', function () {
 //게시판
 Route::get('/boards', [BoardController::class, 'index'])->name('boards.index');
 Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('boards.show');
+
+//회원
+Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
+Route::get('/signup', [LoginController::class, 'signup'])->name('auth.signup');
