@@ -88,7 +88,7 @@
     }
   </style>
 
-<main class="form-signin w-200 m-auto">
+<main class="form-signin w-100 m-auto">
 <form method="post" action="/loginok">
   @csrf
 <div style="text-align:center;">
