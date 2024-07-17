@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoardController;
+use App\Http\Controllers\MemberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +23,5 @@ Route::get('/boards', [BoardController::class, 'index'])->name('boards.index');
 Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('boards.show');
 
 //회원
-Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
-Route::get('/signup', [LoginController::class, 'signup'])->name('auth.signup');
+Route::get('/login', [MemberController::class, 'login'])->name('auth.login');
+Route::get('/signup', [MemberController::class, 'signup'])->name('auth.signup');
