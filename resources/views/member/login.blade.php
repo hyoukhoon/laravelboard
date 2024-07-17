@@ -87,7 +87,11 @@
       -webkit-overflow-scrolling: touch;
     }
   </style>
-
+@if(Session::has('jsAlert'))
+  <script type="text/javascript" >
+    alert({{ session()->get('jsAlert') }});
+  </script>
+@endif
 <main class="form-signin w-100 m-auto">
 <form method="post" action="/loginok">
   @csrf

@@ -69,7 +69,7 @@ class MemberController extends Controller
             Auth::login($ismember, $remember);
             return redirect() -> route('boards.index');
         }else{
-            return redirect() -> route('auth.login');
+            return redirect() -> route('auth.login')->with('jsAlert', '아이디나 비밀번호가 틀렸습니다.');
         }
     }
 
