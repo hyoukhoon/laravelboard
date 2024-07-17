@@ -61,6 +61,10 @@
         var email=$("#email").val();
         var password1=$("#password1").val();
         var password2=$("#password2").val();
+        if(!name || !email || password1 || password2){
+          alert('필수값을 입력해주세요.');
+          return false;
+        }
         if(password1!=password2){
           alert('비밀번호를 다시 확인해 주십시오.');
           return false;
