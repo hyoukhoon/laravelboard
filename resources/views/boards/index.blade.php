@@ -1,6 +1,6 @@
 @extends('boards.layout')
 @section('content')
-    <h2 class="mt-4 mb-3">게시판 목록</h2>
+
     @section('header')
     <header class="w-2/3 mx-auto mt-16 text-right">
         @guest()
@@ -16,6 +16,7 @@
         @endauth
     </header>
     @endsection
+    <h2 class="mt-4 mb-3">게시판 목록</h2>
     <div style="text-align:right;">
         <button class="text-xl">등록</button></a>
     </div>

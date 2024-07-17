@@ -10,8 +10,10 @@
     <script src="https://code.jquery.com/jquery-latest.min.js"></script>
     <title>게시판</title>
 </head>
-@yield('header')
 <body>
+<div>
+    @yield('header')
+</div>
 <div class="container">
     @yield('content')
 </div>
