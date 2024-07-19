@@ -26,7 +26,7 @@ class BoardController extends Controller
         if(auth()->check()){
             return view('boards.write');
         }else{
-            return redirect()->back()->with('로그인 하십시오.');
+            return redirect()->back()->withErrors('로그인 하십시오.')
         }
     }
 }
