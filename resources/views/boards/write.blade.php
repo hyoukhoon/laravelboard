@@ -43,6 +43,7 @@
         var content=$("#content").val();
         var formData = new FormData();
         var files = $('#afile').prop('files');
+        console.log(JSON.stringify(files));
         formData.append("afiles", files);
         formData.append("subject", subject);
         formData.append("content", content);
