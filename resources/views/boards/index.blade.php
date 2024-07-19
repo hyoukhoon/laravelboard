@@ -23,7 +23,7 @@
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
-            @foreach ($errors->all() as $key => $error)
+            @foreach ($errors as $key => $error)
             <li>{{ $key }}</li>
             <li>{{ $error }}</li>
             @endforeach
