@@ -33,7 +33,7 @@
             </tr>
             <tr>
                 <th width="100">내용</th>
-                <td>{!! $boards->content !!}</td>
+                <td>{!! nl2br($boards->content) !!}</td>
             </tr>
         </tbody>
     </table>
