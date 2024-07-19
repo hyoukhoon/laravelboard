@@ -20,4 +20,9 @@ class BoardController extends Controller
 
         return view('boards.view', ['boards' => $boards]);
     }
+
+    public function write()
+    {
+        return view('boards.write');
+    }
 }
