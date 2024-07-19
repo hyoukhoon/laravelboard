@@ -42,7 +42,7 @@
         var subject=$("#subject").val();
         var content=$("#content").val();
         var formData = new FormData();
-        var files = $('#afile').prop('files')[0];
+        var files = $('#afile').prop('files');
         formData.append("afile", files);
         formData.append("subject", subject);
         formData.append("content", content);
@@ -56,6 +56,8 @@
             url: '{{ route('boards.create') }}',
             dataType: 'json',
             enctype: 'multipart/form-data',
+            contentType: false
+            processData: false
             data: formData,
             success: function(data) {
                 location.href='/boards/show/'+data.bid+'/1';
