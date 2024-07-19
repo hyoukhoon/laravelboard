@@ -43,11 +43,11 @@
         var content=$("#content").val();
         var formData = new FormData();
         var files = $('#afile').prop('files');
-        for(var i=0; i < files.length; i++) {
-            console.log(files[i]);
-        }
-        return false;
-        formData.append("afiles", files);
+        // for(var i=0; i < files.length; i++) {
+        //     console.log(files[i]);
+        // }
+        // return false;
+        formData.append("afile", files[0]);
         formData.append("subject", subject);
         formData.append("content", content);
         // var data = {
@@ -60,8 +60,6 @@
             url: '{{ route('boards.create') }}',
             dataType: 'json',
             enctype: 'multipart/form-data',
-            contentType: false,
-            processData: false,
             data: formData,
             success: function(data) {
                 location.href='/boards/show/'+data.bid+'/1';

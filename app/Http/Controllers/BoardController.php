@@ -33,9 +33,7 @@ class BoardController extends Controller
 
     public function create(Request $request)
     {
-        $images = $request->file('afiles');
-        print_r($images);
-        exit;
+        $image = $request->file('afile');
         $new_name = $image->getClientOriginalName().'_'.time().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('images'), $new_name);
 
