@@ -20,6 +20,14 @@
                 <th width="100">내용</th>
                 <td>{!! nl2br($boards->content) !!}</td>
             </tr>
+            @if($boards->attachfiles)
+            <tr>
+                <th width="100">첨부 이미지</th>
+                <td>
+                    <img src="/images/{{ $boards->attachfiles }}" style="max-width:100%;"><br>
+                </td>
+            </tr>
+            @endif
         </tbody>
     </table>
     <div align="right">
