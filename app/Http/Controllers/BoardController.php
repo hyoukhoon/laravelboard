@@ -38,6 +38,7 @@ class BoardController extends Controller
             'content' => $request->content,
             'userid' => Auth::user()->userid,
             'email' => Auth::user()->email,
+            'multi' => $request->content??'free',
             'status' => 1
         );
 

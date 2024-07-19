@@ -40,7 +40,7 @@
             dataType: 'json',
             data: data,
             success: function(data) {
-                location.href='/boards/show/'+data.bid+'/1';
+                location.href='/boards/show/'+data.bid;
             },
             error: function(data) {
                 console.log("error" +data);
