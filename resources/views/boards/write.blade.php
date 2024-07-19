@@ -41,16 +41,22 @@
     function sendsubmit(){
         var subject=$("#subject").val();
         var content=$("#content").val();
-        var data = {
-            subject : subject,
-            content : content
-        };
+        var formData = new FormData();
+        var files = $('#afile').prop('files');
+        formData.append("afile", files);
+        formData.append("subject", subject);
+        formData.append("content", content);
+        // var data = {
+        //     subject : subject,
+        //     content : content
+        // };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'post',
             url: '{{ route('boards.create') }}',
             dataType: 'json',
-            data: data,
+            enctype: 'multipart/form-data',
+            data: formdata,
             success: function(data) {
                 location.href='/boards/show/'+data.bid+'/1';
             },

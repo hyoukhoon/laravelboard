@@ -33,13 +33,18 @@ class BoardController extends Controller
 
     public function create(Request $request)
     {
+        $image = $request->file('afile');
+        $new_name = $image->getClientOriginalName().'_'.time().'.'.$image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
+
         $form_data = array(
             'subject' => $request->subject,
             'content' => $request->content,
             'userid' => Auth::user()->userid,
             'email' => Auth::user()->email,
-            'multi' => $request->content??'free',
-            'status' => 1
+            'multi' => $request->multi??'free',
+            'status' => 1,
+            'attachfiles' => $new_name
         );
 
         if(auth()->check()){
