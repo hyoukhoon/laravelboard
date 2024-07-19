@@ -18,10 +18,15 @@
             </div>
         <br />
         </div>
-
         <div class="form-group">
             <div class="col-md-12">
                 <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요."></textarea>
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-12">
+                <input type="file" name="afile" id="afile" accept="image/*" multiple class="form-control" aria-label="Large file input example">
             </div>
         </div>
         <br />
