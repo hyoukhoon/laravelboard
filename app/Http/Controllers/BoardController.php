@@ -23,6 +23,10 @@ class BoardController extends Controller
 
     public function write()
     {
-        return view('boards.write');
+        if(auth()->check()){
+            return view('boards.write');
+        }else{
+            return redirect()->back()->with('로그인 하십시오.');
+        }
     }
 }
