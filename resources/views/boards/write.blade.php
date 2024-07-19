@@ -42,7 +42,7 @@
         var subject=$("#subject").val();
         var content=$("#content").val();
         var formData = new FormData();
-        var files = $('#afile').prop('files');
+        var files = $('#afile').val();
         formData.append("afile", files);
         formData.append("subject", subject);
         formData.append("content", content);
