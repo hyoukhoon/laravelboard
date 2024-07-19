@@ -25,7 +25,7 @@ class BoardController extends Controller
     public function write()
     {
         if(auth()->check()){
-            return view('boards.write', ['boardTitle' => '게시판 보기']);
+            return view('boards.write', ['boardTitle' => '게시판 등록']);
         }else{
             return redirect()->back()->withErrors('로그인 하십시오.');
         }
