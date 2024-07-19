@@ -14,7 +14,6 @@
 <body>
 <div class="container">
     <header>
-        @section('header')
             <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
                 <span class="fs-4">{{ $boardTitle }}</span>
                 <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
@@ -31,7 +30,6 @@
                 @endauth
                 </nav>
             </div>
-        @endsection
     </header>
     @yield('content')
 </div>
