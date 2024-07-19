@@ -25,4 +25,27 @@
         <button type="button" name="edit" class="btn btn-primary input-lg" onclick="sendsubmit()">등록</button>
         </div>
     </form>
+<script>
+    function sendsubmit(){
+        var subject=$("#subject").val();
+        var content=$("#content").val();
+        var data = {
+            subject : subject,
+            content : content
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('boards.create') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                location.href='/boards/show/'+data.bid+'/1';
+            },
+            error: function(data) {
+                console.log("error" +data);
+            }
+        });
+    }
+</script>    
 @endsection

@@ -14,6 +14,7 @@ Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('
 
 Route::middleware('auth') -> group(function (){
     Route::get('/boards/write', [BoardController::class, 'write'])->name('boards.write');
+    Route::post('/boards/create', [BoardController::class, 'create'])->name('boards.create');
 });
 
 //회원

@@ -16,7 +16,7 @@ class BoardController extends Controller
         Board::find($bid)->increment('cnt');
         $boards = Board::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
-        $boards->pagenumber = $page;
+        $boards->pagenumber = $page??1;
 
         return view('boards.view', ['boards' => $boards]);
     }
@@ -27,6 +27,22 @@ class BoardController extends Controller
             return view('boards.write');
         }else{
             return redirect()->back()->withErrors('로그인 하십시오.');
+        }
+    }
+
+    public function create(Request $request)
+    {
+        $form_data = array(
+            'subject' => $request->subject,
+            'content' => $request->content,
+            'userid' => Auth::user()->userid,
+            'email' => Auth::user()->email,
+            'status' => 1
+        );
+
+        if(auth()->check()){
+            $rs=Board::create($form_data);
+            return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
 }
