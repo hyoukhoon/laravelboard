@@ -11,7 +11,10 @@ Route::get('/', function () {
 //게시판
 Route::get('/boards', [BoardController::class, 'index'])->name('boards.index');
 Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('boards.show');
-Route::get('/boards/write', [BoardController::class, 'write'])->name('boards.write');
+
+Route::middleware('auth') -> group(function (){
+    Route::get('/boards/write', [BoardController::class, 'write'])->name('boards.write');
+});
 
 //회원
 Route::get('/login', [MemberController::class, 'login'])->name('auth.login');
