@@ -16,7 +16,7 @@
 
         <div class="form-group">
             <div class="col-md-8">
-                <textarea class="form-control" id="contents" name="contents" rows="5"></textarea>
+                <textarea class="form-control" id="contents" name="contents" rows="5" placeholder="내용을 입력하세요."></textarea>
             </div>
         </div>
         <br />
