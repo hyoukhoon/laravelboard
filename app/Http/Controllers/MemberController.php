@@ -31,7 +31,7 @@ class MemberController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('/signup')->withErrors($validator)->withInput();
+            return redirect()->route('auth.signup')->withErrors($validator)->withInput();
         }
 
         $passwd = $request->password;
