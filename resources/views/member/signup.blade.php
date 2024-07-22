@@ -1,16 +1,6 @@
 @extends('boards.layout')
 @section('content')
-@if ($errors->any())
-<div class="row align-items-center py-3">
-  <div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-  </div>
-</div>
-@endif
+<main>
 <section class="vh-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -66,6 +56,16 @@
       </div>
     </div>
   </section>
+</main>  
+@if ($errors->any())
+  <div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+  </div>
+@endif
   <script>
     $("#signup").click(function () {
 		    var name=$("#name").val();
