@@ -87,15 +87,6 @@
       -webkit-overflow-scrolling: touch;
     }
   </style>
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
 <main class="form-signin w-100 m-auto">
 <form method="post" action="/loginok">
   @csrf
@@ -121,6 +112,15 @@
 
 </form>
 </main>
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 @if(Session::has('loginFail'))
   <script type="text/javascript" >
     alert("{{ session()->get('loginFail') }}");
