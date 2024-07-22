@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 //게시판
-Route::any('/boards/{multi}', [BoardController::class, 'index'])->name('boards.index');
+Route::get('/boards/{multi}', [BoardController::class, 'index'])->name('boards.index');
 Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('boards.show');
 
 Route::middleware('auth') -> group(function (){
