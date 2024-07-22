@@ -31,7 +31,7 @@ class MemberController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect('member/signup')
+            return redirect('/signup')
                         ->withErrors($validator)
                         ->withInput();
         }
