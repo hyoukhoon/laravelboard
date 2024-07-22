@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Members;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class MemberController extends Controller
 {
@@ -67,11 +68,12 @@ class MemberController extends Controller
 
     public function loginok(Request $request){
 
+        $email = $request->old('email');
         $validated = $request->validate([
             'email' => 'required',
             'passwd' => 'required',
         ]);
-
+        
         $email = $request->email;
         $passwd = $request->passwd;
         $passwd = hash('sha512',$passwd);

@@ -95,7 +95,7 @@
   <h1 class="h3 mb-3 fw-normal">로그인 페이지</h1>
 </div>
   <div class="form-floating">
-    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}">
     <label for="floatingInput">아이디(이메일)</label>
   </div>
   <div class="form-floating">
