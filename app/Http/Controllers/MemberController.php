@@ -31,8 +31,7 @@ class MemberController extends Controller
         ]);
 
         if ($validator->fails()) {
-            //return redirect()->route('auth.signup')->withErrors($validator)->withInput();
-            return redirect()->route('auth.signup')->with('signupFail', '아이디나 비밀번호가 틀렸습니다.');
+            return redirect()->route('auth.login')->withErrors($validator)->withInput();
         }
 
         $passwd = $request->password;

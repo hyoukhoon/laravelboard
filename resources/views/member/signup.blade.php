@@ -1,10 +1,5 @@
 @extends('boards.layout')
 @section('content')
-@if(Session::has('signupFail'))
-  <script type="text/javascript" >
-    alert("{{ session()->get('signupFail') }}");
-  </script>
-@endif
 @if ($errors->any())
   <div class="alert alert-danger">
     <ul>
