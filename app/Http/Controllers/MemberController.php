@@ -18,11 +18,6 @@ class MemberController extends Controller
     }
 
     public function signupok(Request $request){
-        // $validated = $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required',
-        //     'passwd' => 'required'
-        // ]);
 
         $validator = Validator::make($request->all(), [
             'name' => 'required',
@@ -31,7 +26,8 @@ class MemberController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect()->route('auth.login')->withErrors($validator)->withInput();
+            return response()->json(array('msg'=> "필수값을 입력해 주세요.", 'result'=>false), 200);
+            exit;
         }
 
         $passwd = $request->password;
