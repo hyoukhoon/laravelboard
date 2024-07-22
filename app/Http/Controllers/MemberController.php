@@ -29,6 +29,13 @@ class MemberController extends Controller
             'email' => 'required',
             'passwd' => 'required'
         ]);
+
+        if ($validator->fails()) {
+            return redirect('member/signup')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
         $uid = explode("@",$request->email);
