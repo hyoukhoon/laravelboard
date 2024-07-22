@@ -75,7 +75,6 @@ class MemberController extends Controller
 
     public function loginok(Request $request){
 
-        $email = $request->old('email');
         $validated = $request->validate([
             'email' => 'required',
             'passwd' => 'required',
