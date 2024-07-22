@@ -46,6 +46,11 @@
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
                 </tr>
             @endforeach
+            @if($idx==0)
+                <tr>
+                    <th scope="row" colspan="5">게시물이 없습니다.</td>
+                </tr>
+            @endif
         </tbody>
     </table>
     <div>
