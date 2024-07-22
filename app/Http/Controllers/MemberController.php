@@ -18,21 +18,21 @@ class MemberController extends Controller
     }
 
     public function signupok(Request $request){
-        // $validated = $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required',
-        //     'passwd' => 'required'
-        // ]);
-
-        $validator = Validator::make($request->all(), [
+        $validated = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'passwd' => 'required'
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->route('auth.signup')->withErrors($validator)->withInput();
-        }
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'password' => 'required'
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return redirect()->route('auth.signup')->withErrors($validator)->withInput();
+        // }
 
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
