@@ -1,6 +1,17 @@
 @extends('boards.layout')
 @section('content')
-<section class="vh-100" style="background-color: #e3e4e6;">
+@if ($errors->any())
+<div class="row align-items-center py-3">
+  <div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+  </div>
+</div>
+@endif
+<section class="vh-100">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-9">
@@ -45,17 +56,6 @@
                     <input type="password" name="password2" id="password2" class="form-control form-control-lg" />
                 </div>
               </div>
-              @if ($errors->any())
-              <div class="row align-items-center py-3">
-                <div class="alert alert-danger">
-                  <ul>
-                      @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                      @endforeach
-                  </ul>
-                </div>
-              </div>
-              @endif
               <hr class="mx-n3">
               <div class="px-5 py-4" style="text-align:center;">
                 <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" id="signup">가입하기</button>
