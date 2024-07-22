@@ -17,17 +17,17 @@ class MemberController extends Controller
     }
 
     public function signupok(Request $request){
-        $validated = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'passwd' => 'required'
-        ]);
-
-        // $validator = Validator::make($request->all(), [
+        // $validated = $request->validate([
         //     'name' => 'required',
         //     'email' => 'required',
         //     'passwd' => 'required'
         // ]);
+
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'passwd' => 'required'
+        ]);
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
         $uid = explode("@",$request->email);
