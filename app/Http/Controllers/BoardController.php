@@ -35,9 +35,9 @@ class BoardController extends Controller
 
     public function create(Request $request)
     {
-        $request->validate([
-            'afile' => 'required|image|max:2048'
-        ]);
+        // $request->validate([
+        //     'afile' => 'required|image|max:2048'
+        // ]);
         $image = $request->file('afile');
         $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
         $image->move(public_path('images'), $new_name);
