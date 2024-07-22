@@ -28,7 +28,11 @@ class MemberController extends Controller
             'name' => 'required',
             'email' => 'required',
             'password' => 'required'
-        ])->validate();
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/signup')->withErrors($validator)->withInput();
+        }
 
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
