@@ -35,7 +35,8 @@
         <tbody>
             <?php
                 $pagenumber = $_GET["page"]??1;
-                $idx = $boards->total()-(($boards->currentPage()-1) * 20);
+                $total = $boards->total();
+                $idx = $total-(($boards->currentPage()-1) * 20);
             ?>
             @foreach ($boards as $board)
                 <tr>
@@ -46,7 +47,7 @@
                     <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
                 </tr>
             @endforeach
-            @if($idx==0)
+            @if(!$total)
                 <tr>
                     <th scope="row" colspan="5">게시물이 없습니다.</td>
                 </tr>
