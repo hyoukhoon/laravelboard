@@ -2,6 +2,15 @@
 @section('content')
 <section class="vh-100" style="background-color: #e3e4e6;">
     <div class="container h-100">
+      @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif  
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-9">
           <h1 class="mb-4" style="text-align:center;">회원가입</h1>
@@ -55,15 +64,6 @@
       </div>
     </div>
   </section>
-  @if ($errors->any())
-  <div class="alert alert-danger">
-      <ul>
-          @foreach ($errors->all() as $error)
-          <li>{{ $error }}</li>
-          @endforeach
-      </ul>
-  </div>
-  @endif  
   <script>
     $("#signup").click(function () {
 		    var name=$("#name").val();
