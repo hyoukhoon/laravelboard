@@ -20,8 +20,14 @@ class MemberController extends Controller
         $validated = $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'passwd' => 'required',
+            'passwd' => 'required'
         ]);
+
+        // $validator = Validator::make($request->all(), [
+        //     'name' => 'required',
+        //     'email' => 'required',
+        //     'passwd' => 'required'
+        // ]);
         $passwd = $request->password;
         $passwd = hash('sha512',$passwd);
         $uid = explode("@",$request->email);
