@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {
-    public function index(){
-        $boards = Board::orderBy('bid','desc')->paginate(20);
+    public function index($multi){
+        $multi = $multi??"free";
+        $boards = Board::where('multi',$multi)
+                        ->where('status',1)
+                        ->orderBy('bid','desc')->paginate(20);
         return view('boards.index', compact('boards'));
     }
 
