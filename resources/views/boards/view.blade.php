@@ -31,6 +31,6 @@
         </tbody>
     </table>
     <div align="right">
-        <a href="/boards/?page={{ $boards->pagenumber }}" class="btn btn-primary">목록</a>
+        <a href="/boards/{{ $boards->multi }}/?page={{ $boards->pagenumber }}" class="btn btn-primary">목록</a>
     </div>
     @endsection    
