@@ -13,7 +13,7 @@
     </div>
     @endif
     <div style="text-align:right;">
-        <a href="{{ route('boards.write') }}"><button class="text-xl">등록</button></a>
+        <a href="/boards/write/{{ $multi }}"><button class="text-xl">등록</button></a>
     </div>
     <table class="table table-striped table-hover">
         <colgroup>

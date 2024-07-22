@@ -50,6 +50,7 @@
         formData.append("afile", files[0]);
         formData.append("subject", subject);
         formData.append("content", content);
+        formData.append("multi", '{{ $multi }}');
         // var data = {
         //     subject : subject,
         //     content : content

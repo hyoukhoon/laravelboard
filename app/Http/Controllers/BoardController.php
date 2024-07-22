@@ -11,7 +11,7 @@ class BoardController extends Controller
         $boards = Board::where('multi',$multi)
                         ->where('status',1)
                         ->orderBy('bid','desc')->paginate(20);
-        return view('boards.index', compact('boards'));
+        return view('boards.index', ['boards' => $boards, 'multi' => $multi]);
     }
 
     public function show($bid,$page)
@@ -24,10 +24,10 @@ class BoardController extends Controller
         return view('boards.view', ['boards' => $boards]);
     }
 
-    public function write()
+    public function write($multi)
     {
         if(auth()->check()){
-            return view('boards.write');
+            return view('boards.write', ['multi' => $multi]);
         }else{
             return redirect()->back()->withErrors('로그인 하십시오.');
         }
