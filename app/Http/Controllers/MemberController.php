@@ -64,7 +64,7 @@ class MemberController extends Controller
         $validated = $request->validate([
             'email' => 'required',
             'passwd' => 'required',
-        ])->with('loginFail', '필수값을 입력하세요.');
+        ]);
 
         $email = $request->email;
         $passwd = $request->passwd;
