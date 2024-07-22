@@ -1,14 +1,5 @@
 @extends('boards.layout')
 @section('content')
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif  
 <section class="vh-100" style="background-color: #e3e4e6;">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -64,6 +55,15 @@
       </div>
     </div>
   </section>
+  @if ($errors->any())
+  <div class="alert alert-danger">
+      <ul>
+          @foreach ($errors->all() as $error)
+          <li>{{ $error }}</li>
+          @endforeach
+      </ul>
+  </div>
+  @endif    
   <script>
     $("#signup").click(function () {
 		    var name=$("#name").val();
