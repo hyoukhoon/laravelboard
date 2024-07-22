@@ -55,6 +55,16 @@ class MemberController extends Controller
     }
 
     public function loginok(Request $request){
+
+        $validated = $request->validate([
+            'email' => 'required',
+            'passwd' => 'required',
+        ]);
+
+        // $validator = Validator::make($request->all(), [
+        //             'email' => 'required',
+        //             'passwd' => 'required',
+        // ]);
         $email = $request->email;
         $passwd = $request->passwd;
         $passwd = hash('sha512',$passwd);
