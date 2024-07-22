@@ -1,19 +1,19 @@
 @extends('boards.layout')
 @section('content')
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
 <section class="vh-100" style="background-color: #e3e4e6;">
     <div class="container h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-9">
           <h1 class="mb-4" style="text-align:center;">회원가입</h1>
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
           <div class="card" style="border-radius: 15px;">
             <div class="card-body">
               <div class="row align-items-center pt-4 pb-3">
