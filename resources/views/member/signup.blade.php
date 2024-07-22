@@ -5,15 +5,6 @@
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-xl-9">
           <h1 class="mb-4" style="text-align:center;">회원가입</h1>
-          @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-          @endif
           <div class="card" style="border-radius: 15px;">
             <div class="card-body">
               <div class="row align-items-center pt-4 pb-3">
@@ -54,6 +45,17 @@
                     <input type="password" name="password2" id="password2" class="form-control form-control-lg" />
                 </div>
               </div>
+              @if ($errors->any())
+              <div class="row align-items-center py-3">
+                <div class="alert alert-danger">
+                  <ul>
+                      @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                      @endforeach
+                  </ul>
+                </div>
+              </div>
+              @endif
               <hr class="mx-n3">
               <div class="px-5 py-4" style="text-align:center;">
                 <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" id="signup">가입하기</button>
