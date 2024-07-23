@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 
 class BoardController extends Controller
 {
+    
     public function index($multi = "free"){
         $boards = Board::where('multi',$multi)
                         ->where('status',1)
