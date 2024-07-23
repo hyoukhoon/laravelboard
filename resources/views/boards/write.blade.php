@@ -1,7 +1,7 @@
 @extends('boards.layout')
 
 @section('header')
-    @include('boards.toptitle', ['toptitle'=>'게시판 쓰기'])
+    @include('boards.toptitle', ['toptitle'=>'게시판 쓰기', 'multi'=>$multi])
 @endsection
 
 @section('content')
