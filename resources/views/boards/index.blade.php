@@ -1,6 +1,6 @@
 @extends('boards.layout')
 @section('header')
-    @include('boards.toptitle', ['toptitle'=>'게시판 목록'])
+    @include('boards.toptitle', ['toptitle'=>'게시판 목록', 'multi'=>{{ $multi }}])
 @endsection
 @section('content')
     @if ($errors->any())

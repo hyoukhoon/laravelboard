@@ -1,5 +1,5 @@
     <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
-        <span class="fs-4">{{ $toptitle }}</span>
+        <span class="fs-4">{{ $multi.$toptitle }}</span>
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
         @guest()
             <a href="{{route('auth.login')}}" class="text-xl">로그인</a> / 
