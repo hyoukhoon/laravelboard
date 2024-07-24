@@ -10,7 +10,7 @@
         @csrf
         @method('post')
         <input type="hidden" name="pid" id="pid" value="{{ $boards->bid??time() }}">
-        <input type="hidden" name="multi" id="multi" value="boardattach">
+        <input type="hidden" name="code" id="code" value="boardattach">
         <input type="hidden" name="attcnt" id="attcnt" value="0">
         <input type="hidden" name="imgUrl" id="imgUrl" value="">
         <input type="hidden" name="attachFile" id="attachFile" value="">
@@ -64,11 +64,11 @@
     function attachFile(file) {
         var formData = new FormData();
         var pid = $("#pid").val();
-        var multi = $("#multi").val();
+        var code = $("#code").val();
         formData.append("file", file);
         formData.append("uptype", "attach");
         formData.append("pid", pid);
-        formData.append("multi", multi);
+        formData.append("code", code);
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: '{{ route('boards.saveimage') }}',
@@ -129,11 +129,11 @@
 
     function deletefile(fn,fid){
         var pid = $("#pid").val();
-        var multi = $("#multi").val();
+        var code = $("#code").val();
         var data = {
             fn : fn,
             pid : pid,
-            multi : multi
+            code : code
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -156,12 +156,13 @@
         var subject=$("#subject").val();
         var content=$("#content").val();
         var pid = $("#pid").val();
-        var multi = $("#multi").val();
+        var code = $("#code").val();
         var data = {
+            multi : '{{ $multi }}',
             subject : subject,
             content : content,
             pid : pid,
-            multi : multi
+            code : code
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

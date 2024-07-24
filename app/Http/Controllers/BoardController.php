@@ -55,7 +55,7 @@ class BoardController extends Controller
 
         if(auth()->check()){
             $rs=Board::create($form_data);
-            FileTables::where('pid', $request->pid)->where('multi', $request->multi)->where('userid', Auth::user()->userid)->update(array('pid' => $rs->bid));
+            FileTables::where('pid', $request->pid)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('pid' => $rs->bid));
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
@@ -74,7 +74,7 @@ class BoardController extends Controller
             $form_data = array(
                 'pid' => $request->pid,
                 'userid' => Auth::user()->userid,
-                'multi' => $request->multi,
+                'code' => $request->code,
                 'filename' => $new_name
             );
             $rs=FileTables::create($form_data);
@@ -88,7 +88,7 @@ class BoardController extends Controller
     {
         $image = $request->fn;
         if(unlink(public_path('images')."/".$image)){
-            FileTables::where('pid', $request->pid)->where('multi', $request->multi)->where('userid', Auth::user()->userid)->update(array('status' => 0));
+            FileTables::where('pid', $request->pid)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('status' => 0));
         }
 
         return response()->json(array('msg'=> "succ", 'fn'=>$image, 'fid'=>substr($image,0,10)), 200);
