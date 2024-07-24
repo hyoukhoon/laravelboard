@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Board;
+use App\Models\FileTables;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -73,6 +74,14 @@ class BoardController extends Controller
             $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
             $image->move(public_path('images'), $new_name);
             $fid = rand();
+            $form_data = array(
+                'pid' => $request->subject,
+                'userid' => Auth::user()->userid,
+                'multi' => $request->multi,
+                'filename' => $new_name,
+                'status' => 1
+            );
+            $rs=FileTables::create($form_data);
             return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid), 200);
         }else{
             return response()->json(array('msg'=> "로그인 하십시오", 'result'=>'fail'), 200);
