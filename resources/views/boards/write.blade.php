@@ -64,6 +64,7 @@
         formData.append("file", file);
         formData.append("uptype", "attach");
         $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: '{{ route('boards.saveimage') }}',
             data: formData,
             cache: false,
