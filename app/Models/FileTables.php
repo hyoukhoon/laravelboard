@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class FileTables extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'pid'
+    ];
 }
