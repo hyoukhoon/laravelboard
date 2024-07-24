@@ -78,8 +78,7 @@ class BoardController extends Controller
                 'pid' => $request->pid,
                 'userid' => Auth::user()->userid,
                 'multi' => $request->multi,
-                'filename' => $new_name,
-                'status' => 1
+                'filename' => $new_name
             );
             $rs=FileTables::create($form_data);
             return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid), 200);

@@ -10,6 +10,6 @@ class FileTables extends Model
     use HasFactory;
 
     protected $fillable = [
-        'pid'
+        'pid','multi','userid','filename'
     ];
 }
