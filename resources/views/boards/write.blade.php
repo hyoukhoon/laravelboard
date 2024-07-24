@@ -63,8 +63,12 @@
 
     function attachFile(file) {
         var formData = new FormData();
+        var pid = $("#pid").val();
+        var multi = $("#multi").val();
         formData.append("file", file);
         formData.append("uptype", "attach");
+        formData.append("pid", pid);
+        formData.append("multi", multi);
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: '{{ route('boards.saveimage') }}',
