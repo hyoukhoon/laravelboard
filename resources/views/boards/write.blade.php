@@ -9,7 +9,7 @@
     <form method="post" action="/boards/create" enctype="multipart/form-data">
         @csrf
         @method('post')
-        <input type="hidden" name="pid" id="pid" value="">
+        <input type="hidden" name="pid" id="pid" value="{{ $boards->bid??time() }}">
         <input type="hidden" name="multi" id="multi" value="boardattach">
         <input type="hidden" name="attcnt" id="attcnt" value="0">
         <input type="hidden" name="imgUrl" id="imgUrl" value="">

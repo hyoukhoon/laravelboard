@@ -75,7 +75,7 @@ class BoardController extends Controller
             $image->move(public_path('images'), $new_name);
             $fid = rand();
             $form_data = array(
-                'pid' => $request->subject,
+                'pid' => $request->pid,
                 'userid' => Auth::user()->userid,
                 'multi' => $request->multi,
                 'filename' => $new_name,
