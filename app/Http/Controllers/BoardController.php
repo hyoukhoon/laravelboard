@@ -61,4 +61,21 @@ class BoardController extends Controller
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
+
+    public function saveimage(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image|max:2048'
+        ]);
+
+        if(auth()->check()){
+            $image = $request->file('file');
+            $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
+            $image->move(public_path('images'), $new_name);
+            $fid = rand();
+            return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid), 200);
+        }else{
+            return response()->json(array('msg'=> "로그인 하십시오", 'result'=>'fail'), 200);
+        }
+    }
 }

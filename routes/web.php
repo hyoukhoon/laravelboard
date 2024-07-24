@@ -15,6 +15,7 @@ Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('
 Route::middleware('auth') -> group(function (){
     Route::get('/boards/write/{multi}', [BoardController::class, 'write'])->name('boards.write');
     Route::post('/boards/create', [BoardController::class, 'create'])->name('boards.create');
+    Route::post('/boards/saveimage', [BoardController::class, 'saveimage'])->name('boards.saveimage');
 });
 
 //회원

@@ -12,12 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('file_tables', function (Blueprint $table) {
-		$table->id();
-		$table->integer('pid');
-		$table->string('multi', 100);
-		$table->string('email', 100);
-		$table->string('filename', 100);
-		$table->tinyInteger('status')->default(1);
+            $table->id();
+            $table->integer('pid');
+            $table->string('multi', 100);
+            $table->string('email', 100);
+            $table->string('filename', 100);
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
