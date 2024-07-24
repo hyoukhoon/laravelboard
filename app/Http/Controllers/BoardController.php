@@ -37,15 +37,12 @@ class BoardController extends Controller
 
     public function create(Request $request)
     {
-        // $request->validate([
-        //     'afile' => 'required|image|max:2048'
-        // ]);
-        $image = $request->file('afile');
-        $new_name = null;
-        if($image){
-            $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
-            $image->move(public_path('images'), $new_name);
-        }
+        // $image = $request->file('afile');
+        // $new_name = null;
+        // if($image){
+        //     $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
+        //     $image->move(public_path('images'), $new_name);
+        // }
 
         $form_data = array(
             'subject' => $request->subject,
@@ -53,12 +50,12 @@ class BoardController extends Controller
             'userid' => Auth::user()->userid,
             'email' => Auth::user()->email,
             'multi' => $request->multi??'free',
-            'status' => 1,
-            'attachfiles' => $new_name
+            'status' => 1
         );
 
         if(auth()->check()){
             $rs=Board::create($form_data);
+            FileTables::where('pid', $request->pid)->where('multi', $request->multi)->where('userid', Auth::user()->userid)->update(array('pid' => $rs->bid));
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }

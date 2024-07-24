@@ -155,20 +155,14 @@
     function sendsubmit(){
         var subject=$("#subject").val();
         var content=$("#content").val();
-        var formData = new FormData();
-        var files = $('#afile').prop('files');
-        // for(var i=0; i < files.length; i++) {
-        //     console.log(files[i]);
-        // }
-        // return false;
-        formData.append("afile", files[0]);
-        formData.append("subject", subject);
-        formData.append("content", content);
-        formData.append("multi", '{{ $multi }}');
-        // var data = {
-        //     subject : subject,
-        //     content : content
-        // };
+        var pid = $("#pid").val();
+        var multi = $("#multi").val();
+        var data = {
+            subject : subject,
+            content : content,
+            pid : pid,
+            multi : multi
+        };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'post',
