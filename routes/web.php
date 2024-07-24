@@ -16,6 +16,7 @@ Route::middleware('auth') -> group(function (){
     Route::get('/boards/write/{multi}', [BoardController::class, 'write'])->name('boards.write');
     Route::post('/boards/create', [BoardController::class, 'create'])->name('boards.create');
     Route::post('/boards/saveimage', [BoardController::class, 'saveimage'])->name('boards.saveimage');
+    Route::post('/boards/deletefile', [KboardController::class, 'deletefile'])->name('boards.deletefile');
 });
 
 //회원

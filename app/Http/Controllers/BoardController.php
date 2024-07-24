@@ -86,4 +86,14 @@ class BoardController extends Controller
             return response()->json(array('msg'=> "로그인 하십시오", 'result'=>'fail'), 200);
         }
     }
+
+    public function deletefile(Request $request)
+    {
+        $image = $request->fn;
+        if(unlink(public_path('images')."/".$image)){
+            FileTables::where('pid', $request->pid)->where('multi', $request->multi)->where('userid', Auth::user()->userid)->update(array('status' => 0));
+        }
+
+        return response()->json(array('msg'=> "succ", 'fn'=>$image, 'fid'=>substr($image,0,10)), 200);
+    }
 }

@@ -127,6 +127,30 @@
 
     }
 
+    function deletefile(fn,fid){
+        var pid = $("#pid").val();
+        var multi = $("#multi").val();
+        var data = {
+            fn : fn,
+            pid : pid,
+            multi : multi
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('boards.deletefile') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                alert("삭제했습니다.");
+                $("#af_"+fid).hide();
+            },
+            error: function(data) {
+                console.log("error" +JSON.stringify(data));
+            }
+        });
+    }
+
 
     function sendsubmit(){
         var subject=$("#subject").val();
