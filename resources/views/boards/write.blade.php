@@ -170,8 +170,6 @@
             url: '{{ route('boards.create') }}',
             dataType: 'json',
             enctype: 'multipart/form-data',
-            contentType: false,
-            processData: false,
             data: data,
             success: function(data) {
                 location.href='/boards/show/'+data.bid+'/1';
