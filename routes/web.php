@@ -17,6 +17,7 @@ Route::middleware('auth') -> group(function (){
     Route::post('/boards/create', [BoardController::class, 'create'])->name('boards.create');
     Route::post('/boards/saveimage', [BoardController::class, 'saveimage'])->name('boards.saveimage');
     Route::post('/boards/deletefile', [BoardController::class, 'deletefile'])->name('boards.deletefile');
+    Route::post('/boards/imgpop', [BoardController::class, 'imgpop'])->name('boards.imgpop');
 });
 
 //회원

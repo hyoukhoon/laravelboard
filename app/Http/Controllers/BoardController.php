@@ -27,6 +27,11 @@ class BoardController extends Controller
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches]);
     }
 
+    public function show($imgfile)
+    {
+        return view('boards.imgpop', ['imgfile' => $imgfile]);
+    }
+
     public function write($multi)
     {
         if(auth()->check()){
