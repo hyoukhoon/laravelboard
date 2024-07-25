@@ -19,7 +19,7 @@
                 <th width="200">내용</th>
                 <td>{!! nl2br($boards->content) !!}</td>
             </tr>
-            @if($attaches)
+            @if(count($attaches)>0)
             <tr>
                 <th width="200">첨부 이미지</th>
                 <td>
