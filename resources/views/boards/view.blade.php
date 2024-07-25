@@ -23,9 +23,11 @@
             <tr>
                 <th width="200">첨부 이미지</th>
                 <td>
+                    <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
                     @foreach ($attaches as $att)
                     <div id='af_{{ $att->id }}' class='card h-100' style='width:120px;margin-right: 10px;margin-bottom: 10px;'><img src='/images/{{ $att->filename }}' width='100' /></div>
                     @endforeach
+                    </div>
                 </td>
             </tr>
             @endif
