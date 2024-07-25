@@ -22,8 +22,9 @@ class BoardController extends Controller
         $boards = Board::findOrFail($bid);
         $boards->content = htmlspecialchars_decode($boards->content);
         $boards->pagenumber = $page??1;
+        $attaches = FileTables::where('pid',$bid);
 
-        return view('boards.view', ['boards' => $boards]);
+        return view('boards.view', ['boards' => $boards, 'attaches' => $attaches]);
     }
 
     public function write($multi)

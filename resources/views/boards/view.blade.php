@@ -20,11 +20,13 @@
                 <th width="100">내용</th>
                 <td>{!! nl2br($boards->content) !!}</td>
             </tr>
-            @if($boards->attachfiles)
+            @if($attaches)
             <tr>
                 <th width="100">첨부 이미지</th>
                 <td>
-                    <img src="/images/{{ $boards->attachfiles }}" style="max-width:100%;"><br>
+                    @foreach ($attaches as $att)
+                    <div id='af_{{ $att->id }}' class='card h-100' style='width:120px;margin-right: 10px;margin-bottom: 10px;'><img src='/images/{{ $att->filename }}' width='100' /></div>
+                    @endforeach
                 </td>
             </tr>
             @endif
