@@ -27,7 +27,7 @@ class BoardController extends Controller
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches]);
     }
 
-    public function show($imgfile)
+    public function imgpop($imgfile)
     {
         return view('boards.imgpop', ['imgfile' => $imgfile]);
     }
