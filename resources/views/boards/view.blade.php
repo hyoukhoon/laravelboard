@@ -6,7 +6,9 @@
 
 @section('content')
     
-
+    <?php
+        print_r($attaches);
+    ?>
     <table class="table table-striped table-hover">
         <tbody>
             <tr>

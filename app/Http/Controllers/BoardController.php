@@ -23,7 +23,6 @@ class BoardController extends Controller
         $boards->content = htmlspecialchars_decode($boards->content);
         $boards->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$bid);
-        print_r($attaches);
 
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches]);
     }
