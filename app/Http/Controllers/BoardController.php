@@ -126,4 +126,20 @@ class BoardController extends Controller
 
         return response()->json(array('msg'=> "succ", 'fn'=>$image, 'fid'=>substr($image,0,10)), 200);
     }
+
+    public function delete($bid,$page)
+    {
+        $boards = Board::findOrFail($bid);
+        if(Auth::user()->userid==$boards->userid){
+            $attaches = FileTables::where('pid',$bid)->where('status',1)->get();
+            foreach($attaches as $att){
+                unlink(public_path('images')."/".$att->filename)
+                FileTables::where('id', $att->id)->update(array('status' => 0));
+            }
+            $boards->delete();
+            return redirect('/boards/'.$boards->multi.'?page='.$page);
+        }else{
+            return redirect('/boards/show/'.$bid.'/'.$page);
+        }
+    }
 }

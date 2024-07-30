@@ -19,6 +19,7 @@ Route::middleware('auth') -> group(function (){
     Route::post('/boards/deletefile', [BoardController::class, 'deletefile'])->name('boards.deletefile');
     Route::get('/boards/imgpop/{imgfile}', [BoardController::class, 'imgpop'])->name('boards.imgpop');
     Route::post('/boards/update', [BoardController::class, 'update'])->name('boards.update');
+    Route::get('/boards/delete/{bid}/{page}', [BoardController::class, 'delete'])->name('boards.delete');
 });
 
 //회원
