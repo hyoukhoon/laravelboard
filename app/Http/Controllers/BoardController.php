@@ -40,7 +40,7 @@ class BoardController extends Controller
                 $boards = Board::findOrFail($bid);
                 return view('boards.write', ['multi' => $multi, 'boards' => $boards]);
             }else{
-                return view('boards.write', ['multi' => $multi]);
+                return view('boards.write', ['multi' => $multi, 'boards' => $boards]);
             }
         }else{
             return redirect()->back()->withErrors('로그인 하십시오.');
