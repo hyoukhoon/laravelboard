@@ -27,10 +27,17 @@
         </div>
         <br />
         <div class="form-group">
-            <div id="attach_site" class="col-md-12">
-                <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
+            @if($attaches)
+                <div id="attach_site" class="col-md-12">
+                    @foreach ($attaches as $att)
+                        @if($att)
+                            <div id="af_{{ $att->id }}" class='card h-100' style='width:120px;margin-right: 10px;margin-bottom: 10px;'><img src="/images/{{ $att->filename }}" width='100' /><div class='card-body'><button type='button' class='btn btn-warning' onclick="deletefile('{{ $att->filename }}','{{ $att->id }}')">삭제</button></div></div>
+                        @endif
+                    @endforeach
+                    <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
+                    </div>
                 </div>
-           </div>
+            @endif
            <div class="col-md-12">
                 <input type="file" name="afile" id="afile" multiple accept="image/*" multiple class="form-control" aria-label="Large file input example">
            </div>
