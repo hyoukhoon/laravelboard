@@ -32,10 +32,15 @@ class BoardController extends Controller
         return view('boards.imgpop', ['imgfile' => $imgfile]);
     }
 
-    public function write($multi)
+    public function write($multi,$bid=null)
     {
         if(auth()->check()){
-            return view('boards.write', ['multi' => $multi]);
+            if($bid){
+                $boards = Board::findOrFail($bid);
+                return view('boards.write', ['multi' => $multi, 'boards' => $boards]);
+            }else{
+                return view('boards.write', ['multi' => $multi]);
+            }
         }else{
             return redirect()->back()->withErrors('로그인 하십시오.');
         }

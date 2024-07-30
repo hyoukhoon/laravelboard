@@ -13,7 +13,7 @@ Route::get('/boards/{multi?}', [BoardController::class, 'index'])->name('boards.
 Route::get('/boards/show/{id}/{page}', [BoardController::class, 'show'])->name('boards.show');
 
 Route::middleware('auth') -> group(function (){
-    Route::get('/boards/write/{multi}', [BoardController::class, 'write'])->name('boards.write');
+    Route::get('/boards/write/{multi}/{bid?}', [BoardController::class, 'write'])->name('boards.write');
     Route::post('/boards/create', [BoardController::class, 'create'])->name('boards.create');
     Route::post('/boards/saveimage', [BoardController::class, 'saveimage'])->name('boards.saveimage');
     Route::post('/boards/deletefile', [BoardController::class, 'deletefile'])->name('boards.deletefile');
