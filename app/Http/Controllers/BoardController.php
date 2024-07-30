@@ -74,6 +74,19 @@ class BoardController extends Controller
         }
     }
 
+    public function update(Request $request)
+    {
+        $form_data = array(
+            'subject' => $request->subject,
+            'content' => $request->content
+        );
+
+        if(auth()->check()){
+            $rs=Board::where('bid', $request->bid)->update($form_data)
+            return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
+        }
+    }
+
     public function saveimage(Request $request)
     {
         $request->validate([

@@ -50,9 +50,15 @@
         <br />
         <br />
         <div class="form-group">
-            <div class="col-md-12 text-center">
-                <button type="button" name="edit" class="btn btn-primary input-lg" onclick="sendsubmit()">등록</button>
-            </div>
+            @if($boards->bid)
+                <div class="col-md-12 text-center">
+                    <button type="button" name="edit" class="btn btn-primary input-lg" onclick="updatesubmit()">수정</button>
+                </div>
+            @else
+                <div class="col-md-12 text-center">
+                    <button type="button" name="edit" class="btn btn-primary input-lg" onclick="sendsubmit()">등록</button>
+                </div>
+            @endif
         </div>
     </form>
 <script>
@@ -180,6 +186,31 @@
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'post',
             url: '{{ route('boards.create') }}',
+            dataType: 'json',
+            enctype: 'multipart/form-data',
+            data: data,
+            success: function(data) {
+                location.href='/boards/show/'+data.bid+'/1';
+            },
+            error: function(data) {
+                console.log("error" +data);
+            }
+        });
+    }
+
+    function updatesubmit(){
+        var subject=$("#subject").val();
+        var content=$("#content").val();
+        var bid=$("#bid").val();
+        var data = {
+            subject : subject,
+            content : content,
+            bid : bid
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('boards.update') }}',
             dataType: 'json',
             enctype: 'multipart/form-data',
             data: data,
