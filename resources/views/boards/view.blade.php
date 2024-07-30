@@ -37,7 +37,7 @@
         @auth()
             @if($boards->userid==auth()->user()->userid)
                 <a href="/boards/write/{{ $boards->multi }}/{{ $boards->bid }}"><button type="button" class="btn btn-secondary">수정</button></a>
-                <a href="/boards/delete/{{ $boards->bid }}" class="btn btn-secondary" onclick="return confirm('삭제하시겠습니까?');">삭제</a>
+                <a href="/boards/delete/{{ $boards->bid }}/{{ $_GET['page'] }}" class="btn btn-secondary" onclick="return confirm('삭제하시겠습니까?');">삭제</a>
             @endif
         @endauth
         <a href="/boards/{{ $boards->multi }}/?page={{ $boards->pagenumber }}" class="btn btn-primary">목록</a>
