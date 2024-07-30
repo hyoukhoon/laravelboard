@@ -1,7 +1,14 @@
 @extends('boards.layout')
 
 @section('header')
-    @include('boards.toptitle', ['toptitle'=>'게시판 쓰기', 'multi'=>$multi])
+    <?php
+        if($bid){
+            $btitle = "수정";
+        }else{
+            $btitle = "쓰기";
+        }
+    ?>
+    @include('boards.toptitle', ['toptitle'=>'게시판 '.$btitle, 'multi'=>$multi])
 @endsection
 
 @section('content')
