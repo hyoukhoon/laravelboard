@@ -36,12 +36,13 @@ class BoardController extends Controller
     {
         if(auth()->check()){
             $boards = array();
+            $attaches = array();
             if($bid){
                 $boards = Board::findOrFail($bid);
                 $attaches = FileTables::where('pid',$bid)->where('status',1)->get();
                 return view('boards.write', ['multi' => $multi, 'boards' => $boards, 'attaches' => $attaches]);
             }else{
-                return view('boards.write', ['multi' => $multi, 'boards' => $boards]);
+                return view('boards.write', ['multi' => $multi, 'boards' => $boards, 'attaches' => $attaches]);
             }
         }else{
             return redirect()->back()->withErrors('로그인 하십시오.');
