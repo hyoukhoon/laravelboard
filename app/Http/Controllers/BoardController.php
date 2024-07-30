@@ -133,7 +133,7 @@ class BoardController extends Controller
         if(Auth::user()->userid==$boards->userid){
             $attaches = FileTables::where('pid',$bid)->where('status',1)->get();
             foreach($attaches as $att){
-                unlink(public_path('images')."/".$att->filename)
+                unlink(public_path('images')."/".$att->filename);
                 FileTables::where('id', $att->id)->update(array('status' => 0));
             }
             $boards->delete();
