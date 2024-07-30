@@ -22,7 +22,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-12">
-                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요."> value="{{ $boards->content }}"</textarea>
+                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요.">{{ $boards->content }}</textarea>
             </div>
         </div>
         <br />

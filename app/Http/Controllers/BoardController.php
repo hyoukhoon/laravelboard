@@ -35,6 +35,7 @@ class BoardController extends Controller
     public function write($multi,$bid=null)
     {
         if(auth()->check()){
+            $boards = array();
             if($bid){
                 $boards = Board::findOrFail($bid);
                 return view('boards.write', ['multi' => $multi, 'boards' => $boards]);
