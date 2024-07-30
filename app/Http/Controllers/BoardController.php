@@ -82,8 +82,8 @@ class BoardController extends Controller
         );
 
         if(auth()->check()){
-            $rs=Board::where('bid', $request->bid)->update($form_data);
-            return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
+            Board::where('bid', $request->bid)->update($form_data);
+            return response()->json(array('msg'=> "succ", 'bid'=>$request->bid), 200);
         }
     }
 
