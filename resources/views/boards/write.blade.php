@@ -37,10 +37,15 @@
                     <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
                     </div>
                 </div>
+            @else
+                <div id="attach_site" class="col-md-12">
+                    <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
+                    </div>
+                </div>
             @endif
-           <div class="col-md-12">
-                <input type="file" name="afile" id="afile" multiple accept="image/*" multiple class="form-control" aria-label="Large file input example">
-           </div>
+            <div class="col-md-12">
+                    <input type="file" name="afile" id="afile" multiple accept="image/*" multiple class="form-control" aria-label="Large file input example">
+            </div>
         </div>
         <br />
         <br />
