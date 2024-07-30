@@ -102,7 +102,7 @@ class BoardController extends Controller
     {
         $image = $request->fn;
         if(unlink(public_path('images')."/".$image)){
-            FileTables::where('pid', $request->pid)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('status' => 0));
+            FileTables::where('filename', $image)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('status' => 0));
         }
 
         return response()->json(array('msg'=> "succ", 'fn'=>$image, 'fid'=>substr($image,0,10)), 200);
