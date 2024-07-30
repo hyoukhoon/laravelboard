@@ -9,8 +9,8 @@
     <form method="post" action="/boards/create" enctype="multipart/form-data">
         @csrf
         @method('post')
-        <input type="hidden" name="pid" id="pid" value="{{ $boards->bid??time() }}">
-        <input type="hidden" name="bid" id="bid" value="{{ $boards->bid??0 }}">
+        <input type="hidden" name="pid" id="pid" value="{{ $bid??time() }}">
+        <input type="hidden" name="bid" id="bid" value="{{ $bid??0 }}">
         <input type="hidden" name="code" id="code" value="boardattach">
         <input type="hidden" name="attcnt" id="attcnt" value="0">
         <input type="hidden" name="imgUrl" id="imgUrl" value="">
@@ -50,7 +50,7 @@
         <br />
         <br />
         <div class="form-group">
-            @if($boards->bid)
+            @if($bid)
                 <div class="col-md-12 text-center">
                     <button type="button" name="edit" class="btn btn-primary input-lg" onclick="updatesubmit()">수정</button>
                 </div>
@@ -201,7 +201,7 @@
     function updatesubmit(){
         var subject=$("#subject").val();
         var content=$("#content").val();
-        var bid=$("#bid").val();
+        var bid='{{ $bid }}';
         var data = {
             subject : subject,
             content : content,

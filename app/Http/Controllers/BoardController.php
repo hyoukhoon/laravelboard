@@ -40,7 +40,7 @@ class BoardController extends Controller
             if($bid){
                 $boards = Board::findOrFail($bid);
                 $attaches = FileTables::where('pid',$bid)->where('status',1)->get();
-                return view('boards.write', ['multi' => $multi, 'boards' => $boards, 'attaches' => $attaches]);
+                return view('boards.write', ['multi' => $multi, 'bid' => $bid, 'boards' => $boards, 'attaches' => $attaches]);
             }else{
                 return view('boards.write', ['multi' => $multi, 'boards' => $boards, 'attaches' => $attaches]);
             }
