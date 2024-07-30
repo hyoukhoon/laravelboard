@@ -10,19 +10,19 @@
         @csrf
         @method('post')
         <input type="hidden" name="pid" id="pid" value="{{ $boards->bid??time() }}">
-        <input type="hidden" name="bid" id="bid" value="{{ $boards->bid }}">
+        <input type="hidden" name="bid" id="bid" value="{{ $boards->bid??0 }}">
         <input type="hidden" name="code" id="code" value="boardattach">
         <input type="hidden" name="attcnt" id="attcnt" value="0">
         <input type="hidden" name="imgUrl" id="imgUrl" value="">
         <div class="form-group">
             <div class="col-md-12">
-                <input type="text" name="subject" id="subject" class="form-control input-lg" placeholder="제목을 입력하세요." value="{{ $boards->subject }}" />
+                <input type="text" name="subject" id="subject" class="form-control input-lg" placeholder="제목을 입력하세요." value="{{ $boards->subject??'' }}" />
             </div>
         <br />
         </div>
         <div class="form-group">
             <div class="col-md-12">
-                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요.">{{ $boards->content }}</textarea>
+                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요.">{{ $boards->content??'' }}</textarea>
             </div>
         </div>
         <br />
