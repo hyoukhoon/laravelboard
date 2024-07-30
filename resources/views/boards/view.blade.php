@@ -35,7 +35,7 @@
     </table>
     <div align="right">
         @auth()
-            @if($boards->email==auth()->user()->email)
+            @if($boards->userid==auth()->user()->userid)
                 <a href="/boards/edit/{{ $boards->multi }}/{{ $boards->num }}"><button type="button" class="btn btn-secondary">수정</button></a>
                 <a href="/boards/delete/{{ $boards->num }}" class="btn btn-secondary" onclick="return confirm('삭제하시겠습니까?');">삭제</a>
             @endif
