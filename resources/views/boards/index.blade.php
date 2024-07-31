@@ -44,7 +44,7 @@
                     <td>{{ $board->userid }}</td>
                     <td><a href="/boards/show/{{$board->bid}}/{{$pagenumber}}">{{ $board->subject }}</a></td>
                     <td>{{ number_format($board->cnt) }}</td>
-                    <td>{{ date("Y-m-d",strtotime($board->regdate)) }}</td>
+                    <td>{{ disptime($board->regdate) }}</td>
                 </tr>
             @endforeach
             @if(!$total)
