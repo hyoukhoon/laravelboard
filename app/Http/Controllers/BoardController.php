@@ -32,9 +32,14 @@ class BoardController extends Controller
         return view('boards.imgpop', ['imgfile' => $imgfile]);
     }
 
-    public function summernote($multi)
+    public function summernote($multi, $bid = null)
     {
-        return view('boards.summernote', ['multi' => $multi]);
+        if($bid){
+            $boards = Board::findOrFail($bid);
+        }else{
+            $boards = array();
+        }
+        return view('boards.summernote', ['multi' => $multi, 'boards' => $boards]);
     }
 
     public function write($multi,$bid=null)
