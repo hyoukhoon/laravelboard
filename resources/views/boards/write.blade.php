@@ -179,7 +179,8 @@
 
     function sendsubmit(){
         var subject=$("#subject").val();
-        var content=$("#content").val();
+        //var content=$("#content").val();
+        var content=$('#summerframe').get(0).contentWindow.$('#summernote').summernote('code');//iframe에 있는 값을 가져온다
         var pid = $("#pid").val();
         var code = $("#code").val();
         var data = {
