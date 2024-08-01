@@ -20,7 +20,7 @@ Route::middleware('auth') -> group(function (){
     Route::get('/boards/imgpop/{imgfile}', [BoardController::class, 'imgpop'])->name('boards.imgpop');
     Route::post('/boards/update', [BoardController::class, 'update'])->name('boards.update');
     Route::get('/boards/delete/{bid}/{page}', [BoardController::class, 'delete'])->name('boards.delete');
-    Route::get('/boards/summernote/{multi?}', [BoardController::class, 'summernote'])->name('boards.summernote');
+    Route::get('/boards/summernote/summernote', [BoardController::class, 'summernote'])->name('boards.summernote');
 });
 
 //회원
