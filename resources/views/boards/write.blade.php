@@ -3,8 +3,10 @@
 @section('header')
     <?php
         if($bid){
+            $pid=$bid;
             $btitle = "수정";
         }else{
+            $pid=time();
             $btitle = "쓰기";
         }
     ?>
@@ -16,7 +18,7 @@
     <form method="post" action="/boards/create" enctype="multipart/form-data">
         @csrf
         @method('post')
-        <input type="hidden" name="pid" id="pid" value="{{ $bid??time() }}">
+        <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
         <input type="hidden" name="bid" id="bid" value="{{ $bid??0 }}">
         <input type="hidden" name="code" id="code" value="boardattach">
         <input type="hidden" name="attcnt" id="attcnt" value="0">
