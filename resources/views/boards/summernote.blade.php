@@ -12,7 +12,40 @@
             codeviewFilter: false,
             codeviewIframeFilter: true,
             lang: 'ko-KR',
-            height: 400
+            height: 400,
+            callbacks: {
+                onImageUpload: function (files) {//이미지등록
+                    for(var i=0; i < files.length; i++) {
+                        saveFile($summernote, files[i]);
+                    } 
+                    
+                }
+            }
         });
     });
+
+    function saveFile($summernote, file){
+        var formData = new FormData();
+        formData.append("file", file);
+        formData.append("code", "editorattach");
+        $.ajax({
+            url: '/boards/saveimage',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST',
+            success: function (data) {
+                if(data.result==-1){
+                    alert('용량이 너무크거나 이미지 파일이 아닙니다.');
+                    return;
+                }else{
+                    $('#summernote').summernote('insertImage', '/images/'+data.fn, function ($image) {
+                        $image.css('max-width', '100%');
+                        $image.css('padding', '10px');
+                    });
+                }
+            }
+        });
+    }
   </script>
