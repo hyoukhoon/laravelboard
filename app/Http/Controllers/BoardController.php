@@ -34,7 +34,8 @@ class BoardController extends Controller
 
     public function summernote()
     {
-        return view('boards.summernote');
+        $boards = array();
+        return view('boards.summernote',compact('boards'));
     }
 
     public function write($multi,$bid=null)
