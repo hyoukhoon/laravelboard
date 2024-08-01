@@ -25,7 +25,9 @@
     });
 
     function saveFile($summernote, file){
-        var pid = parent.$("#pid").val();
+        var pid = parent.document.getElementById("pid").value;
+        alert(pid);
+        return false;
         var formData = new FormData();
         formData.append("file", file);
         formData.append("code", "editorattach");
