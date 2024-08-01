@@ -8,11 +8,11 @@
 
 <script>
     $(document).ready(function() {
-        var $summernote = $('#summernote').summernote({
-        codeviewFilter: false,
-        codeviewIframeFilter: true,
-        lang: 'ko-KR',
-        height: 600
-    });
+            var $summernote = $('#summernote').summernote({
+            codeviewFilter: false,
+            codeviewIframeFilter: true,
+            lang: 'ko-KR',
+            height: 600
+        });
     });
   </script>
