@@ -12,7 +12,7 @@ class BoardController extends Controller
     public function index($multi = "free"){
         $boards = Board::where('multi',$multi)
                         ->where('status',1)
-                        ->wherein('cnt', [0,1])->orderBy('bid','desc')->paginate(20);
+                        ->orderBy('bid','desc')->paginate(20);
         return view('boards.index', ['boards' => $boards, 'multi' => $multi]);
     }
 
@@ -68,7 +68,7 @@ class BoardController extends Controller
 
         if(auth()->check()){
             $rs=Board::create($form_data);
-            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->userid)->update(array('pid' => $rs->bid));
+            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->userid)->wherein('code',['boardattach','editorattach'])->update(array('pid' => $rs->bid));
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
