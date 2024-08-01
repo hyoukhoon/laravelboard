@@ -88,7 +88,7 @@ class BoardController extends Controller
         if(auth()->check()){
             $boards = Board::findOrFail($request->bid);
             if(Auth::user()->userid==$boards->userid){
-                $attaches = FileTables::where('pid',$bid)->where('status',1)->where('code','editorattach')->get();
+                $attaches = FileTables::where('pid',$request->bid)->where('status',1)->where('code','editorattach')->get();
                 foreach($attaches as $att){
                     if(!strpos($request->content, $att->filename)){
                         unlink(public_path('images')."/".$att->filename);
