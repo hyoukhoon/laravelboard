@@ -32,6 +32,11 @@ class BoardController extends Controller
         return view('boards.imgpop', ['imgfile' => $imgfile]);
     }
 
+    public function summernote()
+    {
+        return view('boards.summernote');
+    }
+
     public function write($multi,$bid=null)
     {
         if(auth()->check()){

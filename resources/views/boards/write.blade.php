@@ -29,7 +29,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-12">
-                <textarea class="form-control" id="content" name="content" rows="5" placeholder="내용을 입력하세요.">{{ $boards->content??'' }}</textarea>
+                <iframe id="summerframe" src="{{ route('boards.summernote') }}" style="width:100%; height:650px; border:none" scrolling = "no"></iframe>
             </div>
         </div>
         <br />
