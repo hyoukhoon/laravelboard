@@ -12,7 +12,7 @@
             codeviewFilter: false,
             codeviewIframeFilter: true,
             lang: 'ko-KR',
-            height: 600
+            height: 400
         });
     });
   </script>
