@@ -31,6 +31,7 @@
         formData.append("code", "editorattach");
         formData.append("pid", pid);
         $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: '/boards/saveimage',
             data: formData,
             cache: false,
