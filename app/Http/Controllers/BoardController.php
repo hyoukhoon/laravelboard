@@ -57,13 +57,6 @@ class BoardController extends Controller
 
     public function create(Request $request)
     {
-        // $image = $request->file('afile');
-        // $new_name = null;
-        // if($image){
-        //     $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
-        //     $image->move(public_path('images'), $new_name);
-        // }
-
         $form_data = array(
             'subject' => $request->subject,
             'content' => $request->content,

@@ -4,7 +4,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-<input type="hidden" name="pid" id="pid" value="{{ time() }}">
 <div id="summernote"></div>
 
 <script>
@@ -26,7 +25,7 @@
     });
 
     function saveFile($summernote, file){
-        var pid = $("#pid").val();
+        var pid = parent.$("#pid").val();
         var formData = new FormData();
         formData.append("file", file);
         formData.append("code", "editorattach");
