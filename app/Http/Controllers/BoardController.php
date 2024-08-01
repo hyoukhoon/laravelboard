@@ -68,7 +68,7 @@ class BoardController extends Controller
 
         if(auth()->check()){
             $rs=Board::create($form_data);
-            FileTables::where('pid', $request->pid)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('pid' => $rs->bid));
+            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->userid)->update(array('pid' => $rs->bid));
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
