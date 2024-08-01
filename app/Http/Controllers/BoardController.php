@@ -32,9 +32,9 @@ class BoardController extends Controller
         return view('boards.imgpop', ['imgfile' => $imgfile]);
     }
 
-    public function summernote()
+    public function summernote($multi)
     {
-        return view('boards.summernote');
+        return view('boards.summernote', , ['multi' => $multi]);
     }
 
     public function write($multi,$bid=null)
