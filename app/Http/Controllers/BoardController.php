@@ -13,7 +13,7 @@ class BoardController extends Controller
         $boards = Board::where('multi',$multi)
                         ->where('status',1)
                         ->where([
-                            ['cnt',1],
+                            ['userid','rotel'],
                             ['cnt',0]
                         ])->orderBy('bid','desc')->paginate(20);
         return view('boards.index', ['boards' => $boards, 'multi' => $multi]);
