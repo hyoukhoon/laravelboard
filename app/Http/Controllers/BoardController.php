@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Board;
 use App\Models\FileTables;
+use App\Models\Memos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -150,6 +151,27 @@ class BoardController extends Controller
             return redirect('/boards/'.$boards->multi.'?page='.$page);
         }else{
             return redirect('/boards/show/'.$bid.'/'.$page);
+        }
+    }
+
+    public function memoup(Request $request)
+    {
+        $insert_data = new Memos();
+        $insert_data->memo = $request->memo;
+        $insert_data->bid = $request->bid;
+        $insert_data->pid = $request->pid??null;
+        $insert_data->userid = Auth::user()->userid;
+
+        if(auth()->check()){
+            $rs = $insert_data->save();
+            if($rs){
+                Board::find($request->bid)->increment('memo_cnt');//부모글의 댓글 갯수 업데이트
+                Board::where('bid', $request->bid)->update([//부모글의 댓글 날짜 업데이트
+                    'memo_date' => date('Y-m-d H:i:s')
+                ]);
+            }
+
+            return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
         }
     }
 }

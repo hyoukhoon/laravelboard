@@ -21,6 +21,7 @@ Route::middleware('auth') -> group(function (){
     Route::post('/boards/update', [BoardController::class, 'update'])->name('boards.update');
     Route::get('/boards/delete/{bid}/{page}', [BoardController::class, 'delete'])->name('boards.delete');
     Route::get('/boards/summernote/{multi}/{bid?}', [BoardController::class, 'summernote'])->name('boards.summernote');
+    Route::post('/boards/memoup', [BoardController::class, 'memoup'])->name('boards.memoup');
 });
 
 //회원

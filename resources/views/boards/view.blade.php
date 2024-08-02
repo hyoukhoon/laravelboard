@@ -59,4 +59,26 @@
     <!-- 댓글 입력 끝-->
     <div style="padding:20px;">
     </div>
+    <script>
+        function memoup(){
+            var memo=$("#memo").val();
+            var data = {
+                memo : memo,
+                bid : {{ $boards->bid }}
+            };
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'post',
+                url: '{{ route('boards.memoup') }}',
+                dataType: 'json',
+                data: data,
+                success: function(data) {
+                    location.reload();
+                },
+                error: function(data) {
+                console.log("error" +JSON.stringify(data));
+                }
+            });
+        }
+    </script>
     @endsection    
