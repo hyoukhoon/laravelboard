@@ -42,4 +42,20 @@
         @endauth
         <a href="/boards/{{ $boards->multi }}/?page={{ $boards->pagenumber }}" class="btn btn-primary">목록</a>
     </div>
+    <div style="padding:20px;">
+    </div>
+    <!-- 댓글 입력 -->
+    <div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;">
+		<span class="input-group-text" id="memo_image_view" style="display:none;"></span>
+		<button type="button" id="attmemoimg" class="btn btn-secondary">이미지첨부</button>
+		<input type="file" name="upfile" id="upfile" accept="image/*" style="display:none;">
+		<textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memo" id="memo" placeholder="댓글을 입력해주세요"></textarea>
+        @auth()
+		    <button type="button" class="btn btn-secondary" style="float:right;" id="memo_submit" onclick="memoup()">입력</button>
+        @else
+            <button type="button" class="btn btn-secondary" style="float:right;" id="memo_submit" onclick="alert('로그인 하셔야 입력할 수 있습니다.');">입력</button>
+        @endauth
+    </div>
+    <!-- 댓글 입력 끝-->
+    
     @endsection    
