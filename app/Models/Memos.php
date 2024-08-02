@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Memos extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'bid','pid','userid','memo'
+    ];
 }

@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
 	    Schema::create('memos', function (Blueprint $table) {
-		        $table->id();
+		    $table->id();
 			$table->integer('bid');
 			$table->integer('pid');
 			$table->string('userid', 100); // 필드명은 title, 글자수는 100글자로 정의

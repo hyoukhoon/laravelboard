@@ -89,7 +89,7 @@ class BoardController extends Controller
             $boards = Board::findOrFail($request->bid);
             if(Auth::user()->userid==$boards->userid){
                 $attaches = FileTables::where('pid',$request->bid)->where('status',1)->where('code','editorattach')->get();
-                foreach($attaches as $att){
+                foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
                     if(!strpos($request->content, $att->filename)){
                         unlink(public_path('images')."/".$att->filename);
                         FileTables::where('id', $att->id)->update(array('status' => 0));
