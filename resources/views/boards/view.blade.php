@@ -42,7 +42,7 @@
         @endauth
         <a href="/boards/{{ $boards->multi }}/?page={{ $boards->pagenumber }}" class="btn btn-primary">목록</a>
     </div>
-    <div style="padding:20px;">
+    <div style="padding:10px;">
     </div>
     <!-- 댓글 입력 -->
     <div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;">
@@ -57,5 +57,6 @@
         @endauth
     </div>
     <!-- 댓글 입력 끝-->
-    
+    <div style="padding:20px;">
+    </div>
     @endsection    
