@@ -174,7 +174,7 @@ class BoardController extends Controller
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
-                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','memoattach')->update(array('pid' => $rs->bid));
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','memoattach')->update(array('pid' => $rs->id));
                 }
             }
 
