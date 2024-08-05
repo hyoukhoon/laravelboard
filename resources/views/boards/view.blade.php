@@ -47,7 +47,7 @@
 
     <!--댓글 리스트 시작 -->
     <div id="reply">
-        @foreach ($memos as $key => $m)
+        @foreach ($memos as $m)
         <div class="card mt-2" id="{{ 'memolist_'.$m->id }}">
             <div class="card-header p-2">
                 <table>
@@ -59,7 +59,7 @@
                                     <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
                                 </svg>
                             </td>
-                            <td class="ml">{{ $m->name }}</td>
+                            <td class="ml">{{ $m->userid }}</td>
                         </tr>
                         <tr>
                             <td>

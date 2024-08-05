@@ -25,7 +25,7 @@ class BoardController extends Controller
         $boards->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$bid)->where('code','boardattach')->where('status',1)->get();
 
-        $memos = Memos::where('bid', $bid)
+        $memos = Memos::where('bid', $bid)->where('status',1)
                         ->orderBy('id', 'asc')
                         ->get();
 
