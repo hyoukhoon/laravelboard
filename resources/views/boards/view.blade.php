@@ -97,8 +97,10 @@
     <script>
         function memoup(){
             var memo=$("#memo").val();
+            var memo_file=$("#memo_file").val();
             var data = {
                 memo : memo,
+                memo_file : memo_file,
                 bid : {{ $boards->bid }}
             };
             $.ajax({
