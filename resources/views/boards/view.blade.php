@@ -151,30 +151,10 @@
                 $("#memo_file").val(return_data.fn);
             }
             , beforeSend: function () {
-                var width = 0;
-                var height = 0;
-                var left = 0;
-                var top = 0;
-                width = 50;
-                height = 50;
-
-                top = ( $(window).height() - height ) / 2 + $(window).scrollTop();
-                left = ( $(window).width() - width ) / 2 + $(window).scrollLeft();
-
-                if($("#div_ajax_load_image").length != 0) {
-                        $("#div_ajax_load_image").css({
-                                "top": top+"px",
-                                "left": left+"px"
-                        });
-                        $("#div_ajax_load_image").show();
-                }
-                else {
-                            $('#memo_image_view').html('<div id="div_ajax_load_image" style="width:' + width + 'px; height:' + height + 'px; z-index:9999; " class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>');
-                }
-
+                $('#memo_image_view').html("<span>Uploading~</span>");
             }
-                , complete: function () {
-                            $("#div_ajax_load_image").hide();
+            , complete: function () {
+                $("#memo_image_view").html('');
             }
             });
     }
