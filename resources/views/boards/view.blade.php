@@ -151,6 +151,8 @@
                 $("#memo_file").val(return_data.fn);
             }
             , beforeSend: function () {
+                $("#attmemoimg").hide();
+                $("#memo_image_view").show();
                 $('#memo_image_view').html('<div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div>');
             }
             , complete: function () {
