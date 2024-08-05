@@ -63,7 +63,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <font size="2">{{ disptime($m->regdate) }}</font> 
+                                <font size="2">{{ disptime($m->created_at) }}</font> 
                                     <span style="cursor:pointer" onclick="#"></span>
                             </td>
                         </tr>
