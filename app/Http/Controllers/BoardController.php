@@ -173,6 +173,9 @@ class BoardController extends Controller
                 Board::where('bid', $request->bid)->update([//부모글의 댓글 날짜 업데이트
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
+                if($request->memo_file){
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','memoattach')->update(array('pid' => $rs->bid));
+                }
             }
 
             return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
