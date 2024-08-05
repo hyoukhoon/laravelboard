@@ -81,6 +81,8 @@
     <div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;">
 		<span class="input-group-text" id="memo_image_view" style="display:none;"></span>
 		<button type="button" id="attmemoimg" class="btn btn-secondary">이미지첨부</button>
+        <input type="hidden" name="memopid" id="memopid" value="{{ time() }}">
+        <input type="hidden" name="memo_file" id="memo_file">
 		<input type="file" name="upfile" id="upfile" accept="image/*" style="display:none;">
 		<textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memo" id="memo" placeholder="댓글을 입력해주세요"></textarea>
         @auth()
@@ -113,5 +115,67 @@
                 }
             });
         }
+
+    $("#attmemoimg").click(function () {
+		$('#upfile').click();
+    });
+    
+    $("#upfile").change(function(){
+        var formData = new FormData();
+        var files = $('#upfile').prop('files');
+        for(var i=0; i < files.length; i++) {
+            attachFile(files[i]);
+        }
+    });
+
+    function attachFile(file) {
+        var memopid = $("#memopid").val();
+        var formData = new FormData();
+        formData.append("file", file);
+        formData.append("pid", memopid);
+        formData.append("code", "memoattach");
+        $.ajax({
+            url: '{{ route('boards.saveimage') }}',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            dataType : 'json' ,
+            type: 'POST',
+            success: function (return_data) {
+                var html = "<img src='/images/"+return_data.fn+"' style='max-width:100%;height:88px;'>";
+                $("#memo_image_view").html(html);
+                $("#memo_image_view").show();
+                $("#attmemoimg").hide();
+                $("#memo_file").val(return_data.fn);
+            }
+            , beforeSend: function () {
+                var width = 0;
+                var height = 0;
+                var left = 0;
+                var top = 0;
+                width = 50;
+                height = 50;
+
+                top = ( $(window).height() - height ) / 2 + $(window).scrollTop();
+                left = ( $(window).width() - width ) / 2 + $(window).scrollLeft();
+
+                if($("#div_ajax_load_image").length != 0) {
+                        $("#div_ajax_load_image").css({
+                                "top": top+"px",
+                                "left": left+"px"
+                        });
+                        $("#div_ajax_load_image").show();
+                }
+                else {
+                            $('#memo_image_view').html('<div id="div_ajax_load_image" style="width:' + width + 'px; height:' + height + 'px; z-index:9999; " class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>');
+                }
+
+            }
+                , complete: function () {
+                            $("#div_ajax_load_image").hide();
+            }
+            });
+    }
     </script>
     @endsection    
