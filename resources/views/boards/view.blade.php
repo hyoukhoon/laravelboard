@@ -151,10 +151,9 @@
                 $("#memo_file").val(return_data.fn);
             }
             , beforeSend: function () {
-                $('#memo_image_view').html("<span>Uploading~</span>");
+                $('#memo_image_view').html('<div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div>');
             }
             , complete: function () {
-                $("#memo_image_view").html('');
             }
             });
     }
