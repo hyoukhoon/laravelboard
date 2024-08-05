@@ -160,14 +160,15 @@ class BoardController extends Controller
 
     public function memoup(Request $request)
     {
-        $insert_data = new Memos();
-        $insert_data->memo = $request->memo;
-        $insert_data->bid = $request->bid;
-        $insert_data->pid = $request->pid??null;
-        $insert_data->userid = Auth::user()->userid;
+        $form_data = array(
+            'memo' => $request->memo,
+            'bid' => $request->bid,
+            'pid' => $request->pid??null,
+            'userid' => Auth::user()->userid
+        );
 
         if(auth()->check()){
-            $rs = $insert_data->save();
+            $rs=Memos::create($form_data);
             if($rs){
                 Board::find($request->bid)->increment('memo_cnt');//부모글의 댓글 갯수 업데이트
                 Board::where('bid', $request->bid)->update([//부모글의 댓글 날짜 업데이트
