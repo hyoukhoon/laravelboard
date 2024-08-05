@@ -25,7 +25,11 @@ class BoardController extends Controller
         $boards->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$bid)->where('code','boardattach')->where('status',1)->get();
 
-        return view('boards.view', ['boards' => $boards, 'attaches' => $attaches]);
+        $memos = Memos::where('bid', $bid)
+                        ->orderBy('id', 'asc')
+                        ->get();
+
+        return view('boards.view', ['boards' => $boards, 'attaches' => $attaches, 'memos' => $memos]);
     }
 
     public function imgpop($imgfile)

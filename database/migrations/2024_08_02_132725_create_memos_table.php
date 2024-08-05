@@ -14,7 +14,7 @@ return new class extends Migration
 	    Schema::create('memos', function (Blueprint $table) {
 		    $table->id();
 			$table->integer('bid');
-			$table->integer('pid');
+			$table->integer('pid')->nullable();
 			$table->string('userid', 100); // 필드명은 title, 글자수는 100글자로 정의
 			$table->text('memo');          // 필드명은 body,  글자수는 DB 시스템의 text 글자수 기준 ( mysql  - 64kbyte )
 			$table->tinyInteger('status')->default(1);  // 필드명은 clicks, 숫자만 입력
