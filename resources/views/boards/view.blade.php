@@ -135,6 +135,7 @@
         formData.append("pid", memopid);
         formData.append("code", "memoattach");
         $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             url: '{{ route('boards.saveimage') }}',
             data: formData,
             cache: false,
