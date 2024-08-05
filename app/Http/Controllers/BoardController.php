@@ -111,7 +111,7 @@ class BoardController extends Controller
     public function saveimage(Request $request)
     {
         $request->validate([
-            'file' => 'required|image|max:2048'
+            'file' => 'required|image|max:102400'
         ]);
 
         if(auth()->check()){
