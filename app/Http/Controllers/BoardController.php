@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Board;
 use App\Models\FileTables;
 use App\Models\Memos;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,9 +26,13 @@ class BoardController extends Controller
         $boards->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$bid)->where('code','boardattach')->where('status',1)->get();
 
-        $memos = Memos::where('bid', $bid)->where('status',1)
-                        ->orderBy('id', 'asc')
-                        ->get();
+        // $memos = Memos::where('bid', $bid)->where('status',1)
+        //                 ->orderBy('id', 'asc')
+        //                 ->get();
+
+        $memos = DB::table('memos')
+            ->leftJoin('file_tables', 'memos.id', '=', 'file_tables.pid')
+            ->get();
 
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches, 'memos' => $memos]);
     }

@@ -70,7 +70,12 @@
                 </table>
             </div>
             <div class="card-body">
-                <p class="card-text">{!! nl2br($m->memo) !!}</p>
+                <p class="card-text">
+                    @if($m->filename)
+                        <img src='/images/{{ $m->filename }}' width='100' />
+                    @endif
+                    {!! nl2br($m->memo) !!}
+                </p>
             </div>
         </div>
         @endforeach
