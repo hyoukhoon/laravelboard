@@ -31,7 +31,8 @@ class BoardController extends Controller
         //                 ->get();
 
         $memos = DB::table('memos')
-                ->select('memos.*', 'select filename from file_tables where file_tables.pid=memos.id and file_tables.status=1')
+                ->leftJoin('(select pid, filename from file_tables where status=1) as f', 'memos.id', '=', 'f.pid')
+                ->select('memos.*', 'f.filename')
                 ->where('memos.bid', $bid)->where('memos.status',1)
                 ->orderBy('memos.id', 'asc')
                 ->get();
