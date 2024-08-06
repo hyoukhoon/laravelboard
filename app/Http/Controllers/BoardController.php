@@ -30,13 +30,14 @@ class BoardController extends Controller
         //                 ->orderBy('id', 'asc')
         //                 ->get();
 
+        DB::enableQueryLog();
         $memos = DB::table('memos')
                 ->leftJoinSub('select pid, filename from file_tables where status=1', 'f', 'memos.id', 'f.pid')
                 ->select('memos.*', 'f.filename')
                 ->where('memos.bid', $bid)->where('memos.status',1)
                 ->orderBy('memos.id', 'asc')
                 ->get();
-
+        print_r(DB::getQueryLog());
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches, 'memos' => $memos]);
     }
 
