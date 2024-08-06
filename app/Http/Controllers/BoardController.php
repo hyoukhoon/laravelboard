@@ -31,11 +31,10 @@ class BoardController extends Controller
         //                 ->get();
 
         $memos = DB::table('memos')
-            ->leftJoin('file_tables', 'memos.id', '=', 'file_tables.pid')
-            ->select('memos.*', 'file_tables.filename')
-            ->where('memos.bid', $bid)->where('memos.status',1)
-            ->orderBy('memos.id', 'asc')
-            ->get();
+                ->select('memos.*', 'select filename from file_tables where file_tables.pid=memos.id and file_tables.status=1')
+                ->where('memos.bid', $bid)->where('memos.status',1)
+                ->orderBy('memos.id', 'asc')
+                ->get();
 
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches, 'memos' => $memos]);
     }
