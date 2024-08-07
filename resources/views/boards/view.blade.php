@@ -172,5 +172,25 @@
             }
             });
     }
+
+    function memo_modify(m){
+            var data = {
+                memoid : m
+            };
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'post',
+                url: '{{ route('boards.memomodi') }}',
+                dataType: 'json',
+                data: data,
+                success: function(data) {
+                    var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.data.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                    $("#memolist_"+m).append(html);
+                },
+                error: function(data) {
+                    console.log("error" +JSON.stringify(data));
+                }
+            });
+        }
     </script>
     @endsection    
