@@ -186,7 +186,7 @@
                 data: data,
                 success: function(data) {
                     if(data.att[0].filename){
-                        var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><div id="af_'+data.att[0].id+'" class="card h-100"><img src="/images/'+data.att[0].filename+'" width="80" /><a href="#" onclick=\'deletefile("'+data.att[0].filename+'", "'+data.att[0].id+'")\'>삭제</a></div><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                        var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><div id="af_'+data.att[0].id+'" class="card h-100"><img src="/images/'+data.att[0].filename+'" width="80" /><a href="#" onclick=\'memodeletefile("'+data.att[0].filename+'", "'+data.att[0].id+'")\'>삭제</a></div><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     }else{
                         var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="memo_image_view" style="display:none;"></span><button type="button" id="modimemoimg" class="btn btn-secondary">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     }
@@ -217,6 +217,33 @@
                     console.log("error" +JSON.stringify(data));
                 }
             });
+    }
+
+    function memodeletefile(fn,fid){
+        if(!confirm('삭제하시겠습니까?')){
+            return false;
+        }
+        var pid = $("#pid").val();
+        var code = $("#code").val();
+        var data = {
+            fn : fn,
+            pid : pid,
+            code : code
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('boards.deletefile') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                alert("삭제했습니다.");
+                $("#af_"+fid).hide();
+            },
+            error: function(data) {
+                console.log("error" +JSON.stringify(data));
+            }
+        });
     }
     </script>
     @endsection    
