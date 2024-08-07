@@ -184,7 +184,7 @@
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.data.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                    var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="memo_image_view" style="display:none;"></span><button type="button" id="attmemoimg" class="btn btn-secondary">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="memo_file" id="memo_file"><input type="file" name="upfile" id="upfile" accept="image/*" style="display:none;"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.data.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     $("#memolist_"+m).append(html);
                 },
                 error: function(data) {
