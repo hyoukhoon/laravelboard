@@ -129,7 +129,7 @@
             });
         }
 
-    $("#attmemoimg").click(function () {
+    $("#attmemoimg, #modimemoimg").click(function () {
 		$('#upfile').click();
     });
     
@@ -143,6 +143,7 @@
 
     function attachFile(file) {
         var memopid = $("#memopid").val();
+        var modimemoid = $("#modimemoid").val();
         var formData = new FormData();
         formData.append("file", file);
         formData.append("pid", memopid);
@@ -184,7 +185,8 @@
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="memo_image_view" style="display:none;"></span><button type="button" id="attmemoimg" class="btn btn-secondary">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="memo_file" id="memo_file"><input type="file" name="upfile" id="upfile" accept="image/*" style="display:none;"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.data.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                    
+                    var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="memo_image_view" style="display:none;"></span><button type="button" id="modimemoimg" class="btn btn-secondary">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     $("#memolist_"+m).html(html);
                 },
                 error: function(data) {
