@@ -202,4 +202,18 @@ class BoardController extends Controller
             return response()->json(array('msg'=> "fail"), 200);
         }
     }
+
+    public function memomodifyup(Request $request)
+    {
+        $memos = Memos::findOrFail($request->memoid);
+        if(Auth::user()->userid==$memos->userid){
+            $form_data = array(
+                'memo' => $request->memo
+            );
+            Memos::update($form_data);
+            return response()->json(array('msg'=> "succ", 'data'=>$request->memoid), 200);
+        }else{
+            return response()->json(array('msg'=> "fail"), 200);
+        }
+    }
 }

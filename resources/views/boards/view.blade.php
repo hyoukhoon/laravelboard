@@ -191,6 +191,27 @@
                     console.log("error" +JSON.stringify(data));
                 }
             });
-        }
+    }
+
+    function memomodifyup(m){
+            var memo=$("#memomodify_"+m).val();
+            var data = {
+                memo : memo,
+                memoid : m
+            };
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'post',
+                url: '{{ route('boards.memomodifyup') }}',
+                dataType: 'json',
+                data: data,
+                success: function(data) {
+                    location.reload();
+                },
+                error: function(data) {
+                    console.log("error" +JSON.stringify(data));
+                }
+            });
+    }
     </script>
     @endsection    

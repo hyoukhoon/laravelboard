@@ -23,6 +23,7 @@ Route::middleware('auth') -> group(function (){
     Route::get('/boards/summernote/{multi}/{bid?}', [BoardController::class, 'summernote'])->name('boards.summernote');
     Route::post('/boards/memoup', [BoardController::class, 'memoup'])->name('boards.memoup');
     Route::post('/boards/memomodi', [BoardController::class, 'memomodi'])->name('boards.memomodi');
+    Route::post('/boards/memomodifyup', [BoardController::class, 'memomodifyup'])->name('boards.memomodifyup');
 });
 
 //회원
