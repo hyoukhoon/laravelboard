@@ -76,6 +76,12 @@
                     @endif
                     {!! nl2br($m->memo) !!}
                 </p>
+                @auth()
+                    @if($m->userid==auth()->user()->userid)
+                        <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}')">수정</a></span>
+                        <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->num }}')">삭제</a></span>
+                    @endif
+                @endauth
             </div>
         </div>
         @endforeach
