@@ -195,7 +195,7 @@ class BoardController extends Controller
     public function memomodi(Request $request)
     {
         $memos = Memos::findOrFail($request->memoid);
-        if(Auth::user()->email==$memos->userid){
+        if(Auth::user()->userid==$memos->userid){
             $attaches = FileTables::where('pid',$memos->id)->where('code','memoattach')->where('status',1)->get();
             return response()->json(array('msg'=> "succ", 'data'=>$memos, 'att'=>$attaches), 200);
         }else{
