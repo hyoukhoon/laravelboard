@@ -32,7 +32,7 @@ class BoardController extends Controller
 
         //DB::enableQueryLog();
         $memos = DB::table('memos')
-                ->leftJoinSub('select pid, filename from file_tables where status=1', 'f', 'memos.id', 'f.pid')
+                ->leftJoinSub('select pid, filename from file_tables where code=\'memoattach\' and status=1', 'f', 'memos.id', 'f.pid')
                 ->select('memos.*', 'f.filename')
                 ->where('memos.bid', $bid)->where('memos.status',1)
                 ->orderBy('memos.id', 'asc')
