@@ -185,8 +185,11 @@
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    
-                    var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="memo_image_view" style="display:none;"></span><button type="button" id="modimemoimg" class="btn btn-secondary">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                    if(data.att.filename){
+                        var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="memo_image_view"><img src="/images/'+data.att.filename+'" style="max-width:100%;height:88px;""></span><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                    }else{
+                        var html='<div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="memo_image_view" style="display:none;"></span><button type="button" id="modimemoimg" class="btn btn-secondary">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                    }
                     $("#memolist_"+m).html(html);
                 },
                 error: function(data) {
