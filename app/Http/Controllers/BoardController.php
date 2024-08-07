@@ -216,4 +216,12 @@ class BoardController extends Controller
             return response()->json(array('msg'=> "fail"), 200);
         }
     }
+
+    public function memodeletefile(Request $request)
+    {
+        if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
+                unlink(public_path('images')."/".$request->fn);
+        }
+        return response()->json(array('msg'=> "succ", 'fn'=>$request->fn, 'fid'=>$request->fid), 200);
+    }
 }
