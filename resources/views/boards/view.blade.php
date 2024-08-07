@@ -223,13 +223,11 @@
         if(!confirm('삭제하시겠습니까?')){
             return false;
         }
-        var pid = $("#pid").val();
-        var code = 'memoattach';
+
         var data = {
             fn : fn,
             fid : fid,
-            pid : pid,
-            code : code
+            pid : pid
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
