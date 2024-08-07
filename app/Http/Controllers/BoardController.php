@@ -196,8 +196,7 @@ class BoardController extends Controller
     {
         $memos = Memos::findOrFail($request->memoid);
         if(Auth::user()->userid==$memos->userid){
-            $attaches = array();
-            $attaches = FileTables::where('pid',$memos->id)->where('code','memoattach')->where('status',1)->get();
+            $attaches = FileTables::where('pid',$memos->id)->where('code','memoattach')->where('status',1)->first();
             return response()->json(array('msg'=> "succ", 'memos'=>$memos, 'att'=>$attaches), 200);
         }else{
             return response()->json(array('msg'=> "fail"), 200);
