@@ -208,6 +208,7 @@ class BoardController extends Controller
         $memos = Memos::findOrFail($request->memoid);
         if(Auth::user()->userid==$memos->userid){
             $form_data = array(
+                'id' => $request->memoid,
                 'memo' => $request->memo
             );
             Memos::update($form_data);
