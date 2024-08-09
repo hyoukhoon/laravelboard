@@ -132,7 +132,7 @@
         }
 
     function memoatt(){
-        alert("click");
+        $('#upfile').click();
     }
 
     $("#attmemoimg").click(function () {
