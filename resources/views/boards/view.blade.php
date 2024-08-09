@@ -205,7 +205,6 @@
                 dataType: 'json',
                 data: data,
                 success: function(data) {
-                    location.reload();
                     if(data.attfile == true){
                         var html='<div class="input-group" id="modifymemo" style="margin-top:10px;margin-bottom:10px;"><div id="af_'+data.att.id+'" class="card h-100" style="text-align:center;"><img src="/images/'+data.att.filename+'" width="80" /><a href="javascript:;" onclick=\'memodeletefile("'+data.att.filename+'","'+data.att.id+'","'+data.att.pid+'")\'><span class="badge text-bg-warning">삭제</span></a></div><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     }else{
