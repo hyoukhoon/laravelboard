@@ -195,6 +195,7 @@
     }
 
     function memo_modify(m){
+            $("#modifymemo").remove();
             var data = {
                 memoid : m
             };
