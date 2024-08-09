@@ -123,6 +123,9 @@ class BoardController extends Controller
             'file' => 'required|image|max:2048'
         ]);
 
+        print_r($request);
+            exit;
+
         if(auth()->check()){
             $image = $request->file('file');
             $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
@@ -135,8 +138,6 @@ class BoardController extends Controller
                 'code' => $request->code,
                 'filename' => $new_name
             );
-            print_r($form_data);
-            exit;
             $rs=FileTables::create($form_data);
             return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid), 200);
         }else{
