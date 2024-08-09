@@ -131,8 +131,7 @@
             });
         }
 
-    $("#attmemoimg, #modimemoimg").click(function () {
-        alert("click");
+    $("#modimemoimg").click(function () {
 		$('#upfile').click();
     });
     
