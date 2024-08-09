@@ -123,9 +123,6 @@ class BoardController extends Controller
             'file' => 'required|image|max:2048'
         ]);
 
-        print_r($request->modimemoid);
-        exit;
-
         if(auth()->check()){
             $image = $request->file('file');
             $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();

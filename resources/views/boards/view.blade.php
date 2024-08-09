@@ -95,6 +95,7 @@
 		<span class="input-group-text" id="memo_image_view" style="display:none;"></span>
 		<button type="button" id="attmemoimg" class="btn btn-secondary">이미지첨부</button>
         <input type="hidden" name="memopid" id="memopid" value="{{ time() }}">
+        <input type="hidden" name="modimemoid" id="modimemoid" value="0">
         <input type="hidden" name="memo_file" id="memo_file">
 		<input type="file" name="upfile" id="upfile" accept="image/*" style="display:none;">
 		<textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memo" id="memo" placeholder="댓글을 입력해주세요"></textarea>
@@ -149,7 +150,7 @@
 
     function attachFile(file) {
         var memopid = $("#memopid").val();
-        var modimemoid = $("#modimemoid").val();//이값이 있으면 댓글 수정
+        var modimemoid = $("#modimemoid").val();
         var formData = new FormData();
         formData.append("file", file);
         formData.append("pid", memopid);
