@@ -132,6 +132,7 @@
         }
 
     $("#attmemoimg, #modimemoimg").click(function () {
+        alert("click");
 		$('#upfile').click();
     });
     
