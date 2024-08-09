@@ -150,7 +150,6 @@
     function attachFile(file) {
         var memopid = $("#memopid").val();
         var modimemoid = $("#modimemoid").val();//이값이 있으면 댓글 수정
-        console.log("modimemoid=>"+modimemoid);
         var formData = new FormData();
         formData.append("file", file);
         formData.append("pid", memopid);
