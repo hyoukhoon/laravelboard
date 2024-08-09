@@ -168,7 +168,7 @@
             success: function (return_data) {
                 var html = "<img src='/images/"+return_data.fn+"' style='max-width:100%;height:88px;'>";
                 console.log("170:"+modimemoid);
-                if(modimemoid){
+                if(modimemoid>0){
                     console.log("172:"+html);
                     $("#modi_memo_image_view").html(html);
                     $("#modi_memo_image_view").show();
@@ -182,7 +182,7 @@
                 }
             }
             , beforeSend: function () {
-                if(modimemoid){
+                if(modimemoid>0){
                     $("#modimemoimg").hide();
                     $("#modi_memo_image_view").show();
                     $('#modi_memo_image_view').html('<div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div>');
