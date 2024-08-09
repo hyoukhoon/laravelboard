@@ -168,8 +168,8 @@
             success: function (return_data) {
                 var html = "<img src='/images/"+return_data.fn+"' style='max-width:100%;height:88px;'>";
                 if(modimemoid>0){
-                    $("#modi_memo_image_view").html(html);
-                    $("#modi_memo_image_view").show();
+                    $("#modi_att_view_"+modimemoid).html(html);
+                    $("#modi_att_view_"+modimemoid).show();
                     $("#modimemoimg").hide();
                 }else{
                     $("#memo_image_view").html(html);
@@ -181,8 +181,8 @@
             , beforeSend: function () {
                 if(modimemoid>0){
                     $("#modimemoimg").hide();
-                    $("#modi_memo_image_view").show();
-                    $('#modi_memo_image_view').html('<div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div>');
+                    $("#modi_att_view_"+modimemoid).show();
+                    $('#modi_att_view_'+modimemoid).html('<div class="spinner-border text-dark" role="status"><span class="visually-hidden">Loading...</span></div>');
                 }else{
                     $("#attmemoimg").hide();
                     $("#memo_image_view").show();
@@ -208,7 +208,7 @@
                     if(data.attfile == true){
                         var html='<div class="input-group" id="modifymemo" style="margin-top:10px;margin-bottom:10px;"><div id="af_'+data.att.id+'" class="card h-100" style="text-align:center;"><img src="/images/'+data.att.filename+'" width="80" /><a href="javascript:;" onclick=\'memodeletefile("'+data.att.filename+'","'+data.att.id+'","'+data.att.pid+'")\'><span class="badge text-bg-warning">삭제</span></a></div><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     }else{
-                        var html='<div class="input-group" id="modifymemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="modi_memo_image_view" style="display:none;"></span><button type="button" id="modimemoimg" class="btn btn-secondary" onclick="memoatt()">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                        var html='<div class="input-group" id="modifymemo" style="margin-top:10px;margin-bottom:10px;"><span class="input-group-text" id="modi_att_view_'+m+'" style="display:none;"></span><button type="button" id="modimemoimg" class="btn btn-secondary" onclick="memoatt()">이미지첨부</button><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="modimemoid" id="modimemoid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     }
                     $("#memolist_"+m).html(html);
                 },
