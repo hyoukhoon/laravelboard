@@ -167,11 +167,13 @@
             type: 'POST',
             success: function (return_data) {
                 var html = "<img src='/images/"+return_data.fn+"' style='max-width:100%;height:88px;'>";
+                console.log("170:"+html);
                 if(modimemoid){
                     $("#modi_memo_image_view").html(html);
                     $("#modi_memo_image_view").show();
                     $("#modimemoimg").hide();
                 }else{
+                    console.log("176:"+html);
                     $("#memo_image_view").html(html);
                     $("#memo_image_view").show();
                     $("#attmemoimg").hide();
