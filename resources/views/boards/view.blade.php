@@ -195,7 +195,7 @@
     }
 
     function memo_modify(m){
-            $("#modifymemo").remove();
+            location.reload();
             var data = {
                 memoid : m
             };
