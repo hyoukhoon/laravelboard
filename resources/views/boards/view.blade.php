@@ -80,7 +80,7 @@
                     <span style="float:right;">
                         @if($m->userid==auth()->user()->userid)
                             <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}')">수정</a></span>
-                            <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->num }}')">삭제</a></span>
+                            <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->bid }}')">삭제</a></span>
                         @endif
                     </span>
                 @endauth
@@ -260,6 +260,29 @@
             success: function(data) {
                 alert("삭제했습니다.");
                 memo_modify(pid);
+            },
+            error: function(data) {
+                console.log("error" +JSON.stringify(data));
+            }
+        });
+    }
+
+    function memo_delete(m, b){
+        if(!confirm('삭제하시겠습니까?')){
+            return false;
+        }
+        var data = {
+            id : m,
+            bid : b
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('boards.memodelete') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                location.reload();
             },
             error: function(data) {
                 console.log("error" +JSON.stringify(data));

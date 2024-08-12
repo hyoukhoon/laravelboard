@@ -25,6 +25,7 @@ Route::middleware('auth') -> group(function (){
     Route::post('/boards/memomodi', [BoardController::class, 'memomodi'])->name('boards.memomodi');
     Route::post('/boards/memomodifyup', [BoardController::class, 'memomodifyup'])->name('boards.memomodifyup');
     Route::post('/boards/memodeletefile', [BoardController::class, 'memodeletefile'])->name('boards.memodeletefile');
+    Route::post('/boards/memodelete', [BoardController::class, 'memodelete'])->name('boards.memodelete');
 });
 
 //회원
