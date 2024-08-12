@@ -238,7 +238,7 @@ class BoardController extends Controller
             $rs = Memos::where('id', $request->id)->update(array('status' => 0));
             if($rs){
                 Board::find($request->bid)->decrement('memo_cnt');
-                $fs=FileTables::where('pid', $data->id);
+                $fs=FileTables::where('pid', $data->id)->get();
                 if($fs){
                     foreach($fs as $f){
                         if(FileTables::where('id', $f->id)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
