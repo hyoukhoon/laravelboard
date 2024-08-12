@@ -235,7 +235,8 @@ class BoardController extends Controller
     {
         $data = Memos::findOrFail($request->id);
         if(Auth::user()->userid==$data->userid){
-            $rs = $data->delete();
+            //$rs = $data->delete();
+            $rs = $data->update(array('status' => 0));
             if($rs){
                 Board::find($request->bid)->decrement('memo_cnt');
                 $fs=FileTables::where('pid', $data->id);
@@ -247,7 +248,6 @@ class BoardController extends Controller
                     }
                 }
             }
-
             return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
         }else{
             return response()->json(array('msg'=> "fail"), 200);
