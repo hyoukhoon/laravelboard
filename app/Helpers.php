@@ -30,7 +30,7 @@ function dispmemo($memo_cnt, $memo_date){
 }
 
 function dispattach($bid){
-    $attaches = FileTables::where('pid',$bid)->where('code','boardattach')->where('status',1)->get();
+    $attaches = FileTables::where('pid',$bid)->whereIn('code',['boardattach','editorattach'])->where('status',1)->get();
     if($attaches){
         return $attaches;
     }else{
