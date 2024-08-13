@@ -153,7 +153,7 @@
         $('#upfile').click();
     }
 
-    $("#attmemoimg").click(function () {
+    $("#attmemoimg, .reply_attach").click(function () {
 		$('#upfile').click();
     });
     
