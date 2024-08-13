@@ -77,12 +77,27 @@
                     {!! nl2br($m->memo) !!}
                 </p>
                 @auth()
+                <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $m->id }}','{{ $boards->bid }}')">댓글</a></span>
                     <span style="float:right;">
                         @if($m->userid==auth()->user()->userid)
                             <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}')">수정</a></span>
                             <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->bid }}')">삭제</a></span>
                         @endif
                     </span>
+                @endauth
+            </div>
+            <div class="input-group" style="margin-top:10px;margin-bottom:10px;display:none;" id="{{ 'memo_reply_area_'.$m->id }}">
+                <div class="p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path>
+                    </svg>
+                </div>
+                <input type="hidden" name="memoid" id="memopid" value="{{ $m->id }}">
+                <textarea class="form-control" aria-label="With textarea" name="{{ 'memo_'.$m->id }}" id="{{ 'memo_'.$m->id }}" placeholder="대댓글을 입력해주세요"></textarea>
+                @auth()
+                    <button type="button" class="btn btn-secondary" style="float:right;" id="{{ 'memo_submit_reply_'.$m->id }}" onclick="memo_reply('{{ $m->id }}','{{ $boards->num }}')">입력</button>
+                @else
+                    <button type="button" class="btn btn-secondary" style="float:right;" onclick="alert('로그인 하셔야 입력할 수 있습니다.');">입력</button>
                 @endauth
             </div>
         </div>
@@ -289,5 +304,9 @@
             }
         });
     }
-    </script>
+
+    function reply_write(m, b){
+        $("#memo_reply_area_"+m).toggle();
+    }
+</script>
     @endsection    
