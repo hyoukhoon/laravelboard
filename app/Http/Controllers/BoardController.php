@@ -34,7 +34,7 @@ class BoardController extends Controller
                 ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
                 ->orderBy('memos.id', 'asc')
                 ->get();
-        //print_r(DB::getQueryLog());
+        print_r(DB::getQueryLog());
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches, 'memos' => $memos]);
     }
 
