@@ -78,12 +78,12 @@
                         </div>
                         <div class="card-body" id="{{ 'memolist_'.$m->id }}">
                             <p class="card-text">{!! nl2br($m->memo) !!}</p>
-                            @auth()
+                            @if($m->userid==auth()->user()->userid)
                             <span style="float:right;">
                                 <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}')">수정</a></span>
                                 <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->num }}')">삭제</a></span>
                             </span>
-                            @endauth
+                            @endif
                         </div>
                     </div>
                 </div>
