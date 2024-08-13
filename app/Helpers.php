@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\FileTables;
+
 function disptime($regdate){
 
     $sec = strtotime(date("Y-m-d H:i:s")) - strtotime($regdate);
@@ -24,6 +26,15 @@ function dispmemo($memo_cnt, $memo_date){
         return "<span style='color:red;'>[".$memo_cnt."]</span>";
     }else{
         return "<span>[".$memo_cnt."]</span>";
+    }
+}
+
+function dispattach($bid){
+    $attaches = FileTables::where('pid',$bid)->where('code','boardattach')->where('status',1)->get();
+    if($attaches){
+        return $attaches;
+    }else{
+        return null;
     }
 }
 
