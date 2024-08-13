@@ -19,4 +19,12 @@ function disptime($regdate){
 
 }
 
+function dispmemo($memo_cnt, $memo_date){
+    if((time()-strtotime($memo_date))<86400){
+        return "<span style='color:red;'>".$memo_cnt."</span>";
+    }else{
+        return "<span>".$memo_cnt."</span>";
+    }
+}
+
 ?>
