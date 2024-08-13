@@ -26,7 +26,7 @@ class BoardController extends Controller
         $boards->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$bid)->where('code','boardattach')->where('status',1)->get();
 
-        DB::enableQueryLog();
+        //DB::enableQueryLog();
         $memos = DB::table('memos')
                 ->leftJoinSub('select pid, filename from file_tables where code=\'memoattach\' and status=1', 'f', 'memos.id', 'f.pid')
                 ->select('memos.*', 'f.filename')
@@ -34,7 +34,7 @@ class BoardController extends Controller
                 ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
                 ->orderBy('memos.id', 'asc')
                 ->get();
-        print_r(DB::getQueryLog());
+        //print_r(DB::getQueryLog());
         return view('boards.view', ['boards' => $boards, 'attaches' => $attaches, 'memos' => $memos]);
     }
 
