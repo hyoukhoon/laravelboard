@@ -26,15 +26,12 @@ class BoardController extends Controller
         $boards->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$bid)->where('code','boardattach')->where('status',1)->get();
 
-        // $memos = Memos::where('bid', $bid)->where('status',1)
-        //                 ->orderBy('id', 'asc')
-        //                 ->get();
-
         //DB::enableQueryLog();
         $memos = DB::table('memos')
                 ->leftJoinSub('select pid, filename from file_tables where code=\'memoattach\' and status=1', 'f', 'memos.id', 'f.pid')
                 ->select('memos.*', 'f.filename')
                 ->where('memos.bid', $bid)->where('memos.status',1)
+                ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
                 ->orderBy('memos.id', 'asc')
                 ->get();
         //print_r(DB::getQueryLog());
