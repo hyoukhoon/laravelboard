@@ -92,8 +92,6 @@
                         <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path>
                     </svg>
                 </div>
-                <span class="input-group-text" id="{{ 'reply_img_'.$m->id }}" style="display:none;"></span>
-		        <button type="button" id="{{ 'reply_attach_'.$m->id }}" class="btn btn-secondary reply_attach">이미지첨부</button>
                 <textarea class="form-control" aria-label="With textarea" name="{{ 'memo_reply_'.$m->id }}" id="{{ 'memo_reply_'.$m->id }}" placeholder="대댓글을 입력해주세요"></textarea>
                 @auth()
                     <button type="button" class="btn btn-secondary" style="float:right;" id="{{ 'memo_submit_reply_'.$m->id }}" onclick="memo_reply_up('{{ $m->id }}','{{ $boards->bid }}')">입력</button>
