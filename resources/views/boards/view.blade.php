@@ -77,7 +77,7 @@
                     {!! nl2br($m->memo) !!}
                 </p>
                 @auth()
-                <span class="badge bg-secondary" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $m->id }}','{{ $boards->bid }}')">댓글</a></span>
+                <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $m->id }}','{{ $boards->bid }}')">댓글</a></span>
                     <span style="float:right;">
                         @if($m->userid==auth()->user()->userid)
                             <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}')">수정</a></span>
@@ -92,10 +92,11 @@
                         <path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"></path>
                     </svg>
                 </div>
-                <input type="hidden" name="memoid" id="memopid" value="{{ $m->id }}">
-                <textarea class="form-control" aria-label="With textarea" name="{{ 'memo_'.$m->id }}" id="{{ 'memo_'.$m->id }}" placeholder="대댓글을 입력해주세요"></textarea>
+                <span class="input-group-text" id="{{ 'reply_img_'.$m->id }}" style="display:none;"></span>
+		        <button type="button" id="{{ 'reply_attach_'.$m->id }}" class="btn btn-secondary reply_attach">이미지첨부</button>
+                <textarea class="form-control" aria-label="With textarea" name="{{ 'memo_reply_'.$m->id }}" id="{{ 'memo_reply_'.$m->id }}" placeholder="대댓글을 입력해주세요"></textarea>
                 @auth()
-                    <button type="button" class="btn btn-secondary" style="float:right;" id="{{ 'memo_submit_reply_'.$m->id }}" onclick="memo_reply('{{ $m->id }}','{{ $boards->num }}')">입력</button>
+                    <button type="button" class="btn btn-secondary" style="float:right;" id="{{ 'memo_submit_reply_'.$m->id }}" onclick="memo_reply_up('{{ $m->id }}','{{ $boards->bid }}')">입력</button>
                 @else
                     <button type="button" class="btn btn-secondary" style="float:right;" onclick="alert('로그인 하셔야 입력할 수 있습니다.');">입력</button>
                 @endauth
@@ -167,7 +168,6 @@
     function attachFile(file) {
         var memopid = $("#memopid").val();
         var modimemoid = $("#modimemoid").val();
-        console.log("modimemoid:"+modimemoid);
         var formData = new FormData();
         formData.append("file", file);
         formData.append("pid", memopid);
@@ -307,6 +307,29 @@
 
     function reply_write(m, b){
         $("#memo_reply_area_"+m).toggle();
+    }
+
+    function memo_reply_up(m, b){
+        var memo=$("#memo_reply_"+m).val();
+        var data = {
+            memo : memo,
+            pid : m,
+            bid : b
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('boards.memoup') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+            console.log(JSON.stringify(data));
+            location.reload();
+            },
+            error: function(data) {
+            console.log("error" +JSON.stringify(data));
+            }
+        });
     }
 </script>
     @endsection    
