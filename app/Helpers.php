@@ -25,7 +25,7 @@ function dispmemo($memo_cnt, $memo_date){
     if((time()-strtotime($memo_date))<86400){
         return "<span style='color:red;'>[".$memo_cnt."]</span>";
     }else{
-        return "<span>[".$memo_cnt."]</span>";
+        return null;
     }
 }
 
@@ -38,7 +38,7 @@ function dispnew($regdate){
 }
 
 function dispattach($bid){
-    $attaches = FileTables::where('pid',$bid)->whereIn('code',['boardattach','editorattach'])->where('status',1)->get();
+    $attaches = FileTables::where('pid',$bid)->whereIn('code',['boardattach','editorattach'])->where('status',1)->first();
     if($attaches){
         return '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-image" viewBox="0 0 16 16">
         <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
