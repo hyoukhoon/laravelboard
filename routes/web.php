@@ -14,7 +14,7 @@ Route::get('/adminarea/login', function () {
 });
 
 Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
-Route::get('/adminarea/class', [AdminController::class, 'class'])->name('adminarea.class');
+Route::get('/adminarea/classroom', [AdminController::class, 'classroom'])->name('adminarea.classroom');
 
 // Route::get('/', function () {
 //     return view('welcome');

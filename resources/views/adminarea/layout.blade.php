@@ -282,7 +282,7 @@
       </li><!-- End Dashboard Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/adminarea/class">
+        <a class="nav-link collapsed" href="/adminarea/classroom">
           <i class="bi bi-person"></i>
           <span>강의실</span>
         </a>
