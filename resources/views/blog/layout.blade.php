@@ -48,10 +48,10 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="single-post.html">Single Post</a></li>
-          <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="/">메인</a></li>
+          <li><a href="#">강의실</a></li>
+          <li><a href="#">QnA</a></li>
+          {{-- <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="category.html" class="active">Category 1</a></li>
               <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
@@ -67,8 +67,10 @@
               <li><a href="category.html" class="active">Category 3</a></li>
               <li><a href="category.html" class="active">Category 4</a></li>
             </ul>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
+          </li> --}}
+          <li><a href="#">자유게시판</a></li>
+          <li><a href="#">사진게시판</a></li>
+          <li><a href="#">음악게시판</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
