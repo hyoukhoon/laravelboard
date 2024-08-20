@@ -3,22 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('/blog/index');
-});
-
-Route::get('/adminarea', function () {
-    return view('/adminarea/index');
 });
 
 Route::get('/adminarea/login', function () {
     return view('/adminarea/login');
 });
 
-Route::get('/adminarea/components-alerts', function () {
-    return view('/adminarea/components-alerts');
-});
+Route::get('/adminarea', [AdminController::class, 'index'])->name('admin.index');
 
 // Route::get('/', function () {
 //     return view('welcome');
