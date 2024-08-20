@@ -5,8 +5,12 @@ use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MemberController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/blog/index');
 });
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 //게시판
 Route::get('/boards/{multi?}', [BoardController::class, 'index'])->name('boards.index');
