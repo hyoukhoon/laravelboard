@@ -1,7 +1,7 @@
-@extends('boards.layout')
+@extends('blog.layout')
 @section('content')
     <!-- Page Title -->
-    <div class="page-title position-relative">
+    {{-- <div class="page-title position-relative">
       <div class="container d-lg-flex justify-content-between align-items-center">
         <h1 class="mb-2 mb-lg-0">Category</h1>
         <nav class="breadcrumbs">
@@ -11,7 +11,8 @@
           </ol>
         </nav>
       </div>
-    </div><!-- End Page Title -->
+    </div> --}}
+    <!-- End Page Title -->
 
     <div class="container">
       <div class="row">
