@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Category - ZenBlog Bootstrap Template</title>
+  <title>PHPBlog</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -27,8 +27,8 @@
   <link href="/assets/css/main.css" rel="stylesheet">
 
   <!-- =======================================================
-  * Template Name: ZenBlog
-  * Template URL: https://bootstrapmade.com/zenblog-bootstrap-blog-template/
+  * Template Name: PHPBlog
+  * Template URL: https://bootstrapmade.com/PHPBlog-bootstrap-blog-template/
   * Updated: Aug 08 2024 with Bootstrap v5.3.3
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
@@ -43,7 +43,7 @@
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="/assets/img/logo.png" alt=""> -->
-        <h1 class="sitename">ZenBlog</h1>
+        <h1 class="sitename">PHPBlog</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -95,7 +95,7 @@
     <div class="row gy-4">
       <div class="col-lg-4 col-md-6 footer-about">
         <a href="index.html" class="logo d-flex align-items-center">
-          <span class="sitename">ZenBlog</span>
+          <span class="sitename">PHPBlog</span>
         </a>
         <div class="footer-contact pt-3">
           <p>A108 Adam Street</p>
@@ -159,7 +159,7 @@
   </div>
 
   <div class="container copyright text-center mt-4">
-    <p>© <span>Copyright</span> <strong class="px-1 sitename">ZenBlog</strong> <span>All Rights Reserved</span></p>
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">PHPBlog</strong> <span>All Rights Reserved</span></p>
     <div class="credits">
       <!-- All the links in the footer should remain intact. -->
       <!-- You can delete the links only if you've purchased the pro version. -->
