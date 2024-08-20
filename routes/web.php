@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('/blog/index');
 });
 
-Route::get('/admin', function () {
+Route::get('/adminarea', function () {
     return view('/adminarea/index');
 });
 
