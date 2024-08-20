@@ -12,7 +12,7 @@ Route::get('/adminarea', function () {
     return view('/adminarea/index');
 });
 Route::get('/adminarea/components-alerts', function () {
-    return view('/adminarea/components-alerts.html');
+    return view('/adminarea/components-alerts');
 });
 
 // Route::get('/', function () {
