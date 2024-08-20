@@ -92,6 +92,31 @@ class MemberController extends Controller
         }
     }
 
+    public function adminloginok(Request $request){
+
+        $validated = $request->validate([
+            'email' => 'required',
+            'passwd' => 'required',
+        ]);
+        
+        $email = $request->email;
+        $passwd = $request->passwd;
+        $passwd = hash('sha512',$passwd);
+        $remember = $request->remember;
+        $loginInfo = array(
+            'email' => $email,
+            'passwd' => $passwd
+        );
+
+        $ismember = Members::where($loginInfo)->first();
+        if($ismember){
+            Auth::login($ismember, $remember);
+            return redirect() -> route('admin.index');
+        }else{
+            return redirect('/adminarea/login');
+        }
+    }
+
     public function logout(){
         auth() -> logout();
         return redirect() -> route('boards.index');
