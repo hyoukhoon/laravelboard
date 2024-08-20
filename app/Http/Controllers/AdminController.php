@@ -16,6 +16,14 @@ class AdminController extends Controller
         }
     }
 
+    public function class(){
+        if(Auth::user()->memberlevels<10){
+            return view('adminarea.class');
+        }else{
+            return view('adminarea.index');
+        }
+    }
+
     public function logout(){
         auth() -> logout();
         return redirect() -> route('boards.index');

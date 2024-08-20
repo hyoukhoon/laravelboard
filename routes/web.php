@@ -13,7 +13,8 @@ Route::get('/adminarea/login', function () {
     return view('/adminarea/login');
 });
 
-Route::get('/adminarea', [AdminController::class, 'index'])->name('admin.index');
+Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
+Route::get('/adminarea/class', [AdminController::class, 'class'])->name('adminarea.class');
 
 // Route::get('/', function () {
 //     return view('welcome');

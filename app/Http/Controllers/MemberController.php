@@ -111,7 +111,7 @@ class MemberController extends Controller
         $ismember = Members::where($loginInfo)->first();
         if($ismember){
             Auth::login($ismember, $remember);
-            return redirect() -> route('admin.index');
+            return redirect() -> route('adminarea.index');
         }else{
             return redirect('/adminarea/login');
         }
