@@ -11,6 +11,11 @@ Route::get('/', function () {
 Route::get('/adminarea', function () {
     return view('/adminarea/index');
 });
+
+Route::get('/adminarea/login', function () {
+    return view('/adminarea/login');
+});
+
 Route::get('/adminarea/components-alerts', function () {
     return view('/adminarea/components-alerts');
 });
