@@ -65,7 +65,7 @@
                   </div>
 
                   <form method="post" class="row g-3 needs-validation" action="/adminloginok">
-
+                    @csrf
                     <div class="col-12">
                       <label for="yourUsername" class="form-label">Username</label>
                       <div class="input-group has-validation">
@@ -83,7 +83,7 @@
 
                     <div class="col-12">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+                        <input class="form-check-input" type="checkbox" name="remember" value="1" id="remember">
                         <label class="form-check-label" for="rememberMe">Remember me</label>
                       </div>
                     </div>
