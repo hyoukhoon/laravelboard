@@ -8,6 +8,10 @@ Route::get('/', function () {
     return view('/blog/index');
 });
 
+Route::get('/admin', function () {
+    return view('/adminarea/index');
+});
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
