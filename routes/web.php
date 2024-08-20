@@ -11,6 +11,9 @@ Route::get('/', function () {
 Route::get('/adminarea', function () {
     return view('/adminarea/index');
 });
+Route::get('/adminarea/components-alerts', function () {
+    return view('/adminarea/components-alerts.html');
+});
 
 // Route::get('/', function () {
 //     return view('welcome');
