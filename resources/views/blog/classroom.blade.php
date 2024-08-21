@@ -240,6 +240,10 @@
 
           </section><!-- /Blog Posts Section -->
 
+          <section>
+            <button type="button">글작성</button>
+          </section>
+
           <!-- Blog Pagination Section -->
           <section id="blog-pagination" class="blog-pagination section">
 
