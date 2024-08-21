@@ -24,5 +24,10 @@ class ClassController extends Controller
         }
     }
 
+    public function summernote()
+    {
+        return view('blog.summernote');
+    }
+
 }
 ?>
