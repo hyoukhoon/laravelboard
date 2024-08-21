@@ -7,7 +7,6 @@
 
 <div id="summernote"></div>
 
-
 <script>
     $(document).ready(function() {
             var $summernote = $('#summernote').summernote({

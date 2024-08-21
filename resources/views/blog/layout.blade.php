@@ -33,6 +33,7 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body class="category-page">
