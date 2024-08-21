@@ -18,7 +18,7 @@
     <div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
       <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
         <h2>강의실</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>개발자가 직접 알려주는 PHP 강의실입니다.</p>
       </div>
     </div><!-- End Section Title -->
 
@@ -247,13 +247,13 @@
             </div>
 
           </section><!-- /Blog Posts Section -->
-
+          @if(auth()->user()->memberlevels>=10)
           <section>
             <div class="text-center">
               <button type="button" class="btn btn-primary">글작성</button>
             </div>
           </section>
-
+          @endif
           <!-- Blog Pagination Section -->
           <section id="blog-pagination" class="blog-pagination section">
 
