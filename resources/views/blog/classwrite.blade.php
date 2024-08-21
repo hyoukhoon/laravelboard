@@ -35,10 +35,10 @@
                 <form action="">
   
                   <h4>강의실에 강좌 올리기</h4>
-                  <p>좋은 글을 남깁니다.</p>
+                  <p style="float:right;">좋은 글을 남깁니다.</p>
                   <div class="row">
                     <div class="col form-group">
-                      <input name="website" type="text" class="form-control" placeholder="제목을 등록하세요.">
+                      <input name="website" type="text" class="form-control" placeholder="제목을 입력하세요.">
                     </div>
                   </div>
                   <div class="row">
