@@ -34,7 +34,7 @@
             <!-- Comment Form Section -->
             <section id="comment-form" class="comment-form section">
               <div class="container">
-                <form method="post" action="/classcreate" enctype="multipart/form-data"> 
+                <form method="post" action="/classcreate" enctype="multipart/form-data" style="padding-top:20px;"> 
                 <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
                 <input type="hidden" name="bid" id="bid" value="">
                 <input type="hidden" name="code" id="code" value="classroom"> 
