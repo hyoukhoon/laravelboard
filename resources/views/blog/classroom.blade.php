@@ -267,7 +267,7 @@
           <div class="widgets-container">
 
             <!-- Blog Author Widget 2 -->
-            <div class="blog-author-widget-2 widget-item">
+            {{-- <div class="blog-author-widget-2 widget-item">
 
               <div class="d-flex flex-column align-items-center">
                 <img src="/assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
@@ -284,7 +284,7 @@
                 </p>
 
               </div>
-            </div><!--/Blog Author Widget 2 -->
+            </div><!--/Blog Author Widget 2 --> --}}
 
             <!-- Search Widget -->
             <div class="search-widget widget-item">
