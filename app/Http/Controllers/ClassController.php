@@ -16,8 +16,13 @@ class ClassController extends Controller
         return view('blog.classview');
     }
 
-    public function logout(){
-        auth() -> logout();
-        return redirect() -> route('boards.index');
+    public function classwrite(){
+        if(Auth::user()->memberlevels<10){
+            return view('blog.classroom');
+        }else{
+            return view('blog.classwrite');
+        }
     }
+
 }
+?>

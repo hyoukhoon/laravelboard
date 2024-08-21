@@ -62,7 +62,7 @@
 
                       <hr>
 
-                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="/classview" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
@@ -132,7 +132,7 @@
 
                       <hr>
 
-                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="/classview" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
@@ -202,7 +202,7 @@
 
                       <hr>
 
-                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="/classview" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
@@ -252,7 +252,7 @@
           @if(auth()->user()->memberlevels>=10)
           <section>
             <div class="text-center">
-              <button type="button" class="btn btn-primary">글작성</button>
+              <a href="/classwrite"><button type="button" class="btn btn-primary">글작성</button></a>
             </div>
           </section>
           @endif
