@@ -9,14 +9,15 @@ Route::get('/', function () {
     return view('/blog/index');
 });
 
-Route::get('/classroom', function () {
-    return view('/blog/classroom');
-});
+//Classroom
+Route::get('/classroom', [ClassController::class, 'classroom'])->name('classroom.classroom');
+Route::get('/classroom/classview', [ClassController::class, 'classview'])->name('classroom.classview');
 
+
+//Admin
 Route::get('/adminarea/login', function () {
     return view('/adminarea/login');
 });
-
 Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
 Route::get('/adminarea/classroom', [AdminController::class, 'classroom'])->name('adminarea.classroom');
 

@@ -20,7 +20,8 @@
         <h2>강의실</h2>
         <p>개발자가 직접 알려주는 PHP 강의실입니다.</p>
       </div>
-    </div><!-- End Section Title -->
+    </div>
+    <!-- End Section Title -->
 
     <div class="container">
       <div class="row">
@@ -96,7 +97,7 @@
 
                       <hr>
 
-                      <a href="blog-details.html" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="/blod/classview" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
