@@ -247,6 +247,7 @@
             </div>
 
           </section><!-- /Blog Posts Section -->
+          @auth()
           @if(auth()->user()->memberlevels>=10)
           <section>
             <div class="text-center">
@@ -254,6 +255,7 @@
             </div>
           </section>
           @endif
+          @endauth
           <!-- Blog Pagination Section -->
           <section id="blog-pagination" class="blog-pagination section">
 
