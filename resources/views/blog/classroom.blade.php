@@ -1,7 +1,7 @@
 @extends('blog.layout')
 @section('content')
     <!-- Page Title -->
-    <div class="page-title position-relative">
+    {{-- <div class="page-title position-relative">
       <div class="container d-lg-flex justify-content-between align-items-center">
         <h1 class="mb-2 mb-lg-0">Category</h1>
         <nav class="breadcrumbs">
@@ -11,11 +11,11 @@
           </ol>
         </nav>
       </div>
-    </div>
+    </div> --}}
     <!-- End Page Title -->
 
     <!-- Section Title -->
-    <div class="container section-title" data-aos="fade-up">
+    <div class="container section-title" style="margin-bottom:0px;" data-aos="fade-up">
       <div class="section-title-container d-flex align-items-center justify-content-between">
         <h2>강의실</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
