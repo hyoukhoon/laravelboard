@@ -49,7 +49,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="/">메인</a></li>
-          <li><a href="#">강의실</a></li>
+          <li><a href="/classroom">강의실</a></li>
           <li><a href="#">QnA</a></li>
           {{-- <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
