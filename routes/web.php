@@ -9,6 +9,10 @@ Route::get('/', function () {
     return view('/blog/index');
 });
 
+Route::get('/classroom', function () {
+    return view('/blog/classroom');
+});
+
 Route::get('/adminarea/login', function () {
     return view('/adminarea/login');
 });
