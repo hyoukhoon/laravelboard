@@ -241,7 +241,9 @@
           </section><!-- /Blog Posts Section -->
 
           <section>
-            <button type="button" class="btn btn-primary"><i class="bi bi-star me-1"></i> 글작성</button>
+            <div class="text-center">
+              <button type="button" class="btn btn-primary">글작성</button>
+            </div>
           </section>
 
           <!-- Blog Pagination Section -->
