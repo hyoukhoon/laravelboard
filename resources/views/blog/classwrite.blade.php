@@ -32,9 +32,9 @@
             <section id="comment-form" class="comment-form section">
               <div class="container">
                 <form method="post" action="/classcreate" enctype="multipart/form-data"> 
-                <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
-                <input type="hidden" name="bid" id="bid" value="{{ $bid??0 }}">
-                <input type="hidden" name="code" id="code" value="boardattach"> 
+                <input type="hidden" name="pid" id="pid" value="">
+                <input type="hidden" name="bid" id="bid" value="">
+                <input type="hidden" name="code" id="code" value="classroom"> 
                   <h4>강의실에 강좌 올리기</h4>
                   <p style="float:right;">좋은 글을 남깁니다.</p>
                   <div class="row">
@@ -60,7 +60,7 @@
           </div>
   
           @include('blog.classroomside')
-          
+
       </div>
 <script>
     function sendsubmit(){
