@@ -12,7 +12,7 @@ Route::get('/', function () {
 
 //Classroom
 Route::get('/classroom', [ClassController::class, 'classroom'])->name('classroom.classroom');
-Route::get('/classroom/classview', [ClassController::class, 'classview'])->name('classroom.classview');
+Route::get('/classview', [ClassController::class, 'classview'])->name('classroom.classview');
 
 
 //Admin

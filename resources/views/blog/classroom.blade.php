@@ -97,7 +97,7 @@
 
                       <hr>
 
-                      <a href="/blod/classview" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="/classview" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
