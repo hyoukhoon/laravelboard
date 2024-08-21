@@ -34,16 +34,8 @@
   
                 <form action="">
   
-                  <h4>Post Comment</h4>
-                  <p>Your email address will not be published. Required fields are marked * </p>
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                    </div>
-                  </div>
+                  <h4>강의실에 강좌 올리기</h4>
+                  <p>좋은 글을 남깁니다.</p>
                   <div class="row">
                     <div class="col form-group">
                       <input name="website" type="text" class="form-control" placeholder="Your Website">
@@ -56,7 +48,7 @@
                   </div>
   
                   <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Post Comment</button>
+                    <button type="submit" class="btn btn-primary">등록</button>
                   </div>
   
                 </form>
