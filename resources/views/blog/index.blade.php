@@ -2,7 +2,7 @@
 @section('content')
 
     <!-- Slider Section -->
-    <section id="slider" class="slider section dark-background">
+    {{-- <section id="slider" class="slider section dark-background">
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
@@ -68,7 +68,7 @@
 
       </div>
 
-    </section><!-- /Slider Section -->
+    </section><!-- /Slider Section --> --}}
 
     <!-- Trending Category Section -->
     <section id="trending-category" class="trending-category section">
