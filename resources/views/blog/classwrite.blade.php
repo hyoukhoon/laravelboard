@@ -1,13 +1,8 @@
 @extends('blog.layout')
 @section('content')
 <?php
-        if($bid){
-            $pid=$bid;
-            $btitle = "수정";
-        }else{
-            $pid=time();
-            $btitle = "쓰기";
-        }
+
+        $pid=time();
     ?>
 <!-- Page Title -->
     {{-- <div class="page-title">
