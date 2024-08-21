@@ -1,6 +1,14 @@
 @extends('blog.layout')
 @section('content')
-
+<?php
+        if($bid){
+            $pid=$bid;
+            $btitle = "수정";
+        }else{
+            $pid=time();
+            $btitle = "쓰기";
+        }
+    ?>
 <!-- Page Title -->
     {{-- <div class="page-title">
         <div class="container d-lg-flex justify-content-between align-items-center">
@@ -32,7 +40,7 @@
             <section id="comment-form" class="comment-form section">
               <div class="container">
                 <form method="post" action="/classcreate" enctype="multipart/form-data"> 
-                <input type="hidden" name="pid" id="pid" value="">
+                <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
                 <input type="hidden" name="bid" id="bid" value="">
                 <input type="hidden" name="code" id="code" value="classroom"> 
                   <h4>강의실에 강좌 올리기</h4>
