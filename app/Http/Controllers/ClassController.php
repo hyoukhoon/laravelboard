@@ -48,7 +48,10 @@ class ClassController extends Controller
             exit;
         }
         $form_data = array(
+            'cate' => $request->cate,
             'subject' => $request->subject,
+            'tags' => $request->tags,
+            'shorts' => $request->shorts,
             'contents' => $request->content,
             'userid' => Auth::user()->email,
             'status' => 1
