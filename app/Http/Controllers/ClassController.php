@@ -13,8 +13,7 @@ class ClassController extends Controller
     public function classroom(){
         DB::enableQueryLog();
         $contents = DB::table('classrooms')
-                    ->leftJoinSub('select id,pid,filename from file_tables', 'f', 'f.id', 'select id from file_tables ff
-                    where ff.pid=classrooms.id and code=\'classroom\' and status=1 limit 1')
+                    ->leftJoinSub('select pid,filename from file_tables where code=\'classroom\' and status=1 group by pid', 'f', 'classrooms.id', 'f.pid')
                     ->select('classrooms.*', 'f.filename')
                     ->where('status',1)
                     ->orderBy('classrooms.id','desc')->paginate(20);
