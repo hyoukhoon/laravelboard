@@ -47,7 +47,6 @@ class ClassController extends Controller
         }
         
         $filename =  FileTables::where('pid',$request->pid)->where('status',1)->value('filename')??"";
-        echo "filename=>".$filename;
         $form_data = array(
             'cate' => $request->cate,
             'subject' => $request->subject,
