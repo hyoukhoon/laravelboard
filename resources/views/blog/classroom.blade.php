@@ -41,7 +41,7 @@
 
                     <div class="post-img position-relative overflow-hidden">
                       <a href="/classview/{{ $cs->id }}" class="readmore stretched-link">
-                      <img src="/images/{{ $cs->filename }}" class="img-fluid" alt=""></a>
+                      <img src="/images/{{ $cs->thumbnail }}" class="img-fluid" alt=""></a>
                       <span class="post-date">{{ disptime($cs->created_at) }}</span>
                     </div>
 
