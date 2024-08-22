@@ -34,7 +34,7 @@
   
                 <article class="article">
   
-                    <h2 class="title">{{ $cls->subject }}</h2>
+                    <h2 class="title" style="margin:0px;">{{ $cls->subject }}</h2>
   
                   <div class="meta-top">
                     <ul>
