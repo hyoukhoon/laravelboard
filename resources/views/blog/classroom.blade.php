@@ -40,7 +40,7 @@
                   <article class="position-relative h-100">
 
                     <div class="post-img position-relative overflow-hidden">
-                      <a href="/classview/{{ $cs->id }}" class="readmore stretched-link">
+                      <a href="/classview/{{ $cs->id }}/1" class="readmore stretched-link">
                       <img src="/images/{{ $cs->thumbnail }}" class="img-fluid" alt=""></a>
                       <span class="post-date">{{ disptime($cs->created_at) }}</span>
                     </div>
@@ -65,7 +65,7 @@
 
                       <hr>
 
-                      <a href="/classview/{{ $cs->id }}" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="/classview/{{ $cs->id }}/1" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
 
                     </div>
 
