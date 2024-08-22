@@ -13,7 +13,7 @@
             codeviewFilter: false,
             codeviewIframeFilter: true,
             lang: 'ko-KR',
-            height: 580,
+            height: 600,
             callbacks: {
                 onImageUpload: function (files) {//이미지등록
                     for(var i=0; i < files.length; i++) {
