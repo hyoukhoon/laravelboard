@@ -3,6 +3,7 @@
 <?php
 
         $pid=time();
+        $code="classroom";
     ?>
 <!-- Page Title -->
     {{-- <div class="page-title">
@@ -37,7 +38,7 @@
                 <form method="post" action="/classcreate" enctype="multipart/form-data" style="padding-top:20px;"> 
                 <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
                 <input type="hidden" name="bid" id="bid" value="">
-                <input type="hidden" name="code" id="code" value="classroom"> 
+                <input type="hidden" name="code" id="code" value="{{ $code }}"> 
                   <h4>강의실에 강좌 올리기</h4>
                   {{-- <p style="float:right;">좋은 글을 남깁니다.</p> --}}
                   <div class="row">
@@ -47,7 +48,7 @@
                   </div>
                   <div class="row">
                     <div class="col form-group">
-                        <iframe id="summerframe" src="{{ route('blog.summernote') }}" style="width:100%; height:600px; border:none" scrolling = "no"></iframe>
+                        <iframe id="summerframe" src="{{ route('blog.summernote',['code' => $code]) }}" style="width:100%; height:600px; border:none" scrolling = "no"></iframe>
                     </div>
                   </div>
   

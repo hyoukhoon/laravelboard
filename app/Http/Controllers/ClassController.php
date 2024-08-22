@@ -25,9 +25,9 @@ class ClassController extends Controller
         }
     }
 
-    public function summernote()
+    public function summernote($code)
     {
-        return view('blog.summernote');
+        return view('blog.summernote', ['code' => $code]);
     }
 
     public function create(Request $request)

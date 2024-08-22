@@ -29,7 +29,7 @@
         var pid = parent.$("#pid").val();
         var formData = new FormData();
         formData.append("file", file);
-        formData.append("code", "editorattach");
+        formData.append("code", "{{ $code }}");
         formData.append("pid", pid);
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
