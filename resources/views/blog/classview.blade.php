@@ -46,7 +46,7 @@
   
                   <div class="content">
                     
-                    {{ nl2br($cls->contents) }}
+                    {!! nl2br($cls->contents) !!}
   
                   </div><!-- End post content -->
   
