@@ -40,7 +40,7 @@
                     <ul>
                       <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="blog-details.html">{{ $cls->userid }}</a></li>
                       <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time>{{ $cls->created_at }}</time></a></li>
-                      <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">12 Comments</a></li>
+                      <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="blog-details.html">{{ $cls->cnt }} Comments</a></li>
                     </ul>
                   </div><!-- End meta top -->
   
