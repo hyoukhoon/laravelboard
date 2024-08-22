@@ -34,7 +34,7 @@ class ClassController extends Controller
     {
         $form_data = array(
             'subject' => $request->subject,
-            'content' => $request->content,
+            'contents' => $request->content,
             'userid' => Auth::user()->email,
             'status' => 1
         );
