@@ -30,7 +30,7 @@ class ClassController extends Controller
         return view('blog.summernote', ['code' => $code]);
     }
 
-    public function create(Request $request)
+    public function classcreate(Request $request)
     {
         $form_data = array(
             'subject' => $request->subject,
