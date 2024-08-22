@@ -30,7 +30,7 @@
       <div class="container">
         <div class="row">
   
-          <div class="col-lg-9">
+          <div class="col-lg-12">
   
             <!-- Comment Form Section -->
             <section id="comment-form" class="comment-form section">
@@ -63,7 +63,7 @@
   
           </div>
   
-          @include('blog.classroomside')
+          {{-- @include('blog.classroomside') --}}
 
       </div>
 <script>
