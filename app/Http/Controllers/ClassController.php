@@ -14,7 +14,7 @@ class ClassController extends Controller
         $contents = DB::table('classrooms')
                     ->join('file_tables', 'classrooms.id', '=', 'file_tables.pid')
                     ->select('classrooms.*', 'file_tables.filename')
-                    ->get();
+                    ->orderBy('id','desc')->paginate(20);
         return view('blog.classroom', ['contents' => $contents]);
     }
 

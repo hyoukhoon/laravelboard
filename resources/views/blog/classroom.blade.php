@@ -60,7 +60,7 @@
                       </div>
 
                       <p>
-                        Similique neque nam consequuntur ad non maxime aliquam quas. Quibusdam animi praesentium. Aliquam et laboriosam eius aut nostrum quidem aliquid dicta.
+                        {{ $cs->shorts }}
                       </p>
 
                       <hr>
