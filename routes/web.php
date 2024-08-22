@@ -14,7 +14,7 @@ Route::get('/', function () {
 Route::get('/classroom', [ClassController::class, 'classroom'])->name('classroom.classroom');
 Route::get('/classview', [ClassController::class, 'classview'])->name('classroom.classview');
 Route::get('/classwrite', [ClassController::class, 'classwrite'])->name('classroom.classwrite');
-Route::get('/classcreate', [ClassController::class, 'classcreate'])->name('classroom.classcreate');
+Route::post('/classcreate', [ClassController::class, 'classcreate'])->name('classroom.classcreate');
 Route::get('/blog/summernote', [ClassController::class, 'summernote'])->name('blog.summernote');
 
 
