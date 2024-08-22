@@ -34,6 +34,16 @@ class ClassController extends Controller
         }
     }
 
+    public function classmodify($id){
+        if(Auth::user()->memberlevels<10){
+            return view('blog.classroom');
+        }else{
+            $cls = Classrooms::findOrFail($id);
+            $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
+            return view('blog.classwrite', ['cls' => $cls, 'attaches' => $attaches]);
+        }
+    }
+
     public function summernote($code)
     {
         return view('blog.summernote', ['code' => $code]);
