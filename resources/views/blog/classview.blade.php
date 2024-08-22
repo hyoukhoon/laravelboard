@@ -68,6 +68,16 @@
   
               </div>
             </section><!-- /Blog Details Section -->
+
+            @auth()
+            @if(auth()->user()->memberlevels>=10)
+            <section>
+              <div class="text-center">
+                <a href="/classmodify/{{ $cls->id }}"><button type="button" class="btn btn-warning">수정</button></a>
+              </div>
+            </section>
+            @endif
+            @endauth
   
             <!-- Blog Comments Section -->
             <section id="blog-comments" class="blog-comments section">
