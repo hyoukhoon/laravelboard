@@ -45,12 +45,15 @@ class ClassController extends Controller
             return redirect()->back()->withErrors('권한이 없습니다.');
             exit;
         }
+        
+        $files =  FileTables::where('pid',$request->pid)->where('status',1)->first()??"";
         $form_data = array(
             'cate' => $request->cate,
             'subject' => $request->subject,
             'tags' => $request->tags,
             'shorts' => $request->shorts,
             'contents' => $request->content,
+            'thumbnail' => $files->filename,
             'userid' => Auth::user()->email,
             'status' => 1
         );
