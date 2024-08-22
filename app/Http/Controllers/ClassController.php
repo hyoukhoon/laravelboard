@@ -18,8 +18,14 @@ class ClassController extends Controller
         return view('blog.classroom', ['contents' => $contents]);
     }
 
-    public function classview(){
-        return view('blog.classview');
+    public function classview($id)
+    {
+        Classrooms::find($id)->increment('cnt');
+        $cls = Classrooms::findOrFail($id);
+        $cls->contents = htmlspecialchars_decode($cls->contents);
+        $cls->pagenumber = $page??1;
+        $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
+        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches]);
     }
 
     public function classwrite(){
