@@ -26,7 +26,7 @@
     <div class="container">
       <div class="row">
 
-        <div class="col-lg-8">
+        <div class="col-lg-9">
 
           <!-- Blog Posts Section -->
           <section id="blog-posts" class="blog-posts section">
