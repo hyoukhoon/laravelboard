@@ -18,7 +18,7 @@ class ClassController extends Controller
         return view('blog.classroom', ['contents' => $contents]);
     }
 
-    public function classview($id)
+    public function classview($id,$page)
     {
         Classrooms::find($id)->increment('cnt');
         $cls = Classrooms::findOrFail($id);
