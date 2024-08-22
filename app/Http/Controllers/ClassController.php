@@ -12,9 +12,9 @@ class ClassController extends Controller
 {
     public function classroom(){
         $contents = DB::table('classrooms')
-                    ->join('file_tables', 'classrooms.id', '=', 'file_tables.pid')
+                    ->leftJoinSub('select pid,filename from file_tables where code=\'classrooms\' and status=1', 'f', 'classrooms.id', 'f.pid')
                     ->select('classrooms.*', 'file_tables.filename')
-                    ->orderBy('id','desc')->paginate(20);
+                    ->orderBy('classrooms.id','desc')->paginate(20);
         return view('blog.classroom', ['contents' => $contents]);
     }
 
