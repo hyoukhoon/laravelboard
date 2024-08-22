@@ -11,13 +11,8 @@ use Illuminate\Support\Facades\Validator;
 class ClassController extends Controller
 {
     public function classroom(){
-        DB::enableQueryLog();
-        $contents = DB::table('classrooms')
-                    ->leftJoinSub('select pid,filename from file_tables where code=\'classroom\' and status=1 group by pid', 'f', 'classrooms.id', 'f.pid')
-                    ->select('classrooms.*', 'f.filename')
-                    ->where('status',1)
-                    ->orderBy('classrooms.id','desc')->paginate(20);
-        print_r(DB::getQueryLog());                    
+        $contents = Classrooms::where('status',1)
+                    ->orderBy('id','desc')->paginate(20);
         return view('blog.classroom', ['contents' => $contents]);
     }
 
