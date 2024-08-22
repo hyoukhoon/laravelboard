@@ -92,11 +92,17 @@
         var content=$('#summerframe').get(0).contentWindow.$('#summernote').summernote('code');//iframe에 있는 값을 가져온다
         var pid = $("#pid").val();
         var code = $("#code").val();
+        var tags = $("#tags").val();
+        var shorts = $("#shorts").val();
+        var cate = $("#cate option:selected").val();
         var data = {
             subject : subject,
             content : content,
             pid : pid,
-            code : code
+            code : code,
+            tags : tags,
+            shorts : shorts,
+            cate : cate
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
