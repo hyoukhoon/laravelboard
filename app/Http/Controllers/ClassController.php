@@ -46,17 +46,14 @@ class ClassController extends Controller
             exit;
         }
         
-        $files =  FileTables::where('pid',$request->pid)->where('status',1)->get()??"";
-        print_r($files);
-        echo "filename=>".$files->filename;
-        exit;
+        $filename =  FileTables::where('pid',$request->pid)->where('status',1)->value('filename')??"";
         $form_data = array(
             'cate' => $request->cate,
             'subject' => $request->subject,
             'tags' => $request->tags,
             'shorts' => $request->shorts,
             'contents' => $request->content,
-            'thumbnail' => $files->filename,
+            'thumbnail' => $filename,
             'userid' => Auth::user()->email,
             'status' => 1
         );
