@@ -47,6 +47,8 @@ class ClassController extends Controller
         }
         
         $files =  FileTables::where('pid',$request->pid)->where('status',1)->first()??"";
+        print_r($files);
+        exit;
         $form_data = array(
             'cate' => $request->cate,
             'subject' => $request->subject,
