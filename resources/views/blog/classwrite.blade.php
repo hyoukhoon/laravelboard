@@ -130,11 +130,11 @@
         var subject=$("#subject").val();
         //var content=$("#content").val();
         var content=$('#summerframe').get(0).contentWindow.$('#summernote').summernote('code');//iframe에 있는 값을 가져온다
-        var bid='{{ $bid }}';
+        var id='{{ $id }}';
         var data = {
             subject : subject,
             content : content,
-            bid : bid
+            id : id
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
@@ -144,7 +144,7 @@
             enctype: 'multipart/form-data',
             data: data,
             success: function(data) {
-                location.href='/boards/show/'+data.bid+'/1';
+                location.href='/boards/show/'+data.id+'/1';
             },
             error: function(data) {
                 console.log("error" +data);
