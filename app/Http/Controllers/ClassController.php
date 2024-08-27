@@ -12,7 +12,7 @@ class ClassController extends Controller
 {
     public function classroom(){
         $contents = Classrooms::where('status',1)
-                    ->orderBy('id','desc')->paginate(20);
+                    ->orderBy('id','desc')->paginate(10);
         return view('blog.classroom', ['contents' => $contents]);
     }
 
@@ -109,6 +109,21 @@ class ClassController extends Controller
             }else{
                 return response()->json(array('msg'=> "fail", 200));
             }
+        }
+    }
+
+    public function classdelete($id){
+        if(Auth::user()->memberlevels<10){
+            return view('blog.classroom');
+        }else{
+            $cls = Classrooms::findOrFail($id);
+            $attaches = FileTables::where('pid',$id)->where('status',1)->where('code','classroom')->orderBy('id','asc')->get();
+            foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
+                unlink(public_path('images')."/".$att->filename);
+                FileTables::where('id', $att->id)->update(array('status' => 0));
+            }
+            $cls->delete();
+            return redirect('/classroom');
         }
     }
 

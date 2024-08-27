@@ -73,7 +73,8 @@
             @if(auth()->user()->memberlevels>=10)
             <section>
               <div class="text-center">
-                <a href="/classmodify/{{ $cls->id }}"><button type="button" class="btn btn-warning">수정</button></a>
+                <a href="/classmodify/{{ $cls->id }}"><button type="button" class="btn btn-warning">수정</button></a>&nbsp;
+                <a href="/classdelete/{{ $cls->id }}"><button type="button" class="btn btn-danger">삭제</button></a>
               </div>
             </section>
             @endif
