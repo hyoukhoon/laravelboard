@@ -118,7 +118,7 @@
             enctype: 'multipart/form-data',
             data: data,
             success: function(data) {
-                location.href='/classview/'+data.bid+'/1';
+                location.href='/classview/'+data.id+'/1';
             },
             error: function(data) {
                 console.log("error" +data);
@@ -131,20 +131,29 @@
         //var content=$("#content").val();
         var content=$('#summerframe').get(0).contentWindow.$('#summernote').summernote('code');//iframe에 있는 값을 가져온다
         var id='{{ $id }}';
+        var code = $("#code").val();
+        var tags = $("#tags").val();
+        var shorts = $("#shorts").val();
+        var cate = $("#cate option:selected").val();
         var data = {
             subject : subject,
             content : content,
-            id : id
+            id : id,
+            code : code,
+            tags : tags,
+            shorts : shorts,
+            cate : cate
+
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'post',
-            url: '{{ route('boards.update') }}',
+            url: '{{ route('classroom.classupdate') }}',
             dataType: 'json',
             enctype: 'multipart/form-data',
             data: data,
             success: function(data) {
-                location.href='/boards/show/'+data.id+'/1';
+                location.href='/classview/'+data.id+'/1';
             },
             error: function(data) {
                 console.log("error" +data);
