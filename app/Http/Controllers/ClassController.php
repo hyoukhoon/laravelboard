@@ -44,9 +44,10 @@ class ClassController extends Controller
         }
     }
 
-    public function summernote($code, $id)
+    public function summernote($code, $id = null)
     {
-        $cls = Classrooms::findOrFail($id);
+        $cls = array();
+        if($id)$cls = Classrooms::findOrFail($id);
         return view('blog.summernote', ['code' => $code, 'cls' => $cls]);
     }
 
