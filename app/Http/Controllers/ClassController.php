@@ -30,7 +30,7 @@ class ClassController extends Controller
         if(Auth::user()->memberlevels<10){
             return view('blog.classroom');
         }else{
-            return view('blog.classwrite');
+            return view('blog.classwrite', ['id' => 0]);
         }
     }
 
