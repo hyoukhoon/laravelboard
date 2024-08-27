@@ -78,28 +78,32 @@ class ClassController extends Controller
 
     public function classupdate(Request $request)
     {
-        $filename =  FileTables::where('pid',$request->id)->where('status',1)->value('filename')??"";
-        $form_data = array(
-            'cate' => $request->cate,
-            'subject' => $request->subject,
-            'tags' => $request->tags,
-            'shorts' => $request->shorts,
-            'contents' => $request->content,
-            'thumbnail' => $filename,
-            'userid' => Auth::user()->email,
-            'status' => 1
-        );
 
         if(auth()->check()){
+            $filename = "";
             $cls = Classrooms::findOrFail($request->id);
             if(Auth::user()->email==$cls->userid){
-                $attaches = FileTables::where('pid',$request->id)->where('status',1)->where('code','classroom')->get();
+
+                $attaches = FileTables::where('pid',$request->id)->where('status',1)->where('code','classroom')->orderBy('id','asc')->get();
                 foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
                     if(!strpos($request->content, $att->filename)){
                         unlink(public_path('images')."/".$att->filename);
                         FileTables::where('id', $att->id)->update(array('status' => 0));
+                    }else{
+                        if(!$filename)$filename = $att->filename;
                     }
                 }
+
+                $form_data = array(
+                    'cate' => $request->cate,
+                    'subject' => $request->subject,
+                    'tags' => $request->tags,
+                    'shorts' => $request->shorts,
+                    'contents' => $request->content,
+                    'thumbnail' => $filename,
+                    'userid' => Auth::user()->email,
+                    'status' => 1
+                );
                 Classrooms::where('id', $request->id)->update($form_data);
                 return response()->json(array('msg'=> "succ", 'id'=>$request->id), 200);
             }else{
