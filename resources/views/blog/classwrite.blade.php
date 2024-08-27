@@ -78,7 +78,11 @@
                   </div>
   
                   <div class="text-center">
+                    @if($id)
+                    <button type="button" class="btn btn-primary" onclick="updatesubmit()">{{ $btitle }}</button>
+                    @else
                     <button type="button" class="btn btn-primary" onclick="sendsubmit()">{{ $btitle }}</button>
+                    @endif
                   </div>
   
                 </form>
