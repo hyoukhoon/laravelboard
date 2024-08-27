@@ -30,12 +30,7 @@ class ClassController extends Controller
         if(Auth::user()->memberlevels<10){
             return view('blog.classroom');
         }else{
-            $clsarray=array(
-                'cate' => "",
-                'subject' => "",
-                'tags' => "",
-                'shorts' => "");
-            return view('blog.classwrite', ['id' => 0, 'cls' => $clsarray]);
+            return view('blog.classwrite', ['id' => 0]);
         }
     }
 
@@ -45,7 +40,7 @@ class ClassController extends Controller
         }else{
             $cls = Classrooms::findOrFail($id);
             $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
-            return view('blog.classwrite', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches]);
+            return view('blog.classmodify', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches]);
         }
     }
 

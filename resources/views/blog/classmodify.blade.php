@@ -50,30 +50,30 @@
                   <div class="row">
                     <div class="col form-group">
                       <select class="form-select" name="cate" id="cate" aria-label="Default select example">
-                        <option value="1">인터넷 기초부터 시작하는 PHP 프로그래밍</option>
-                        <option value="2">html부터 시작하는 PHP 프로그래밍</option>
-                        <option value="3">쉽고 재밌게 시작하는 PHP 프로그래밍</option>
+                        <option value="1" <?php if($cls->cate==1){echo "selected";}?>>인터넷 기초부터 시작하는 PHP 프로그래밍</option>
+                        <option value="2" <?php if($cls->cate==2){echo "selected";}?>>html부터 시작하는 PHP 프로그래밍</option>
+                        <option value="3" <?php if($cls->cate==3){echo "selected";}?>>쉽고 재밌게 시작하는 PHP 프로그래밍</option>
                       </select>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col form-group">
-                      <input name="subject" id="subject" type="text" class="form-control" placeholder="제목을 입력하세요." value="">
+                      <input name="subject" id="subject" type="text" class="form-control" placeholder="제목을 입력하세요." value="{{ $cls->subject }}">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col form-group">
-                      <input name="tags" id="tags" type="text" class="form-control" placeholder="태그를 ,로 구분해서 입력하세요." value="">
+                      <input name="tags" id="tags" type="text" class="form-control" placeholder="태그를 ,로 구분해서 입력하세요." value="{{ $cls->tags }}">
                     </div>
                   </div>
                   <div class="row">
                     <div class="col form-group">
-                      <textarea name="shorts" id="shorts" class="form-control" placeholder="간단한 설명글을 입력해주세요.리스트에 표시됩니다."></textarea>
+                      <textarea name="shorts" id="shorts" class="form-control" placeholder="간단한 설명글을 입력해주세요.리스트에 표시됩니다.">{{ $cls->shorts }}</textarea>
                     </div>
                   </div>
                   <div class="row">
                     <div class="col form-group">
-                        <iframe id="summerframe" src="{{ route('blog.summernote',['code' => $code]) }}" style="width:100%; height:700px; border:none" scrolling = "no"></iframe>
+                        <iframe id="summerframe" src="{{ route('blog.summernote',['code' => $code, 'id' => $id]) }}" style="width:100%; height:700px; border:none" scrolling = "no"></iframe>
                     </div>
                   </div>
   
