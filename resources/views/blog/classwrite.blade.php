@@ -73,7 +73,7 @@
                   </div>
                   <div class="row">
                     <div class="col form-group">
-                        <iframe id="summerframe" src="{{ route('blog.summernote',['code' => $code]) }}" style="width:100%; height:700px; border:none" scrolling = "no"></iframe>
+                        <iframe id="summerframe" src="{{ route('blog.summernote',['code' => $code, 'id' => $id]) }}" style="width:100%; height:700px; border:none" scrolling = "no"></iframe>
                     </div>
                   </div>
   
