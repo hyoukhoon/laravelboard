@@ -30,7 +30,12 @@ class ClassController extends Controller
         if(Auth::user()->memberlevels<10){
             return view('blog.classroom');
         }else{
-            return view('blog.classwrite', ['id' => 0, 'cls' => array(), 'attaches' => array()]);
+            $clsarray=array(
+                'cate' => "",
+                'subject' => "",
+                'tags' => "",
+                'shorts' => "");
+            return view('blog.classwrite', ['id' => 0, 'cls' => array()]);
         }
     }
 
