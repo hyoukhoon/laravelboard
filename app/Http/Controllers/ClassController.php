@@ -35,7 +35,7 @@ class ClassController extends Controller
                 'subject' => "",
                 'tags' => "",
                 'shorts' => "");
-            return view('blog.classwrite', ['id' => 0, 'cls' => array()]);
+            return view('blog.classwrite', ['id' => 0, 'cls' => $clsarray]);
         }
     }
 
