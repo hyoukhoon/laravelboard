@@ -2,7 +2,13 @@
 @section('content')
 <?php
 
-        $pid=time();
+        if($id){
+            $pid=$id;
+            $btitle = "수정";
+        }else{
+            $pid=time();
+            $btitle = "쓰기";
+        }
         $code="classroom";
     ?>
 <!-- Page Title -->
@@ -37,16 +43,16 @@
               <div class="container">
                 <form method="post" action="/classcreate" enctype="multipart/form-data" style="padding-top:20px;"> 
                 <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
-                <input type="hidden" name="bid" id="bid" value="">
+                <input type="hidden" name="id" id="bid" value="{{ $id }}">
                 <input type="hidden" name="code" id="code" value="{{ $code }}"> 
                   <h4>강의실에 강좌 올리기</h4>
                   {{-- <p style="float:right;">좋은 글을 남깁니다.</p> --}}
                   <div class="row">
                     <div class="col form-group">
                       <select class="form-select" name="cate" id="cate" aria-label="Default select example">
-                        <option value="1">인터넷 기초부터 시작하는 PHP 프로그래밍</option>
-                        <option value="2">html부터 시작하는 PHP 프로그래밍</option>
-                        <option value="3">쉽고 재밌게 시작하는 PHP 프로그래밍</option>
+                        <option value="1" <?php if($cls->cate==1){echo "selected";}?>>인터넷 기초부터 시작하는 PHP 프로그래밍</option>
+                        <option value="2" <?php if($cls->cate==2){echo "selected";}?>>html부터 시작하는 PHP 프로그래밍</option>
+                        <option value="3" <?php if($cls->cate==3){echo "selected";}?>>쉽고 재밌게 시작하는 PHP 프로그래밍</option>
                       </select>
                     </div>
                   </div>
@@ -67,12 +73,12 @@
                   </div>
                   <div class="row">
                     <div class="col form-group">
-                        <iframe id="summerframe" src="{{ route('blog.summernote',['code' => $code]) }}" style="width:100%; height:700px; border:none" scrolling = "no"></iframe>
+                        <iframe id="summerframe" src="{{ route('blog.summernote',['code' => $code, 'id' => $id]) }}" style="width:100%; height:700px; border:none" scrolling = "no"></iframe>
                     </div>
                   </div>
   
                   <div class="text-center">
-                    <button type="button" class="btn btn-primary" onclick="sendsubmit()">등록</button>
+                    <button type="button" class="btn btn-primary" onclick="sendsubmit()">{{ $btitle }}</button>
                   </div>
   
                 </form>
@@ -113,6 +119,32 @@
             data: data,
             success: function(data) {
                 location.href='/classview/'+data.bid+'/1';
+            },
+            error: function(data) {
+                console.log("error" +data);
+            }
+        });
+    }
+
+    function updatesubmit(){
+        var subject=$("#subject").val();
+        //var content=$("#content").val();
+        var content=$('#summerframe').get(0).contentWindow.$('#summernote').summernote('code');//iframe에 있는 값을 가져온다
+        var bid='{{ $bid }}';
+        var data = {
+            subject : subject,
+            content : content,
+            bid : bid
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('boards.update') }}',
+            dataType: 'json',
+            enctype: 'multipart/form-data',
+            data: data,
+            success: function(data) {
+                location.href='/boards/show/'+data.bid+'/1';
             },
             error: function(data) {
                 console.log("error" +data);

@@ -40,13 +40,14 @@ class ClassController extends Controller
         }else{
             $cls = Classrooms::findOrFail($id);
             $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
-            return view('blog.classwrite', ['cls' => $cls, 'attaches' => $attaches]);
+            return view('blog.classwrite', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches]);
         }
     }
 
-    public function summernote($code)
+    public function summernote($code, $id)
     {
-        return view('blog.summernote', ['code' => $code]);
+        $cls = Classrooms::findOrFail($id);
+        return view('blog.summernote', ['code' => $code, 'cls' => $cls]);
     }
 
     public function classcreate(Request $request)

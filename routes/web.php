@@ -16,7 +16,7 @@ Route::get('/classview/{id}/{page}', [ClassController::class, 'classview'])->nam
 Route::get('/classwrite', [ClassController::class, 'classwrite'])->name('classroom.classwrite');
 Route::get('/classmodify/{id}', [ClassController::class, 'classmodify'])->name('classroom.classwrite');
 Route::post('/classcreate', [ClassController::class, 'classcreate'])->name('classroom.classcreate');
-Route::get('/blog/summernote/{code}', [ClassController::class, 'summernote'])->name('blog.summernote');
+Route::get('/blog/summernote/{code}/{id}', [ClassController::class, 'summernote'])->name('blog.summernote');
 
 
 //Admin
