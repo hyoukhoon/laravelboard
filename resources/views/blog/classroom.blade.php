@@ -51,11 +51,11 @@
 
                       <div class="meta d-flex align-items-center">
                         <div class="d-flex align-items-center">
-                          <i class="bi bi-person"></i> <span class="ps-2">{{ $cs->userid }}</span>
+                          <i class="bi bi-person"></i> <span class="ps-2">{{ $cs->username }}</span>
                         </div>
                         <span class="px-3 text-black-50">/</span>
                         <div class="d-flex align-items-center">
-                          <i class="bi bi-folder2"></i> <span class="ps-2">Politics</span>
+                          <i class="bi bi-folder2"></i> <span class="ps-2">PHP기초</span>
                         </div>
                       </div>
 
@@ -63,9 +63,9 @@
                         {{ $cs->shorts }}
                       </p>
 
-                      <hr>
+                      {{-- <hr>
 
-                      <a href="/classview/{{ $cs->id }}/1" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+                      <a href="/classview/{{ $cs->id }}/1" class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a> --}}
 
                     </div>
 

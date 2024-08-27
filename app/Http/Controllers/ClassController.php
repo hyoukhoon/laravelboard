@@ -102,6 +102,7 @@ class ClassController extends Controller
                     'contents' => $request->content,
                     'thumbnail' => $filename,
                     'userid' => Auth::user()->email,
+                    'username' => Auth::user()->username,
                     'status' => 1
                 );
                 Classrooms::where('id', $request->id)->update($form_data);
