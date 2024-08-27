@@ -46,9 +46,9 @@
                     </div>
 
                     <div class="post-content d-flex flex-column">
-
+                      <a href="/classview/{{ $cs->id }}/1" class="readmore stretched-link">
                       <h3 class="post-title">{{ $cs->subject }}</h3>
-
+                      </a>
                       <div class="meta d-flex align-items-center">
                         <div class="d-flex align-items-center">
                           <i class="bi bi-person"></i> <span class="ps-2">{{ $cs->username }}</span>
@@ -60,7 +60,9 @@
                       </div>
 
                       <p>
+                        <a href="/classview/{{ $cs->id }}/1" class="readmore stretched-link">
                         {{ $cs->shorts }}
+                        </a>
                       </p>
 
                       {{-- <hr>
