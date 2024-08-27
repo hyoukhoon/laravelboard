@@ -78,6 +78,7 @@ class ClassController extends Controller
 
     public function classupdate(Request $request)
     {
+        $filename =  FileTables::where('pid',$request->id)->where('status',1)->value('filename')??"";
         $form_data = array(
             'cate' => $request->cate,
             'subject' => $request->subject,
