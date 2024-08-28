@@ -55,7 +55,7 @@
                         </div>
                         <span class="px-3 text-black-50">/</span>
                         <div class="d-flex align-items-center">
-                          <i class="bi bi-folder2"></i> <span class="ps-2">PHP기초</span>
+                          <i class="bi bi-folder2"></i> <span class="ps-2">{{ cateis($cs->cate) }}</span>
                         </div>
                       </div>
 

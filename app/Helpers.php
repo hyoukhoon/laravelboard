@@ -49,4 +49,9 @@ function dispattach($bid){
     }
 }
 
+function cateis($code){
+    $cates = DB::table('categories')->where('code', $code)->first();
+    return $cates->name;
+}
+
 ?>
