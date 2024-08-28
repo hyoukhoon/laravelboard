@@ -112,7 +112,7 @@
 
         </div>
 
-        @include('blog.classroomside')
+        @include('blog.classroomside', ['cates' => $cates])
 
       </div>
     </div>

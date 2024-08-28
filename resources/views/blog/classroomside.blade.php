@@ -30,7 +30,9 @@
           <input type="text">
           <button type="submit" title="Search"><i class="bi bi-search"></i></button>
         </form>
-
+        @foreach ($cates as $c)
+          <li>{{ $c->name }}</li>
+        @endforeach
       </div><!--/Search Widget -->
 
       <!-- Recent Posts Widget -->

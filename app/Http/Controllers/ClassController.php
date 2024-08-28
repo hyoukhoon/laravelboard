@@ -13,7 +13,8 @@ class ClassController extends Controller
     public function classroom(){
         $contents = Classrooms::where('status',1)
                     ->orderBy('id','desc')->paginate(10);
-        return view('blog.classroom', ['contents' => $contents]);
+        $cates = DB::table('categories')->get();
+        return view('blog.classroom', ['contents' => $contents, 'cates' => $cates]);
     }
 
     public function classview($id,$page)
