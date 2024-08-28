@@ -50,9 +50,9 @@
                   <div class="row">
                     <div class="col form-group">
                       <select class="form-select" name="cate" id="cate" aria-label="Default select example">
-                        <option value="1" <?php if($cls->cate==1){echo "selected";}?>>인터넷 기초부터 시작하는 PHP 프로그래밍</option>
-                        <option value="2" <?php if($cls->cate==2){echo "selected";}?>>html부터 시작하는 PHP 프로그래밍</option>
-                        <option value="3" <?php if($cls->cate==3){echo "selected";}?>>쉽고 재밌게 시작하는 PHP 프로그래밍</option>
+                        @foreach ($cates as $c)
+                        <option value="{{ $c->code }}" <?php if($cls->cate==$c->code){echo "selected";}?>>{{ $c->name }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
