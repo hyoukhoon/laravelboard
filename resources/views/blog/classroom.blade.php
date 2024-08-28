@@ -95,7 +95,7 @@
 
             <div class="container">
               <div class="d-flex justify-content-center">
-                {!! $boards->withQueryString()->links() !!}
+                {!! $contents->withQueryString()->links() !!}
               </div>
             </div>
 
