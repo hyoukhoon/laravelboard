@@ -24,14 +24,16 @@ class ClassController extends Controller
         $cls->contents = htmlspecialchars_decode($cls->contents);
         $cls->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
-        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches]);
+        $cates = DB::table('categories')->get();
+        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches, 'cates' => $cates]);
     }
 
     public function classwrite(){
         if(Auth::user()->memberlevels<10){
             return view('blog.classroom');
         }else{
-            return view('blog.classwrite', ['id' => 0]);
+            $cates = DB::table('categories')->get();
+            return view('blog.classwrite', ['id' => 0, 'cates' => $cates]);
         }
     }
 
@@ -41,7 +43,8 @@ class ClassController extends Controller
         }else{
             $cls = Classrooms::findOrFail($id);
             $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
-            return view('blog.classmodify', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches]);
+            $cates = DB::table('categories')->get();
+            return view('blog.classmodify', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches, 'cates' => $cates]);
         }
     }
 
