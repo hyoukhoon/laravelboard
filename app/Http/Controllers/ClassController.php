@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Classrooms;
 use App\Models\FileTables;
+use App\Models\Memos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -130,6 +131,31 @@ class ClassController extends Controller
             }
             $cls->delete();
             return redirect('/classroom');
+        }
+    }
+
+    public function memoup(Request $request)
+    {
+        $form_data = array(
+            'memo' => $request->memo,
+            'bid' => $request->id,
+            'pid' => $request->pid??null,
+            'userid' => Auth::user()->userid
+        );
+
+        if(auth()->check()){
+            $rs=Memos::create($form_data);
+            if($rs){
+                Classrooms::find($request->id)->increment('memo_cnt');//부모글의 댓글 갯수 업데이트
+                Classrooms::where('bid', $request->id)->update([//부모글의 댓글 날짜 업데이트
+                    'memo_date' => date('Y-m-d H:i:s')
+                ]);
+                if($request->memo_file){
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','memoattach')->update(array('pid' => $rs->id));
+                }
+            }
+
+            return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
         }
     }
 
