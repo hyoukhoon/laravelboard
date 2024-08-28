@@ -80,7 +80,7 @@
             @endif
             @endauth
   
-            <!-- Blog Comments Section -->
+            <!-- 댓글 리스트 부분 -->
             <section id="blog-comments" class="blog-comments section">
   
               <div class="container">
@@ -89,7 +89,7 @@
   
               </div>
   
-            </section><!-- /Blog Comments Section -->
+            </section><!-- /댓글 리스트 부분 -->
   
             <!-- Comment Form Section -->
             <section id="comment-form" class="comment-form section">
