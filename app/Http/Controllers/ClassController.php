@@ -12,7 +12,7 @@ class ClassController extends Controller
 {
     public function classroom(){
         $contents = Classrooms::where('status',1)
-                    ->orderBy('id','desc')->paginate(10);
+                    ->orderBy('id','desc')->paginate(2);
         $cates = DB::table('categories')->get();
         return view('blog.classroom', ['contents' => $contents, 'cates' => $cates]);
     }
