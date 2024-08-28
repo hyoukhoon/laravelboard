@@ -50,9 +50,9 @@
                   <div class="row">
                     <div class="col form-group">
                       <select class="form-select" name="cate" id="cate" aria-label="Default select example">
-                        <option value="1">인터넷 기초부터 시작하는 PHP 프로그래밍</option>
-                        <option value="2">html부터 시작하는 PHP 프로그래밍</option>
-                        <option value="3">쉽고 재밌게 시작하는 PHP 프로그래밍</option>
+                        @foreach ($cates as $c)
+                        <option value="{{ $c->code }}">{{ $c->name }}</option>
+                        @endforeach
                       </select>
                     </div>
                   </div>
