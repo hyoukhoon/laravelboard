@@ -85,6 +85,16 @@
   
               <div class="container">
   
+                
+  
+              </div>
+  
+            </section><!-- /Blog Comments Section -->
+  
+            <!-- Comment Form Section -->
+            <section id="comment-form" class="comment-form section">
+              <div class="container">
+  
                 <div class="input-group" id="firstmemo" style="margin-top:10px;margin-bottom:10px;">
                   <span class="input-group-text" id="memo_image_view" style="display:none;"></span>
                   <button type="button" id="attmemoimg" class="btn btn-secondary">이미지첨부</button>
@@ -99,43 +109,6 @@
                           <button type="button" class="btn btn-secondary" style="float:right;" id="memo_submit" onclick="alert('로그인 하셔야 입력할 수 있습니다.');">입력</button>
                       @endauth
                 </div>
-  
-              </div>
-  
-            </section><!-- /Blog Comments Section -->
-  
-            <!-- Comment Form Section -->
-            <section id="comment-form" class="comment-form section">
-              <div class="container">
-  
-                <form action="">
-  
-                  <h4>Post Comment</h4>
-                  <p>Your email address will not be published. Required fields are marked * </p>
-                  <div class="row">
-                    <div class="col-md-6 form-group">
-                      <input name="name" type="text" class="form-control" placeholder="Your Name*">
-                    </div>
-                    <div class="col-md-6 form-group">
-                      <input name="email" type="text" class="form-control" placeholder="Your Email*">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <input name="website" type="text" class="form-control" placeholder="Your Website">
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col form-group">
-                      <textarea name="comment" class="form-control" placeholder="Your Comment*"></textarea>
-                    </div>
-                  </div>
-  
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Post Comment</button>
-                  </div>
-  
-                </form>
   
               </div>
             </section><!-- /Comment Form Section -->
