@@ -258,7 +258,7 @@
         var formData = new FormData();
         formData.append("file", file);
         formData.append("pid", memopid);
-        formData.append("code", "memoattach");
+        formData.append("code", "classmemo");
         formData.append("modimemoid", modimemoid);
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},

@@ -27,7 +27,7 @@ class ClassController extends Controller
         $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
         $cates = DB::table('categories')->get();
         $memos = DB::table('memos')
-                ->leftJoinSub('select pid, filename from file_tables where code=\'classroom\' and status=1', 'f', 'memos.id', 'f.pid')
+                ->leftJoinSub('select pid, filename from file_tables where code=\'classmemo\' and status=1', 'f', 'memos.id', 'f.pid')
                 ->select('memos.*', 'f.filename')
                 ->where('memos.code', 'classroom')->where('memos.bid', $id)->where('memos.status',1)
                 ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
