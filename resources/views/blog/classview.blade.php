@@ -335,7 +335,7 @@
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'post',
-                url: '{{ route('boards.memomodifyup') }}',
+                url: '{{ route('classroom.memomodifyup') }}',
                 dataType: 'json',
                 data: data,
                 success: function(data) {

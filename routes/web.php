@@ -22,6 +22,7 @@ Route::get('/blog/summernote/{code}/{id?}', [ClassController::class, 'summernote
 Route::post('/classroom/memoup', [ClassController::class, 'memoup'])->name('classroom.memoup');
 Route::post('/classroom/memodelete', [ClassController::class, 'memodelete'])->name('classroom.memodelete');
 Route::post('/classroom/memomodi', [ClassController::class, 'memomodi'])->name('classroom.memomodi');
+Route::post('/classroom/memomodifyup', [ClassController::class, 'memomodifyup'])->name('classroom.memomodifyup');
 
 //Admin
 Route::get('/adminarea/login', function () {
