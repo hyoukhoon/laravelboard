@@ -26,7 +26,14 @@ class ClassController extends Controller
         $cls->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
         $cates = DB::table('categories')->get();
-        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches, 'cates' => $cates]);
+        $memos = DB::table('memos')
+                ->leftJoinSub('select pid, filename from file_tables where code=\'classroom\' and status=1', 'f', 'memos.id', 'f.pid')
+                ->select('memos.*', 'f.filename')
+                ->where('memos.code', 'classroom')->where('memos.bid', $id)->where('memos.status',1)
+                ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
+                ->orderBy('memos.id', 'asc')
+                ->get();
+        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches, 'cates' => $cates, 'memos' => $memos]);
     }
 
     public function classwrite(){
