@@ -138,6 +138,7 @@ class ClassController extends Controller
     {
         $form_data = array(
             'memo' => $request->memo,
+            'code' => 'classrooms',
             'bid' => $request->id,
             'pid' => $request->pid??null,
             'userid' => Auth::user()->userid
@@ -146,8 +147,8 @@ class ClassController extends Controller
         if(auth()->check()){
             $rs=Memos::create($form_data);
             if($rs){
-                Classrooms::find($request->id)->increment('memo_cnt');//부모글의 댓글 갯수 업데이트
-                Classrooms::where('bid', $request->id)->update([//부모글의 댓글 날짜 업데이트
+                Classrooms::find($request->id)->increment('memo_cnt');
+                Classrooms::where('id', $request->id)->update([
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
