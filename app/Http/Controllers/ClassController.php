@@ -197,5 +197,21 @@ class ClassController extends Controller
         }
     }
 
+    public function memomodi(Request $request)
+    {
+        $memos = Memos::findOrFail($request->memoid);
+        if(Auth::user()->userid==$memos->userid){
+            $attaches = FileTables::where('pid',$memos->id)->where('code','classmemo')->where('status',1)->first();
+            if($attaches){
+                $attfile=true;
+            }else{
+                $attfile=false;
+            }
+            return response()->json(array('msg'=> "succ", 'memos'=>$memos, 'att'=>$attaches, 'attfile'=>$attfile), 200);
+        }else{
+            return response()->json(array('msg'=> "fail"), 200);
+        }
+    }
+
 }
 ?>

@@ -21,6 +21,7 @@ Route::get('/classdelete/{id}', [ClassController::class, 'classdelete'])->name('
 Route::get('/blog/summernote/{code}/{id?}', [ClassController::class, 'summernote'])->name('blog.summernote');
 Route::post('/classroom/memoup', [ClassController::class, 'memoup'])->name('classroom.memoup');
 Route::post('/classroom/memodelete', [ClassController::class, 'memodelete'])->name('classroom.memodelete');
+Route::post('/classroom/memomodi', [ClassController::class, 'memomodi'])->name('classroom.memomodi');
 
 //Admin
 Route::get('/adminarea/login', function () {
