@@ -147,8 +147,8 @@ class ClassController extends Controller
         if(auth()->check()){
             $rs=Memos::create($form_data);
             if($rs){
-                Classrooms::find($request->id)->increment('memo_cnt');
-                Classrooms::where('id', $request->id)->update([
+                Classrooms::find($request->bid)->increment('memo_cnt');
+                Classrooms::where('id', $request->bid)->update([
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
