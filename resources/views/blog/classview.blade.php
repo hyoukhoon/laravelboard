@@ -384,7 +384,7 @@
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'post',
-            url: '{{ route('boards.memodelete') }}',
+            url: '{{ route('classroom.memodelete') }}',
             dataType: 'json',
             data: data,
             success: function(data) {

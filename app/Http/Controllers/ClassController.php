@@ -167,5 +167,35 @@ class ClassController extends Controller
         }
     }
 
+    public function memodeletefile(Request $request)
+    {
+        if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
+            unlink(public_path('images')."/".$request->fn);
+        }
+        return response()->json(array('msg'=> "succ", 'fn'=>$request->fn, 'fid'=>$request->fid), 200);
+    }
+
+    public function memodelete(Request $request)
+    {
+        $data = Memos::findOrFail($request->id);
+        if(Auth::user()->userid==$data->userid){
+            $rs = Memos::where('id', $request->id)->update(array('status' => 0));
+            if($rs){
+                Classrooms::find($request->bid)->decrement('memo_cnt');
+                $fs=FileTables::where('pid', $data->id)->get();
+                if($fs){
+                    foreach($fs as $f){
+                        if(FileTables::where('id', $f->id)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
+                            unlink(public_path('images')."/".$f->filename);
+                        }
+                    }
+                }
+            }
+            return response()->json(array('msg'=> "succ", 'num'=>$rs), 200);
+        }else{
+            return response()->json(array('msg'=> "fail"), 200);
+        }
+    }
+
 }
 ?>

@@ -20,6 +20,7 @@ Route::post('/classupdate', [ClassController::class, 'classupdate'])->name('clas
 Route::get('/classdelete/{id}', [ClassController::class, 'classdelete'])->name('classroom.classdelete');
 Route::get('/blog/summernote/{code}/{id?}', [ClassController::class, 'summernote'])->name('blog.summernote');
 Route::post('/classroom/memoup', [ClassController::class, 'memoup'])->name('classroom.memoup');
+Route::post('/classroom/memodelete', [ClassController::class, 'memodelete'])->name('classroom.memodelete');
 
 //Admin
 Route::get('/adminarea/login', function () {
