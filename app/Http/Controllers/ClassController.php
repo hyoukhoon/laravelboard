@@ -159,7 +159,7 @@ class ClassController extends Controller
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
-                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','memoattach')->update(array('pid' => $rs->id));
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','classmemo')->update(array('pid' => $rs->id));
                 }
             }
 
