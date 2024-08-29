@@ -410,7 +410,7 @@
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             type: 'post',
-            url: '{{ route('boards.memoup') }}',
+            url: '{{ route('classroom.memoup') }}',
             dataType: 'json',
             data: data,
             success: function(data) {
