@@ -119,7 +119,7 @@
                                     @if($m->userid==auth()->user()->userid)
                                     <span style="float:right;">
                                         <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}','r')">수정</a></span>
-                                        <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->bid }}')">삭제</a></span>
+                                        <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $cls->id }}')">삭제</a></span>
                                     </span>
                                     @endif
                                 </div>
@@ -156,11 +156,11 @@
                                 {!! nl2br($m->memo) !!}
                             </p>
                             @auth()
-                            <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $m->id }}','{{ $boards->bid }}')">댓글</a></span>
+                            <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $m->id }}','{{ $cls->id }}')">댓글</a></span>
                                 <span style="float:right;">
                                     @if($m->userid==auth()->user()->userid)
                                         <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}')">수정</a></span>
-                                        <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->bid }}')">삭제</a></span>
+                                        <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $cls->id }}')">삭제</a></span>
                                     @endif
                                 </span>
                             @endauth
@@ -173,7 +173,7 @@
                             </div>
                             <textarea class="form-control" aria-label="With textarea" name="{{ 'memo_reply_'.$m->id }}" id="{{ 'memo_reply_'.$m->id }}" placeholder="대댓글을 입력해주세요"></textarea>
                             @auth()
-                                <button type="button" class="btn btn-secondary" style="float:right;" id="{{ 'memo_submit_reply_'.$m->id }}" onclick="memo_reply_up('{{ $m->id }}','{{ $boards->bid }}')">입력</button>
+                                <button type="button" class="btn btn-secondary" style="float:right;" id="{{ 'memo_submit_reply_'.$m->id }}" onclick="memo_reply_up('{{ $m->id }}','{{ $cls->id }}')">입력</button>
                             @else
                                 <button type="button" class="btn btn-secondary" style="float:right;" onclick="alert('로그인 하셔야 입력할 수 있습니다.');">입력</button>
                             @endauth
