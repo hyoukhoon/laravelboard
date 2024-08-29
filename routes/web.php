@@ -23,6 +23,7 @@ Route::post('/classroom/memoup', [ClassController::class, 'memoup'])->name('clas
 Route::post('/classroom/memodelete', [ClassController::class, 'memodelete'])->name('classroom.memodelete');
 Route::post('/classroom/memomodi', [ClassController::class, 'memomodi'])->name('classroom.memomodi');
 Route::post('/classroom/memomodifyup', [ClassController::class, 'memomodifyup'])->name('classroom.memomodifyup');
+Route::post('/classroom/memodeletefile', [BoardController::class, 'memodeletefile'])->name('classroom.memodeletefile');
 
 //Admin
 Route::get('/adminarea/login', function () {
