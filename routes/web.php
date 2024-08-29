@@ -13,18 +13,19 @@ Route::get('/', function () {
 //Classroom
 Route::get('/classroom', [ClassController::class, 'classroom'])->name('classroom.classroom');
 Route::get('/classview/{id}/{page}', [ClassController::class, 'classview'])->name('classroom.classview');
-Route::get('/classwrite', [ClassController::class, 'classwrite'])->name('classroom.classwrite');
-Route::get('/classmodify/{id}', [ClassController::class, 'classmodify'])->name('classroom.classwrite');
-Route::post('/classcreate', [ClassController::class, 'classcreate'])->name('classroom.classcreate');
-Route::post('/classupdate', [ClassController::class, 'classupdate'])->name('classroom.classupdate');
-Route::get('/classdelete/{id}', [ClassController::class, 'classdelete'])->name('classroom.classdelete');
-Route::get('/blog/summernote/{code}/{id?}', [ClassController::class, 'summernote'])->name('blog.summernote');
-Route::post('/classroom/memoup', [ClassController::class, 'memoup'])->name('classroom.memoup');
-Route::post('/classroom/memodelete', [ClassController::class, 'memodelete'])->name('classroom.memodelete');
-Route::post('/classroom/memomodi', [ClassController::class, 'memomodi'])->name('classroom.memomodi');
-Route::post('/classroom/memomodifyup', [ClassController::class, 'memomodifyup'])->name('classroom.memomodifyup');
-Route::post('/classroom/memodeletefile', [BoardController::class, 'memodeletefile'])->name('classroom.memodeletefile');
-
+Route::middleware('auth') -> group(function (){
+    Route::get('/classwrite', [ClassController::class, 'classwrite'])->name('classroom.classwrite');
+    Route::get('/classmodify/{id}', [ClassController::class, 'classmodify'])->name('classroom.classwrite');
+    Route::post('/classcreate', [ClassController::class, 'classcreate'])->name('classroom.classcreate');
+    Route::post('/classupdate', [ClassController::class, 'classupdate'])->name('classroom.classupdate');
+    Route::get('/classdelete/{id}', [ClassController::class, 'classdelete'])->name('classroom.classdelete');
+    Route::get('/blog/summernote/{code}/{id?}', [ClassController::class, 'summernote'])->name('blog.summernote');
+    Route::post('/classroom/memoup', [ClassController::class, 'memoup'])->name('classroom.memoup');
+    Route::post('/classroom/memodelete', [ClassController::class, 'memodelete'])->name('classroom.memodelete');
+    Route::post('/classroom/memomodi', [ClassController::class, 'memomodi'])->name('classroom.memomodi');
+    Route::post('/classroom/memomodifyup', [ClassController::class, 'memomodifyup'])->name('classroom.memomodifyup');
+    Route::post('/classroom/memodeletefile', [BoardController::class, 'memodeletefile'])->name('classroom.memodeletefile');
+});
 //Admin
 Route::get('/adminarea/login', function () {
     return view('/adminarea/login');
