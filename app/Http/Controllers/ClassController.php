@@ -139,7 +139,7 @@ class ClassController extends Controller
         $form_data = array(
             'memo' => $request->memo,
             'code' => 'classroom',
-            'bid' => $request->id,
+            'bid' => $request->bid,
             'pid' => $request->pid??null,
             'userid' => Auth::user()->userid
         );
