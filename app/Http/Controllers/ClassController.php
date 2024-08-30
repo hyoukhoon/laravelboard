@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Classrooms;
 use App\Models\FileTables;
@@ -238,7 +239,7 @@ class ClassController extends Controller
             // $image = $request->file('file');
             // $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
             // $image->move(public_path('images'), $new_name);
-            $new_name=Storage::putFileAs('images', $request->file('file'), rand());
+            $new_name=Storage::putFileAs('images', $request->file('file'), date("YmdHis"));
             $pid = $request->modimemoid?$request->modimemoid:$request->pid;
             $fid = rand();
             $form_data = array(
