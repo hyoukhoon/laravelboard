@@ -239,8 +239,8 @@ class ClassController extends Controller
             $image = $request->file('file');
             $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
             // $image->move(public_path('images'), $new_name);
-            $filepath=Storage::putFileAs('images', $request->file('file'), $new_name);
-            $imgurl = Storage::path($new_name);
+            Storage::putFileAs('images', $request->file('file'), $new_name);
+            $imgurl = Storage::url("images/".$new_name);
             $pid = $request->modimemoid?$request->modimemoid:$request->pid;
             $fid = rand();
             $form_data = array(
@@ -250,7 +250,7 @@ class ClassController extends Controller
                 'filename' => $new_name
             );
             $rs=FileTables::create($form_data);
-            return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid, 'filepath' => $filepath, 'imgurl' => $imgurl), 200);
+            return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid, 'imgurl' => $imgurl), 200);
         }else{
             return response()->json(array('msg'=> "로그인 하십시오", 'result'=>'fail'), 200);
         }

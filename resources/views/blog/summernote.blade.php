@@ -49,7 +49,6 @@
                     return;
                 }else{
                     console.log("imgurl=>"+data.imgurl);
-                    console.log("filepath=>"+data.filepath);
                     $('#summernote').summernote('insertImage', '/storage/images/'+data.fn, function ($image) {
                         $image.css('max-width', '100%');
                         $image.css('padding', '10px');
