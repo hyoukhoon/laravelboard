@@ -25,6 +25,7 @@ Route::middleware('auth') -> group(function (){
     Route::post('/classroom/memomodi', [ClassController::class, 'memomodi'])->name('classroom.memomodi');
     Route::post('/classroom/memomodifyup', [ClassController::class, 'memomodifyup'])->name('classroom.memomodifyup');
     Route::post('/classroom/memodeletefile', [BoardController::class, 'memodeletefile'])->name('classroom.memodeletefile');
+    Route::post('/classroom/saveimage', [BoardController::class, 'saveimage'])->name('classroom.saveimage');
 });
 //Admin
 Route::get('/adminarea/login', function () {

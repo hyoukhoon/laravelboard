@@ -37,7 +37,7 @@
         formData.append("pid", pid);
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '/boards/saveimage',
+            url: '/classroom/saveimage',
             data: formData,
             cache: false,
             contentType: false,
