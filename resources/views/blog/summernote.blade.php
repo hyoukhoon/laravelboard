@@ -48,7 +48,7 @@
                     alert('용량이 너무크거나 이미지 파일이 아닙니다.');
                     return;
                 }else{
-                    $('#summernote').summernote('insertImage', data.imgurl+data.fn, function ($image) {
+                    $('#summernote').summernote('insertImage', data.imgurl, function ($image) {
                         $image.css('max-width', '100%');
                         $image.css('padding', '10px');
                     });
