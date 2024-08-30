@@ -49,7 +49,7 @@
                     return;
                 }else{
                     console.log("imgurl=>"+data.imgurl);
-                    $('#summernote').summernote('insertImage', data.imgurl+data.fn, function ($image) {
+                    $('#summernote').summernote('insertImage', '/storage/images/'+data.fn, function ($image) {
                         $image.css('max-width', '100%');
                         $image.css('padding', '10px');
                     });
