@@ -239,7 +239,7 @@ class ClassController extends Controller
             $image = $request->file('file');
             $new_name = rand().'_'.time().'.'.$image->getClientOriginalExtension();
             // $image->move(public_path('images'), $new_name);
-            $new_name=Storage::putFileAs('images', $request->file('file'), $new_name);
+            Storage::putFileAs('images', $request->file('file'), $new_name);
             $pid = $request->modimemoid?$request->modimemoid:$request->pid;
             $fid = rand();
             $form_data = array(
