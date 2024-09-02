@@ -138,8 +138,7 @@ class ClassController extends Controller
             $attaches = FileTables::where('pid',$id)->where('status',1)->where('code','classroom')->orderBy('id','asc')->get();
             foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
                 //unlink(public_path('images')."/".$att->filename);
-                //Storage::delete('images/'.$att->filename);
-                unlink($att->filename);
+                Storage::delete('images/'.$att->filename);
                 FileTables::where('id', $att->id)->update(array('status' => 0));
             }
             $cls->delete();
@@ -251,7 +250,7 @@ class ClassController extends Controller
                 'pid' => $pid,
                 'userid' => Auth::user()->userid,
                 'code' => $request->code,
-                'filename' => $imgurl
+                'filename' => $new_name
             );
             $rs=FileTables::create($form_data);
             return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid, 'imgurl' => $imgurl), 200);
