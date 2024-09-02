@@ -247,7 +247,7 @@ class ClassController extends Controller
                 'pid' => $pid,
                 'userid' => Auth::user()->userid,
                 'code' => $request->code,
-                'filename' => $new_name
+                'filename' => $imgurl
             );
             $rs=FileTables::create($form_data);
             return response()->json(array('msg'=> "등록했습니다.", 'result'=>'succ', 'fn'=>$new_name, 'fid'=>$fid, 'imgurl' => $imgurl), 200);

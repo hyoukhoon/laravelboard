@@ -262,7 +262,7 @@
         formData.append("modimemoid", modimemoid);
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-            url: '{{ route('boards.saveimage') }}',
+            url: '{{ route('classroom.saveimage') }}',
             data: formData,
             cache: false,
             contentType: false,
@@ -270,7 +270,7 @@
             dataType : 'json' ,
             type: 'POST',
             success: function (return_data) {
-                var html = "<img src='/images/"+return_data.fn+"' style='max-width:100%;height:88px;'>";
+                var html = "<img src='"+return_data.imgurl+"' style='max-width:100%;height:88px;'>";
                 if(modimemoid>0){
                     $("#modi_att_view_"+modimemoid).html(html);
                     $("#modi_att_view_"+modimemoid).show();
