@@ -102,7 +102,9 @@ class ClassController extends Controller
                 $attaches = FileTables::where('pid',$request->id)->where('status',1)->where('code','classroom')->orderBy('id','asc')->get();
                 foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
                     if(!strpos($request->content, $att->filename)){
-                        unlink(public_path('images')."/".$att->filename);
+                        //unlink(public_path('images')."/".$att->filename);
+                        //Storage::delete('images/'.$att->filename);
+                        unlink($att->filename);
                         FileTables::where('id', $att->id)->update(array('status' => 0));
                     }else{
                         if(!$filename)$filename = $att->filename;
@@ -135,7 +137,9 @@ class ClassController extends Controller
             $cls = Classrooms::findOrFail($id);
             $attaches = FileTables::where('pid',$id)->where('status',1)->where('code','classroom')->orderBy('id','asc')->get();
             foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
-                unlink(public_path('images')."/".$att->filename);
+                //unlink(public_path('images')."/".$att->filename);
+                //Storage::delete('images/'.$att->filename);
+                unlink($att->filename);
                 FileTables::where('id', $att->id)->update(array('status' => 0));
             }
             $cls->delete();
