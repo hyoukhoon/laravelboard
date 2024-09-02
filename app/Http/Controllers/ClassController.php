@@ -173,7 +173,8 @@ class ClassController extends Controller
     public function memodeletefile(Request $request)
     {
         if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
-            unlink(public_path('images')."/".$request->fn);
+            //unlink(public_path('images')."/".$request->fn);
+            Storage::delete('images/'.$request->fn);
         }
         return response()->json(array('msg'=> "succ", 'fn'=>$request->fn, 'fid'=>$request->fid), 200);
     }
@@ -189,7 +190,8 @@ class ClassController extends Controller
                 if($fs){
                     foreach($fs as $f){
                         if(FileTables::where('id', $f->id)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
-                            unlink(public_path('images')."/".$f->filename);
+                            //unlink(public_path('images')."/".$f->filename);
+                            Storage::delete('images/'.$f->filename);
                         }
                     }
                 }
