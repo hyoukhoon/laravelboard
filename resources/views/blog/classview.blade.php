@@ -53,14 +53,21 @@
                   <div class="meta-bottom">
                     <i class="bi bi-folder"></i>
                     <ul class="cats">
-                      <li><a href="#">Business</a></li>
+                    @foreach ($cates as $ct)
+                        @if($ct->code == $cls->cate)
+                            <li><a href="#">{{ $ct->name }}</a></li>
+                        @endif
+                    @endforeach
                     </ul>
   
                     <i class="bi bi-tags"></i>
                     <ul class="tags">
-                      <li><a href="#">Creative</a></li>
-                      <li><a href="#">Tips</a></li>
-                      <li><a href="#">Marketing</a></li>
+                    <?php 
+                        $tagarr = explode(",",$cls->tags);
+                        ?>
+                    @foreach ($tagarr as $tg)
+                      <li><a href="#">{{ $tg }}</a></li>
+                    @endforeach
                     </ul>
                   </div><!-- End meta bottom -->
   
