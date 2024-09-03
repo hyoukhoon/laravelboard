@@ -1,7 +1,4 @@
 @extends('blog.layout')
-@section('header')
-    @include('boards.toptitle', ['toptitle'=>'게시판 목록', 'multi'=>$multi])
-@endsection
 @section('content')
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -15,8 +12,8 @@
     <!-- Section Title -->
     <div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
         <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
-          <h2>강의실</h2>
-          <p>개발자가 직접 알려주는 PHP 강의실입니다.</p>
+          <h2>자유게시판</h2>
+          <p>게시판입니다.</p>
         </div>
       </div>
       <!-- End Section Title -->
@@ -82,4 +79,10 @@
             </div>
 
           </section><!-- /Blog Posts Section -->
+        </div>
+
+        @include('blog.classroomside', ['cates' => $cates])
+
+      </div>
+    </div>
 @endsection
