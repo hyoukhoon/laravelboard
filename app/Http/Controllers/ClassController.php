@@ -27,7 +27,7 @@ class ClassController extends Controller
         $cls->contents = htmlspecialchars_decode($cls->contents);
         $cls->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
-        
+        $cates = DB::table('categories')->get();
         $memos = DB::table('memos')
                 ->leftJoinSub('select pid, filename from file_tables where code=\'classmemo\' and status=1', 'f', 'memos.id', 'f.pid')
                 ->select('memos.*', 'f.filename')
@@ -35,7 +35,7 @@ class ClassController extends Controller
                 ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
                 ->orderBy('memos.id', 'asc')
                 ->get();
-        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches, 'memos' => $memos]);
+        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches, 'memos' => $memos, 'cates' => $cates]);
     }
 
     public function classwrite(){
