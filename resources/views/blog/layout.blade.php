@@ -80,10 +80,23 @@
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+        {{-- <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
         <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
         <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a> --}}
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+          @guest()
+              <a href="{{route('auth.login')}}" class="text-xl">로그인</a> / 
+              <a href="{{route('auth.signup')}}" class="text-xl">회원가입</a>
+          @endguest
+          @auth()
+              <form action="/logout" method="post" class="inline-block">
+                  @csrf
+                  <span class="text-xl text-blue-500">{{auth()->user()->userid}}</span> / 
+                  <a href="/logout"><button class="text-xl">로그아웃</button></a>
+              </form>
+          @endauth
+        </nav>
       </div>
 
     </div>
