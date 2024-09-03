@@ -54,7 +54,6 @@
         <ul>
           <li><a href="/">메인</a></li>
           <li><a href="/classroom">강의실</a></li>
-          <li><a href="#">QnA</a></li>
           {{-- <li class="dropdown"><a href="#"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
               <li><a href="category.html" class="active">Category 1</a></li>
@@ -72,9 +71,10 @@
               <li><a href="category.html" class="active">Category 4</a></li>
             </ul>
           </li> --}}
-          <li><a href="#">자유게시판</a></li>
-          <li><a href="#">사진게시판</a></li>
-          <li><a href="#">음악게시판</a></li>
+          <li><a href="/boards/qna">QnA</a></li>
+          <li><a href="/boards/free">자유게시판</a></li>
+          <li><a href="/boards/photo">사진게시판</a></li>
+          <li><a href="/boards/music">음악게시판</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
