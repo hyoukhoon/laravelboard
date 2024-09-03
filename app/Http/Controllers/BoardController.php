@@ -15,7 +15,8 @@ class BoardController extends Controller
         $boards = Board::where('multi',$multi)
                         ->where('status',1)
                         ->orderBy('bid','desc')->paginate(20);
-        return view('boards.index', ['boards' => $boards, 'multi' => $multi]);
+        $cates = DB::table('categories')->get();
+        return view('boards.index', ['boards' => $boards, 'multi' => $multi, 'cates' => $cates]);
     }
 
     public function show($bid,$page)
