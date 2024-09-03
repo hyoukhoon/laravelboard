@@ -54,4 +54,9 @@ function cateis($code){
     return $cates->name;
 }
 
+function allcates(){
+    $cates = DB::table('categories')->get();
+    return $cates;
+}
+
 ?>

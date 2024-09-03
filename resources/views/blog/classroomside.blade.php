@@ -30,6 +30,9 @@
           <input type="text">
           <button type="submit" title="Search"><i class="bi bi-search"></i></button>
         </form>
+        <?php
+        $cates = allcates();
+        ?>
         @foreach ($cates as $c)
           <li>{{ $c->name }}</li>
         @endforeach
