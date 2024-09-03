@@ -17,7 +17,7 @@ class ClassController extends Controller
         $contents = Classrooms::where('status',1)
                     ->orderBy('id','desc')->paginate(10);
         
-        return view('blog.classroom', ['contents' => $contents, 'cates' => $cates]);
+        return view('blog.classroom', ['contents' => $contents]);
     }
 
     public function classview($id,$page)
@@ -35,7 +35,7 @@ class ClassController extends Controller
                 ->orderByRaw('IFNULL(memos.pid,memos.id), memos.pid ASC')
                 ->orderBy('memos.id', 'asc')
                 ->get();
-        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches, 'cates' => $cates, 'memos' => $memos]);
+        return view('blog.classview', ['cls' => $cls, 'attaches' => $attaches, 'memos' => $memos]);
     }
 
     public function classwrite(){
@@ -43,7 +43,7 @@ class ClassController extends Controller
             return view('blog.classroom');
         }else{
             
-            return view('blog.classwrite', ['id' => 0, 'cates' => $cates]);
+            return view('blog.classwrite', ['id' => 0]);
         }
     }
 
@@ -54,7 +54,7 @@ class ClassController extends Controller
             $cls = Classrooms::findOrFail($id);
             $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
             
-            return view('blog.classmodify', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches, 'cates' => $cates]);
+            return view('blog.classmodify', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches]);
         }
     }
 
