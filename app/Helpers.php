@@ -59,4 +59,21 @@ function allcates(){
     return $cates;
 }
 
+function boardtitle($multi){
+    switch($multi) {
+
+        case "qna":$name="QnA게시판";
+        break;
+        case "free":$name="자유게시판";
+        break;
+        case "photo":$name="사진게시판";
+        break;
+        case "music":$name="음악게시판";
+        break;
+
+    }
+
+    return $name;
+}
+
 ?>

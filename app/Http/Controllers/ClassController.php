@@ -16,7 +16,7 @@ class ClassController extends Controller
     public function classroom(){
         $contents = Classrooms::where('status',1)
                     ->orderBy('id','desc')->paginate(10);
-        $cates = DB::table('categories')->get();
+        
         return view('blog.classroom', ['contents' => $contents, 'cates' => $cates]);
     }
 
@@ -27,7 +27,7 @@ class ClassController extends Controller
         $cls->contents = htmlspecialchars_decode($cls->contents);
         $cls->pagenumber = $page??1;
         $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
-        $cates = DB::table('categories')->get();
+        
         $memos = DB::table('memos')
                 ->leftJoinSub('select pid, filename from file_tables where code=\'classmemo\' and status=1', 'f', 'memos.id', 'f.pid')
                 ->select('memos.*', 'f.filename')
@@ -42,7 +42,7 @@ class ClassController extends Controller
         if(Auth::user()->memberlevels<10){
             return view('blog.classroom');
         }else{
-            $cates = DB::table('categories')->get();
+            
             return view('blog.classwrite', ['id' => 0, 'cates' => $cates]);
         }
     }
@@ -53,7 +53,7 @@ class ClassController extends Controller
         }else{
             $cls = Classrooms::findOrFail($id);
             $attaches = FileTables::where('pid',$id)->where('code','classroom')->where('status',1)->get();
-            $cates = DB::table('categories')->get();
+            
             return view('blog.classmodify', ['id' => $id, 'cls' => $cls, 'attaches' => $attaches, 'cates' => $cates]);
         }
     }
