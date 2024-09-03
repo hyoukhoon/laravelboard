@@ -1,4 +1,4 @@
-@extends('boards.layout')
+@extends('blog.layout')
 @section('header')
     @include('boards.toptitle', ['toptitle'=>'게시판 목록', 'multi'=>$multi])
 @endsection
