@@ -31,7 +31,7 @@ function dispmemo($memo_cnt, $memo_date){
 
 function dispnew($regdate){
     if((time()-strtotime($regdate))<86400){
-        return "<span style='color:red;'>New</span>";
+        return "<span style='color:red;'>N</span>";
     }else{
         return null;
     }

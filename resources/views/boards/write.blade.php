@@ -135,8 +135,8 @@
                     return false;
                 }else{
                     //var img="<img src='"+data+"' width='50'><br>";
-                    var html = "<div id='af_"+return_data.fid+"' class='card h-100' style='width:120px;margin-right: 10px;margin-bottom: 10px;'><img src='/images/"+return_data.fn+"' width='100' /><div class='card-body'><button type='button' class='btn btn-warning' onclick=\"deletefile('"+return_data.fn+"', '"+return_data.fid+"')\">삭제</button></div></div>";
-                        $("#attachFiles").append(html);
+                    var html = "<div id='af_"+return_data.fid+"' class='card h-100' style='width:120px;margin-right: 10px;margin-bottom: 10px;'><img src='"+return_data.imgurl+"' width='100' /><div class='card-body'><button type='button' class='btn btn-warning' onclick=\"deletefile('"+return_data.fn+"', '"+return_data.fid+"')\">삭제</button></div></div>";
+                    $("#attachFiles").append(html);
                     
                     var rcnt=parseInt(attcnt)+1;
                     $("#attcnt").val(rcnt);
