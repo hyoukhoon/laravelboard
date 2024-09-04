@@ -104,7 +104,8 @@ class BoardController extends Controller
                 $attaches = FileTables::where('pid',$request->bid)->where('status',1)->where('code','editorattach')->get();
                 foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
                     if(!strpos($request->content, $att->filename)){
-                        unlink(public_path('images')."/".$att->filename);
+                        //unlink(public_path('images')."/".$att->filename);
+                        Storage::delete('images/'.$att->filename);
                         FileTables::where('id', $att->id)->update(array('status' => 0));
                     }
                 }
@@ -146,7 +147,7 @@ class BoardController extends Controller
     public function deletefile(Request $request)
     {
         $image = $request->fn;
-        if(unlink(public_path('images')."/".$image)){
+        if(Storage::delete('images/'.$image);){
             FileTables::where('filename', $image)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('status' => 0));
         }
 
@@ -159,7 +160,8 @@ class BoardController extends Controller
         if(Auth::user()->userid==$boards->userid){
             $attaches = FileTables::where('pid',$bid)->where('status',1)->get();
             foreach($attaches as $att){
-                unlink(public_path('images')."/".$att->filename);
+                //unlink(public_path('images')."/".$att->filename);
+                Storage::delete('images/'.$att->filename);
                 FileTables::where('id', $att->id)->update(array('status' => 0));
             }
             $boards->delete();
@@ -227,7 +229,8 @@ class BoardController extends Controller
     public function memodeletefile(Request $request)
     {
         if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
-            unlink(public_path('images')."/".$request->fn);
+            //unlink(public_path('images')."/".$request->fn);
+            Storage::delete('images/'.$request->fn);
         }
         return response()->json(array('msg'=> "succ", 'fn'=>$request->fn, 'fid'=>$request->fid), 200);
     }
@@ -243,7 +246,8 @@ class BoardController extends Controller
                 if($fs){
                     foreach($fs as $f){
                         if(FileTables::where('id', $f->id)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
-                            unlink(public_path('images')."/".$f->filename);
+                            //unlink(public_path('images')."/".$f->filename);
+                            Storage::delete('images/'.$f->filename);
                         }
                     }
                 }
