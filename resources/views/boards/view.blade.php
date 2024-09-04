@@ -127,7 +127,7 @@
                 <div class="card-body" id="{{ 'memolist_'.$m->id }}">
                     <p class="card-text">
                         @if($m->filename)
-                            <img src='/images/{{ $m->filename }}' width='100' />
+                            <img src='/storage/images/{{ $m->filename }}' width='100' />
                         @endif
                         {!! nl2br($m->memo) !!}
                     </p>
@@ -244,7 +244,7 @@
             dataType : 'json' ,
             type: 'POST',
             success: function (return_data) {
-                var html = "<img src='/images/"+return_data.fn+"' style='max-width:100%;height:88px;'>";
+                var html = "<img src='"+return_data.imgurl+"' style='max-width:100%;height:88px;'>";
                 if(modimemoid>0){
                     $("#modi_att_view_"+modimemoid).html(html);
                     $("#modi_att_view_"+modimemoid).show();
@@ -284,7 +284,7 @@
                 data: data,
                 success: function(data) {
                     if(data.attfile == true){
-                        var html='<div class="input-group" id="modifymemo" style="margin-top:10px;margin-bottom:10px;"><div id="af_'+data.att.id+'" class="card h-100" style="text-align:center;"><img src="/images/'+data.att.filename+'" width="80" /><a href="javascript:;" onclick=\'memodeletefile("'+data.att.filename+'","'+data.att.id+'","'+data.att.pid+'")\'><span class="badge text-bg-warning">삭제</span></a></div><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
+                        var html='<div class="input-group" id="modifymemo" style="margin-top:10px;margin-bottom:10px;"><div id="af_'+data.att.id+'" class="card h-100" style="text-align:center;"><img src="/storage/images/'+data.att.filename+'" width="80" /><a href="javascript:;" onclick=\'memodeletefile("'+data.att.filename+'","'+data.att.id+'","'+data.att.pid+'")\'><span class="badge text-bg-warning">삭제</span></a></div><input type="hidden" name="memopid" id="memopid" value="'+m+'"><input type="hidden" name="memo_modi_file" id="memo_modi_file"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
                     }else{
                         if(r=="r"){
                             var html='<div class="input-group" id="modifymemo" style="margin-top:10px;margin-bottom:10px;"><input type="hidden" name="memopid" id="memopid" value="'+m+'"><textarea class="form-control" aria-label="With textarea" style="height:100px;" name="memomodify_'+m+'" id="memomodify_'+m+'">'+data.memos.memo+'</textarea><button type="button" class="btn btn-secondary" style="float:right;" id="memo_modifyup" onclick="memomodifyup('+m+')">수정</button></div>';
