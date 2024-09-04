@@ -14,7 +14,7 @@
         </div>
       </div><!-- End Page Title --> --}}
 
-      <!-- Section Title -->
+    <!-- Section Title -->
     <div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
         <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
             <h2>강의실</h2>

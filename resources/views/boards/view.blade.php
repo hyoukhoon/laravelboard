@@ -1,10 +1,22 @@
-@extends('boards.layout')
-
-@section('header')
-    @include('boards.toptitle', ['toptitle'=>'게시판 보기', 'multi'=>$boards->multi])
-@endsection
-
+@extends('blog.layout')
 @section('content')
+<!-- Section Title -->
+<div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
+    <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
+        <h2>강의실</h2>
+        <p>개발자가 직접 알려주는 PHP 강의실입니다.</p>
+    </div>
+</div>
+<!-- End Section Title -->
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-9">
+
+        <!-- Blog Details Section -->
+        <section id="blog-details" class="blog-details section">
+          <div class="container">
 
     <table class="table table-striped table-hover">
         <tbody>
@@ -45,6 +57,8 @@
     <div style="padding:10px;">
     </div>
 
+</div>
+            </section><!-- /Blog Details Section -->
     <!--댓글 리스트 시작 -->
     <div id="reply">
         @foreach ($memos as $m)
@@ -164,6 +178,13 @@
     <!-- 댓글 입력 끝-->
     <div style="padding:20px;">
     </div>
+
+</div>
+  
+@include('blog.classroomside')
+
+</div>
+</div>
     <script>
         function memoup(){
             var memo=$("#memo").val();
