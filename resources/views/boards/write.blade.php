@@ -1,4 +1,15 @@
 @extends('blog.layout')
+
+<?php
+        if($bid){
+            $pid=$bid;
+            $btitle = "수정";
+        }else{
+            $pid=time();
+            $btitle = "쓰기";
+        }
+    ?>
+
 @section('content')
 <br />
     <form method="post" action="/boards/create" enctype="multipart/form-data">
