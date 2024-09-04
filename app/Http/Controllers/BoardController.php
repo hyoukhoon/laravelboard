@@ -147,7 +147,7 @@ class BoardController extends Controller
     public function deletefile(Request $request)
     {
         $image = $request->fn;
-        if(Storage::delete('images/'.$image);){
+        if(Storage::delete('images/'.$image)){
             FileTables::where('filename', $image)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('status' => 0));
         }
 
