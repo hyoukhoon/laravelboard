@@ -11,62 +11,88 @@
     ?>
 
 @section('content')
-<br />
-    <form method="post" action="/boards/create" enctype="multipart/form-data">
-        @csrf
-        @method('post')
-        <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
-        <input type="hidden" name="bid" id="bid" value="{{ $bid??0 }}">
-        <input type="hidden" name="code" id="code" value="boardattach">
-        <input type="hidden" name="attcnt" id="attcnt" value="0">
-        <input type="hidden" name="imgUrl" id="imgUrl" value="">
-        <div class="form-group">
-            <div class="col-md-12">
-                <input type="text" name="subject" id="subject" class="form-control input-lg" placeholder="제목을 입력하세요." value="{{ $boards->subject??'' }}" />
-            </div>
-        <br />
-        </div>
-        <div class="form-group">
-            <div class="col-md-12">
-                <iframe id="summerframe" src="{{ route('boards.summernote',['multi' => $multi, 'bid' => $bid]) }}" style="width:100%; height:450px; border:none" scrolling = "no"></iframe>
-            </div>
-        </div>
-        <br />
-        <div class="form-group">
-            @if($attaches)
-                <div id="attach_site" class="col-md-12">
-                    <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
-                        @foreach ($attaches as $att)
-                            @if($att)
-                                <div id="af_{{ $att->id }}" class='card h-100' style='width:120px;margin-right: 10px;margin-bottom: 10px;'><img src="/images/{{ $att->filename }}" width='100' /><div class='card-body'><button type='button' class='btn btn-warning' onclick="deletefile('{{ $att->filename }}','{{ $att->id }}')">삭제</button></div></div>
-                            @endif
-                        @endforeach
+<!-- Section Title -->
+<div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
+    <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
+      <h2>{{ boardtitle($multi)}}</h2>
+      <p>{{ boardtitle($multi)}}입니다.</p>
+    </div>
+  </div>
+  <!-- End Section Title -->
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-lg-12">
+
+        <!-- Comment Form Section -->
+        <section id="comment-form" class="comment-form section">
+            <div class="container">
+
+                <form method="post" action="/boards/create" enctype="multipart/form-data">
+                    @csrf
+                    @method('post')
+                    <input type="hidden" name="pid" id="pid" value="{{ $pid }}">
+                    <input type="hidden" name="bid" id="bid" value="{{ $bid??0 }}">
+                    <input type="hidden" name="code" id="code" value="boardattach">
+                    <input type="hidden" name="attcnt" id="attcnt" value="0">
+                    <input type="hidden" name="imgUrl" id="imgUrl" value="">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <input type="text" name="subject" id="subject" class="form-control input-lg" placeholder="제목을 입력하세요." value="{{ $boards->subject??'' }}" />
+                        </div>
+                    <br />
                     </div>
-                </div>
-            @else
-                <div id="attach_site" class="col-md-12">
-                    <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <iframe id="summerframe" src="{{ route('boards.summernote',['multi' => $multi, 'bid' => $bid]) }}" style="width:100%; height:450px; border:none" scrolling = "no"></iframe>
+                        </div>
                     </div>
-                </div>
-            @endif
-            <div class="col-md-12">
-                    <input type="file" name="afile" id="afile" multiple accept="image/*" multiple class="form-control" aria-label="Large file input example">
-            </div>
-        </div>
-        <br />
-        <br />
-        <div class="form-group">
-            @if($bid)
-                <div class="col-md-12 text-center">
-                    <button type="button" name="edit" class="btn btn-primary input-lg" onclick="updatesubmit()">수정</button>
-                </div>
-            @else
-                <div class="col-md-12 text-center">
-                    <button type="button" name="edit" class="btn btn-primary input-lg" onclick="sendsubmit()">등록</button>
-                </div>
-            @endif
-        </div>
-    </form>
+                    <br />
+                    <div class="form-group">
+                        @if($attaches)
+                            <div id="attach_site" class="col-md-12">
+                                <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
+                                    @foreach ($attaches as $att)
+                                        @if($att)
+                                            <div id="af_{{ $att->id }}" class='card h-100' style='width:120px;margin-right: 10px;margin-bottom: 10px;'><img src="/images/{{ $att->filename }}" width='100' /><div class='card-body'><button type='button' class='btn btn-warning' onclick="deletefile('{{ $att->filename }}','{{ $att->id }}')">삭제</button></div></div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </div>
+                        @else
+                            <div id="attach_site" class="col-md-12">
+                                <div class="row row-cols-1 row-cols-md-6 g-4" id="attachFiles" style="margin-left:0px;">
+                                </div>
+                            </div>
+                        @endif
+                        <div class="col-md-12">
+                                <input type="file" name="afile" id="afile" multiple accept="image/*" multiple class="form-control" aria-label="Large file input example">
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="form-group">
+                        @if($bid)
+                            <div class="col-md-12 text-center">
+                                <button type="button" name="edit" class="btn btn-primary input-lg" onclick="updatesubmit()">수정</button>
+                            </div>
+                        @else
+                            <div class="col-md-12 text-center">
+                                <button type="button" name="edit" class="btn btn-primary input-lg" onclick="sendsubmit()">등록</button>
+                            </div>
+                        @endif
+                    </div>
+                </form>
+
+</div>
+</section><!-- /Comment Form Section -->
+
+</div>
+
+{{-- @include('blog.classroomside') --}}
+
+</div>
 <script>
 
     $("#afile").change(function(){
