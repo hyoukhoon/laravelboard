@@ -178,6 +178,9 @@
     }
 
     function deletefile(fn,fid){
+        if(!confirm('삭제하시겠습니까?')){
+            return false;
+        }
         var pid = $("#pid").val();
         var code = $("#code").val();
         var data = {
