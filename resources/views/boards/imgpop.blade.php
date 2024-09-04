@@ -1,1 +1,1 @@
-<img src='/images/{{ $imgfile }}' style="max-width:100%" />
+<img src='/storage/images/{{ $imgfile }}' style="max-width:100%" />
