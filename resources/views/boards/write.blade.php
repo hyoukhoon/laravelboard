@@ -1,18 +1,4 @@
-@extends('boards.layout')
-
-@section('header')
-    <?php
-        if($bid){
-            $pid=$bid;
-            $btitle = "수정";
-        }else{
-            $pid=time();
-            $btitle = "쓰기";
-        }
-    ?>
-    @include('boards.toptitle', ['toptitle'=>'게시판 '.$btitle, 'multi'=>$multi])
-@endsection
-
+@extends('blog.layout')
 @section('content')
 <br />
     <form method="post" action="/boards/create" enctype="multipart/form-data">
