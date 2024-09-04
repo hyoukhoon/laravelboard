@@ -45,7 +45,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-12">
-                            <iframe id="summerframe" src="{{ route('boards.summernote',['multi' => $multi, 'bid' => $bid]) }}" style="width:100%; height:450px; border:none" scrolling = "no"></iframe>
+                            <iframe id="summerframe" src="{{ route('boards.summernote',['multi' => $multi, 'bid' => $bid]) }}" style="width:100%; height:550px; border:none" scrolling = "no"></iframe>
                         </div>
                     </div>
                     <br />
