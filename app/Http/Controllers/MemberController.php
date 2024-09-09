@@ -67,6 +67,17 @@ class MemberController extends Controller
         }
     }
 
+    public function usernamecheck(Request $request){
+        $username = $request->username;
+        
+        $rs = Members::where('username',$username)->count();
+        if($rs){
+            return response()->json(array('msg'=> "이미 사용중인 닉네임입니다.", 'result'=>false), 200);
+        }else{
+            return response()->json(array('msg'=> "사용할 수 있는 닉네임입니다.", 'result'=>true), 200);
+        }
+    }
+
     public function loginok(Request $request){
 
         $validated = $request->validate([

@@ -24,9 +24,9 @@
                     <h6 class="mb-0">이름(닉네임)</h6>
                   </div>
                   <div class="col-md-9 pe-5">
-                    <input type="text" name="name" id="name" class="form-control form-control-lg" />
+                    <input type="text" name="username" id="username" class="form-control form-control-lg" />
                     <br>
-                    <span id="namemsg"></span>
+                    <span id="usernamemsg"></span>
                   </div>
                 </div>
                 <hr class="mx-n3">
@@ -75,12 +75,12 @@
 
   <script>
     $("#signup").click(function () {
-		    var name=$("#name").val();
+		    var username=$("#username").val();
         var email=$("#email").val();
         var password1=$("#password1").val();
         var password2=$("#password2").val();
 
-        if(!name || !email || !password1 || !password2){
+        if(!username || !email || !password1 || !password2){
           alert('필수값을 입력해주세요.');
           return false;
         }
@@ -90,7 +90,7 @@
         }
         
         var data = {
-          name : name,
+          username : username,
           email : email,
           password : password1
         };
@@ -103,10 +103,34 @@
             success: function(data) {
                 if(data.result==true){
                     alert(data.msg);
-                    location.href='/boards';
+                    location.href='/login';
                 }else{
                     alert(data.msg);
                     return false;
+                }
+            },
+            error: function(data) {
+            console.log("error" +JSON.stringify(data));
+            }
+        });
+    });
+
+    $("#username").on("keyup", function() {
+        var username=$("#username").val();
+        var data = {
+          username : username
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('auth.usernamecheck') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                if(data.result==true){
+                    $("#usernamemsg").html("<font color='blue'>"+data.msg+"</font>");
+                }else{
+                    $("#usernamemsg").html("<font color='red'>"+data.msg+"</font>");
                 }
             },
             error: function(data) {
