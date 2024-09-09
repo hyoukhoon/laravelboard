@@ -30,8 +30,8 @@ class MemberController extends Controller
             exit;
         }
 
-        $rs1 = Members::where('email',$email)->count();
-        $rs2 = Members::where('username',$username)->count();
+        $rs1 = Members::where('email',$request->email)->count();
+        $rs2 = Members::where('username',$request->username)->count();
 
         if ($rs1 or $rs2) {
             return response()->json(array('msg'=> "닉네임이나 이메일이 이미 사용중입니다. 다른 닉네임이나 이메일을 입력해 주세요.", 'result'=>false), 200);
