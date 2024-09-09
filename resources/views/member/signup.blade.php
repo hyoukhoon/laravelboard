@@ -45,7 +45,7 @@
                     <h6 class="mb-0">비밀번호</h6>
                   </div>
                   <div class="col-md-9 pe-5">
-                      <input type="password" name="password1" id="password1" class="form-control form-control-lg" />
+                      <input type="password" name="password" id="password" class="form-control form-control-lg" />
                   </div>
                 </div>
                 <hr class="mx-n3">
@@ -54,7 +54,7 @@
                     <h6 class="mb-0">비밀번호 확인</h6>
                   </div>
                   <div class="col-md-9 pe-5">
-                      <input type="password" name="password2" id="password2" class="form-control form-control-lg" />
+                      <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-lg" />
                   </div>
                 </div>
                 <hr class="mx-n3">
@@ -77,14 +77,14 @@
     $("#signup").click(function () {
 		    var username=$("#username").val();
         var email=$("#email").val();
-        var password1=$("#password1").val();
-        var password2=$("#password2").val();
+        var password=$("#password").val();
+        var password_confirmation=$("#password_confirmation").val();
 
-        if(!username || !email || !password1 || !password2){
+        if(!username || !email || !password || !password_confirmation){
           alert('필수값을 입력해주세요.');
           return false;
         }
-        if(password1!=password2){
+        if(password!=password_confirmation){
           alert('비밀번호를 다시 확인해 주십시오.');
           return false;
         }
@@ -92,7 +92,7 @@
         var data = {
           username : username,
           email : email,
-          password : password1
+          password : password
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
