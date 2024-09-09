@@ -23,7 +23,7 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-lg-12">
+        <div class="col-lg-12">
 
         <!-- Comment Form Section -->
         <section id="comment-form" class="comment-form section">
@@ -84,14 +84,13 @@
                         @endif
                     </div>
                 </form>
+            </div>
+        </section><!-- /Comment Form Section -->
 
-</div>
-</section><!-- /Comment Form Section -->
-
-</div>
+    </div>
 
 {{-- @include('blog.classroomside') --}}
-
+</div>
 </div>
 <script>
 
