@@ -25,10 +25,8 @@ class MemberController extends Controller
             'email' => 'required',
             'password' => ['required', 'confirmed', Password::min(8)
                                                             ->letters()
-                                                            ->mixedCase()
                                                             ->numbers()
-                                                            ->symbols()
-                                                            ->uncompromised()]
+                                                            ->symbols()]
         ]);
         
         if ($validator->fails()) {
