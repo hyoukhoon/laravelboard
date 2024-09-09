@@ -21,7 +21,7 @@ class MemberController extends Controller
     public function signupok(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'username' => 'required',
+            'username' => 'required|min(4)|max(20)',
             'email' => 'required',
             'password' => ['required', 'confirmed', Password::min(8)
                                                             ->letters()
