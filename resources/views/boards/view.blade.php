@@ -21,15 +21,13 @@
     <table class="table table-striped table-hover">
         <tbody>
             <tr>
-                <th width="200">제목</th>
-                <td>{{ $boards->subject }}</td>
+                <td colspan="2">{{ $boards->subject }}</td>
             </tr>
             <tr>
                 <td colspan="2">글쓴이 : {{ $boards->username }} / 조회수 : {{ number_format($boards->cnt) }} / 등록일 : {{ $boards->regdate }}</td>
             </tr>
             <tr>
-                <th width="200">내용</th>
-                <td>{!! nl2br($boards->content) !!}</td>
+                <td colspan="2">{!! nl2br($boards->content) !!}</td>
             </tr>
             @if(count($attaches)>0)
             <tr>
