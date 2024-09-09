@@ -117,6 +117,9 @@
 
     $("#username").on("keyup", function() {
         var username=$("#username").val();
+        if(!username){
+          return false;
+        }
         var data = {
           username : username
         };
@@ -141,6 +144,9 @@
 
     $("#email").on("keyup", function() {
         var email=$("#email").val();
+        if(!email){
+          return false;
+        }
         var data = {
             email : email
         };
