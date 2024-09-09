@@ -95,7 +95,7 @@ class MemberController extends Controller
             'passwd' => $passwd
         );
 
-        $ismember = Members::where($loginInfo)->first();
+        $ismember = Members::where($loginInfo)->where('status',1)->first();
         if($ismember){
             Auth::login($ismember, $remember);
             return redirect("/");
