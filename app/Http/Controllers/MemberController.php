@@ -5,6 +5,7 @@ use App\Models\Members;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rules\Password;
 
 class MemberController extends Controller
 {
@@ -22,11 +23,16 @@ class MemberController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'email' => 'required',
-            'password' => 'required'
+            'password' => ['required', 'confirmed', Password::min(8)
+                                                            ->letters()
+                                                            ->mixedCase()
+                                                            ->numbers()
+                                                            ->symbols()
+                                                            ->uncompromised()]
         ]);
 
         if ($validator->fails()) {
-            return response()->json(array('msg'=> "필수값을 입력해 주세요.", 'result'=>false), 200);
+            return response()->json(array('msg'=> "필수값이 빠졌거나 비밀번호 규칙을 위반했습니다.", 'result'=>false), 200);
             exit;
         }
 
