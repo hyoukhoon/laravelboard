@@ -23,10 +23,7 @@ class MemberController extends Controller
         $validator = Validator::make($request->all(), [
             'username' => 'required',
             'email' => 'required',
-            'password' => ['required', 'confirmed', Password::min(8)
-                                                            ->letters()
-                                                            ->numbers()
-                                                            ->symbols()]
+            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()->symbols()]
         ]);
 
         if ($validator->fails()) {
