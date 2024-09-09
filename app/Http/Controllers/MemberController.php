@@ -86,7 +86,7 @@ class MemberController extends Controller
         $ismember = Members::where($loginInfo)->first();
         if($ismember){
             Auth::login($ismember, $remember);
-            return redirect() -> route('boards.index');
+            return redirect("/");
         }else{
             return redirect() -> route('auth.login')->with('loginFail', '아이디나 비밀번호가 틀렸습니다.');
         }
