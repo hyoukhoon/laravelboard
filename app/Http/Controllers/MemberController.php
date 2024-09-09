@@ -20,13 +20,21 @@ class MemberController extends Controller
     public function signupok(Request $request){
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'password' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json(array('msg'=> "필수값을 입력해 주세요.", 'result'=>false), 200);
+            exit;
+        }
+
+        $rs1 = Members::where('email',$email)->count();
+        $rs2 = Members::where('username',$username)->count();
+
+        if ($rs1 or $rs2) {
+            return response()->json(array('msg'=> "닉네임이나 이메일이 이미 사용중입니다. 다른 닉네임이나 이메일을 입력해 주세요.", 'result'=>false), 200);
             exit;
         }
 
@@ -37,15 +45,8 @@ class MemberController extends Controller
             'userid' => $uid[0],
             'email' => $request->email,
             'passwd' => $passwd,
-            'name' => $request->name,
-            'username' => $request->name
+            'username' => $request->username
         );
-
-        $ms = Members::where('email',$request->email)->count();
-        if($ms){
-            return response()->json(array('msg'=> "이미 사용중인 이메일입니다.", 'result'=>false), 200);
-            exit;
-        }
 
         $rs = Members::create($form_data);
         
