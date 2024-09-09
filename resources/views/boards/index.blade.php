@@ -55,7 +55,7 @@
                             @foreach ($boards as $board)
                                 <tr>
                                     <th scope="row">{{ $idx-- }}</th>
-                                    <td>{{ $board->userid }}</td>
+                                    <td>{{ $board->username }}</td>
                                     <td><a href="/boards/show/{{$board->bid}}/{{$pagenumber}}">{{ $board->subject }}</a> {!! dispattach($board->bid) !!} {!! dispmemo($board->memo_cnt,$board->memo_date) !!} {!! dispnew($board->regdate) !!} </td>
                                     <td>{{ number_format($board->cnt) }}</td>
                                     <td>{{ disptime($board->regdate) }}</td>

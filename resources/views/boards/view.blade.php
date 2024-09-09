@@ -25,7 +25,7 @@
                 <td>{{ $boards->subject }}</td>
             </tr>
             <tr>
-                <td colspan="2">글쓴이 : {{ $boards->userid }} / 조회수 : {{ number_format($boards->cnt) }} / 등록일 : {{ $boards->regdate }}</td>
+                <td colspan="2">글쓴이 : {{ $boards->username }} / 조회수 : {{ number_format($boards->cnt) }} / 등록일 : {{ $boards->regdate }}</td>
             </tr>
             <tr>
                 <th width="200">내용</th>
@@ -80,7 +80,7 @@
                                             <path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8m0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5"/>
                                           </svg>
                                     </td>
-                                    <td class="ml">{{ $m->userid }}</td>
+                                    <td class="ml">{{ $m->username }}</td>
                                 </tr>
                                 <tr>
                                     <td>
@@ -114,7 +114,7 @@
                                         <path d="M5 6a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"/>
                                     </svg>
                                 </td>
-                                <td class="ml">{{ $m->userid }}</td>
+                                <td class="ml">{{ $m->username }}</td>
                             </tr>
                             <tr>
                                 <td>
