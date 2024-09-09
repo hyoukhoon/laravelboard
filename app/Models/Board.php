@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string   $content
  * @property string   $multi
  * @property string   $subject
- * @property string   $username
+ * @property string   $userid
  * @property string   $content
  * @property string   $multi
  * @property string   $subject
@@ -46,7 +46,7 @@ class Board extends Model
      * @var array
      */
     protected $fillable = [
-        'content', 'multi', 'subject', 'username', 'cnt', 'status', 'attachfiles', 'memo_cnt', 'memo_date'
+        'content', 'multi', 'subject', 'userid', 'username', 'cnt', 'status', 'attachfiles', 'memo_cnt', 'memo_date'
     ];
 
     /**
@@ -64,7 +64,7 @@ class Board extends Model
      * @var array
      */
     protected $casts = [
-        'bid' => 'int', 'content' => 'string', 'modifydate' => 'datetime', 'multi' => 'string', 'parent_id' => 'int', 'regdate' => 'datetime', 'status' => 'int', 'subject' => 'string', 'username' => 'string', 'content' => 'string', 'modifydate' => 'datetime', 'multi' => 'string', 'parent_id' => 'int', 'regdate' => 'datetime', 'status' => 'boolean', 'subject' => 'string', 'username' => 'string'
+        'bid' => 'int', 'content' => 'string', 'modifydate' => 'datetime', 'multi' => 'string', 'parent_id' => 'int', 'regdate' => 'datetime', 'status' => 'int', 'subject' => 'string', 'userid' => 'string', 'content' => 'string', 'modifydate' => 'datetime', 'multi' => 'string', 'parent_id' => 'int', 'regdate' => 'datetime', 'status' => 'boolean', 'subject' => 'string', 'username' => 'string'
     ];
 
     /**

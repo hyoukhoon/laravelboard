@@ -78,6 +78,7 @@ class BoardController extends Controller
         $form_data = array(
             'subject' => $request->subject,
             'content' => $request->content,
+            'userid' => Auth::user()->userid,
             'username' => Auth::user()->username,
             'email' => Auth::user()->email,
             'multi' => $request->multi??'free',
@@ -177,6 +178,7 @@ class BoardController extends Controller
             'memo' => $request->memo,
             'bid' => $request->bid,
             'pid' => $request->pid??null,
+            'userid' => Auth::user()->userid,
             'username' => Auth::user()->username
         );
 
