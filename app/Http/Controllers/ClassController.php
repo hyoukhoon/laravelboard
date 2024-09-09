@@ -86,7 +86,7 @@ class ClassController extends Controller
 
         if(auth()->check()){
             $rs=Classrooms::create($form_data);
-            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->userid)->wherein('code',['classroom'])->update(array('pid' => $rs->id));
+            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->email)->wherein('code',['classroom'])->update(array('pid' => $rs->id));
             return response()->json(array('msg'=> "succ", 'id'=>$rs->id), 200);
         }
     }
@@ -151,7 +151,7 @@ class ClassController extends Controller
             'code' => 'classroom',
             'bid' => $request->bid,
             'pid' => $request->pid??null,
-            'userid' => Auth::user()->userid
+            'userid' => Auth::user()->email
         );
 
         if(auth()->check()){
@@ -162,7 +162,7 @@ class ClassController extends Controller
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
-                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','classmemo')->update(array('pid' => $rs->id));
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->email)->where('code','classmemo')->update(array('pid' => $rs->id));
                 }
             }
 
@@ -172,7 +172,7 @@ class ClassController extends Controller
 
     public function memodeletefile(Request $request)
     {
-        if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
+        if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->email)->update(array('status' => 0))){
             //unlink(public_path('images')."/".$request->fn);
             Storage::delete('images/'.$request->fn);
         }
@@ -182,14 +182,14 @@ class ClassController extends Controller
     public function memodelete(Request $request)
     {
         $data = Memos::findOrFail($request->id);
-        if(Auth::user()->userid==$data->userid){
+        if(Auth::user()->email==$data->userid){
             $rs = Memos::where('id', $request->id)->update(array('status' => 0));
             if($rs){
                 Classrooms::find($request->bid)->decrement('memo_cnt');
                 $fs=FileTables::where('pid', $data->id)->get();
                 if($fs){
                     foreach($fs as $f){
-                        if(FileTables::where('id', $f->id)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
+                        if(FileTables::where('id', $f->id)->where('userid', Auth::user()->email)->update(array('status' => 0))){
                             //unlink(public_path('images')."/".$f->filename);
                             Storage::delete('images/'.$f->filename);
                         }
@@ -205,7 +205,7 @@ class ClassController extends Controller
     public function memomodi(Request $request)
     {
         $memos = Memos::findOrFail($request->memoid);
-        if(Auth::user()->userid==$memos->userid){
+        if(Auth::user()->email==$memos->userid){
             $attaches = FileTables::where('pid',$memos->id)->where('code','classmemo')->where('status',1)->first();
             if($attaches){
                 $attfile=true;
@@ -221,7 +221,7 @@ class ClassController extends Controller
     public function memomodifyup(Request $request)
     {
         $memos = Memos::findOrFail($request->memoid);
-        if(Auth::user()->userid==$memos->userid){
+        if(Auth::user()->email==$memos->userid){
             $form_data = array(
                 'memo' => $request->memo
             );
@@ -248,7 +248,7 @@ class ClassController extends Controller
             $fid = rand();
             $form_data = array(
                 'pid' => $pid,
-                'userid' => Auth::user()->userid,
+                'userid' => Auth::user()->email,
                 'code' => $request->code,
                 'filename' => $new_name
             );
