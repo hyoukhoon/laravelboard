@@ -10,6 +10,6 @@ class Memos extends Model
     use HasFactory;
 
     protected $fillable = [
-        'bid','pid','userid','memo','code'
+        'bid','pid','username','memo','code'
     ];
 }
