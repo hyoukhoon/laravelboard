@@ -95,10 +95,15 @@ class MemberController extends Controller
             'passwd' => $passwd
         );
 
-        $ismember = Members::where($loginInfo)->where('status',1)->first();
+        $ismember = Members::where($loginInfo)->first();
         if($ismember){
-            Auth::login($ismember, $remember);
-            return redirect("/");
+            $istatus = Members::where($loginInfo)->where('status',1)->first();
+            if($istatus){
+                Auth::login($ismember, $remember);
+                return redirect("/");
+            }else{
+                return redirect() -> route('auth.login')->with('loginFail', '로그인 할 수 없는 계정입니다. 관리자에게 문의 하십시오.');
+            }
         }else{
             return redirect() -> route('auth.login')->with('loginFail', '아이디나 비밀번호가 틀렸습니다.');
         }
