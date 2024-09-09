@@ -92,7 +92,8 @@
         var data = {
           username : username,
           email : email,
-          password : password
+          password : password,
+          password_confirmation : password_confirmation
         };
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
