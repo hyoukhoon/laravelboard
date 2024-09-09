@@ -46,6 +46,7 @@
                   </div>
                   <div class="col-md-9 pe-5">
                       <input type="password" name="password" id="password" class="form-control form-control-lg" />
+                      <span id="passwordmsg">비밀번호는 문자, 숫자, 특수문자포함해서 8자 이상 입력해 주십시오.</span>
                   </div>
                 </div>
                 <hr class="mx-n3">
