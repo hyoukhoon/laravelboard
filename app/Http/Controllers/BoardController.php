@@ -78,7 +78,7 @@ class BoardController extends Controller
         $form_data = array(
             'subject' => $request->subject,
             'content' => $request->content,
-            'userid' => Auth::user()->userid,
+            'userid' => Auth::user()->email,
             'username' => Auth::user()->username,
             'email' => Auth::user()->email,
             'multi' => $request->multi??'free',
@@ -87,7 +87,7 @@ class BoardController extends Controller
 
         if(auth()->check()){
             $rs=Board::create($form_data);
-            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->userid)->wherein('code',['boardattach','editorattach'])->update(array('pid' => $rs->bid));
+            FileTables::where('pid', $request->pid)->where('userid', Auth::user()->email)->wherein('code',['boardattach','editorattach'])->update(array('pid' => $rs->bid));
             return response()->json(array('msg'=> "succ", 'bid'=>$rs->bid), 200);
         }
     }
@@ -101,7 +101,7 @@ class BoardController extends Controller
 
         if(auth()->check()){
             $boards = Board::findOrFail($request->bid);
-            if(Auth::user()->userid==$boards->userid){
+            if(Auth::user()->email==$boards->userid){
                 $attaches = FileTables::where('pid',$request->bid)->where('status',1)->where('code','editorattach')->get();
                 foreach($attaches as $att){//file_tables에 있는 파일명이 본문에 있는지 확인해서 없으면 삭제한다.
                     if(!strpos($request->content, $att->filename)){
@@ -134,7 +134,7 @@ class BoardController extends Controller
             $fid = rand();
             $form_data = array(
                 'pid' => $pid,
-                'userid' => Auth::user()->userid,
+                'userid' => Auth::user()->email,
                 'code' => $request->code,
                 'filename' => $new_name
             );
@@ -149,7 +149,7 @@ class BoardController extends Controller
     {
         $image = $request->fn;
         if(Storage::delete('images/'.$image)){
-            FileTables::where('filename', $image)->where('code', $request->code)->where('userid', Auth::user()->userid)->update(array('status' => 0));
+            FileTables::where('filename', $image)->where('code', $request->code)->where('userid', Auth::user()->email)->update(array('status' => 0));
         }
 
         return response()->json(array('msg'=> "succ", 'fn'=>$image, 'fid'=>substr($image,0,10)), 200);
@@ -158,7 +158,7 @@ class BoardController extends Controller
     public function delete($bid,$page)
     {
         $boards = Board::findOrFail($bid);
-        if(Auth::user()->userid==$boards->userid){
+        if(Auth::user()->email==$boards->userid){
             $attaches = FileTables::where('pid',$bid)->where('status',1)->get();
             foreach($attaches as $att){
                 //unlink(public_path('images')."/".$att->filename);
@@ -178,7 +178,7 @@ class BoardController extends Controller
             'memo' => $request->memo,
             'bid' => $request->bid,
             'pid' => $request->pid??null,
-            'userid' => Auth::user()->userid,
+            'userid' => Auth::user()->email,
             'username' => Auth::user()->username
         );
 
@@ -190,7 +190,7 @@ class BoardController extends Controller
                     'memo_date' => date('Y-m-d H:i:s')
                 ]);
                 if($request->memo_file){
-                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->userid)->where('code','memoattach')->update(array('pid' => $rs->id));
+                    FileTables::where('filename', $request->memo_file)->where('userid', Auth::user()->email)->where('code','memoattach')->update(array('pid' => $rs->id));
                 }
             }
 
@@ -201,7 +201,7 @@ class BoardController extends Controller
     public function memomodi(Request $request)
     {
         $memos = Memos::findOrFail($request->memoid);
-        if(Auth::user()->userid==$memos->userid){
+        if(Auth::user()->email==$memos->userid){
             $attaches = FileTables::where('pid',$memos->id)->where('code','memoattach')->where('status',1)->first();
             if($attaches){
                 $attfile=true;
@@ -217,7 +217,7 @@ class BoardController extends Controller
     public function memomodifyup(Request $request)
     {
         $memos = Memos::findOrFail($request->memoid);
-        if(Auth::user()->userid==$memos->userid){
+        if(Auth::user()->email==$memos->userid){
             $form_data = array(
                 'memo' => $request->memo
             );
@@ -230,7 +230,7 @@ class BoardController extends Controller
 
     public function memodeletefile(Request $request)
     {
-        if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
+        if(FileTables::where('id', $request->fid)->where('userid', Auth::user()->email)->update(array('status' => 0))){
             //unlink(public_path('images')."/".$request->fn);
             Storage::delete('images/'.$request->fn);
         }
@@ -240,14 +240,14 @@ class BoardController extends Controller
     public function memodelete(Request $request)
     {
         $data = Memos::findOrFail($request->id);
-        if(Auth::user()->userid==$data->userid){
+        if(Auth::user()->email==$data->userid){
             $rs = Memos::where('id', $request->id)->update(array('status' => 0));
             if($rs){
                 Board::find($request->bid)->decrement('memo_cnt');
                 $fs=FileTables::where('pid', $data->id)->get();
                 if($fs){
                     foreach($fs as $f){
-                        if(FileTables::where('id', $f->id)->where('userid', Auth::user()->userid)->update(array('status' => 0))){
+                        if(FileTables::where('id', $f->id)->where('userid', Auth::user()->email)->update(array('status' => 0))){
                             //unlink(public_path('images')."/".$f->filename);
                             Storage::delete('images/'.$f->filename);
                         }
