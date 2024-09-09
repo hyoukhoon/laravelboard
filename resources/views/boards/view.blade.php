@@ -45,7 +45,7 @@
     </table>
     <div align="right">
         @auth()
-            @if($boards->userid==auth()->user()->userid)
+            @if($boards->userid==auth()->user()->email)
                 <a href="/boards/write/{{ $boards->multi }}/{{ $boards->bid }}"><button type="button" class="btn btn-secondary">수정</button></a>
                 <a href="/boards/delete/{{ $boards->bid }}/{{ $boards->pagenumber }}" class="btn btn-secondary" onclick="return confirm('삭제하시겠습니까?');">삭제</a>
             @endif
@@ -90,7 +90,7 @@
                         </div>
                         <div class="card-body" id="{{ 'memolist_'.$m->id }}">
                             <p class="card-text">{!! nl2br($m->memo) !!}</p>
-                            @if($m->userid==auth()->user()->userid)
+                            @if($m->userid==auth()->user()->email)
                             <span style="float:right;">
                                 <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}','r')">수정</a></span>
                                 <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->bid }}')">삭제</a></span>
@@ -132,7 +132,7 @@
                     @auth()
                     <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="reply_write('{{ $m->id }}','{{ $boards->bid }}')">댓글</a></span>
                         <span style="float:right;">
-                            @if($m->userid==auth()->user()->userid)
+                            @if($m->userid==auth()->user()->email)
                                 <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_modify('{{ $m->id }}')">수정</a></span>
                                 <span class="badge bg-dark" style="cursor:pointer;padding:10px;"><a onclick="memo_delete('{{ $m->id }}','{{ $boards->bid }}')">삭제</a></span>
                             @endif
