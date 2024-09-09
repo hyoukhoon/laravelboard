@@ -27,6 +27,7 @@ class MemberController extends Controller
         ]);
 
         print_r($validator);
+        exit;
 
         if ($validator->fails()) {
             return response()->json(array('msg'=> "필수값이 빠졌거나 비밀번호 규칙을 위반했습니다.", 'result'=>false), 200);
