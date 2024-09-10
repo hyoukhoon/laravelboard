@@ -53,9 +53,11 @@
                 data: data,
                 success: function(data) {
                     if(data.result==true){
+                        $("#failmsg").hide();
                         $("#truemsg").show();
                         $("#truemsg").text(data.msg);
                     }else{
+                        $("#truemsg").hide();
                         $("#failmsg").show();
                         $("#failmsg").text(data.msg);
                     }
