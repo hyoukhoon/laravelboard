@@ -1,5 +1,6 @@
 @extends('blog.layout')
 @section('content')
+
 <style>
     html,
     body {
@@ -88,6 +89,7 @@
     }
   </style>
 
+<main class="form-signin w-100 m-auto">
 
 <div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
   <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
@@ -101,7 +103,7 @@
   <div class="row">
     <div class="col-lg-12">
 
-      <main class="form-signin w-100 m-auto">
+      
       <form method="post" action="/loginok">
         @csrf
       <div style="text-align:center;">
@@ -125,7 +127,7 @@
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
 
       </form>
-      </main>
+      
       @if ($errors->any())
       <div class="alert alert-danger">
           <ul>
@@ -145,4 +147,5 @@
     {{-- @include('blog.classroomside') --}}
     </div>
     </div>
+</main>    
 @endsection
