@@ -25,7 +25,8 @@
           <label for="floatingInput">이름(닉네임)</label>
         </div>
         <br>
-        <span id="useridmsg"></span>
+        <div class="alert alert-primary" id="truemsg" style="display:none;" role="alert"></div>
+        <div class="alert alert-danger" id="failmsg" style="display:none;" role="alert"></div>
         <button class="w-100 btn btn-lg btn-primary" type="button" id="findid">아이디 찾기</button>
       </form>
       </main>
@@ -52,9 +53,11 @@
                 data: data,
                 success: function(data) {
                     if(data.result==true){
-                        $("#useridmsg").html("<font color='blue'>"+data.msg+"</font>");
+                        $("#truemsg").show();
+                        $("#truemsg").text(data.msg);
                     }else{
-                        $("#useridmsg").html("<font color='red'>"+data.msg+"</font>");
+                        $("#failmsg").show();
+                        $("#failmsg").text(data.msg);
                     }
                 },
                 error: function(data) {
