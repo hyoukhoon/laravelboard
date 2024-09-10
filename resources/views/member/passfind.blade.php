@@ -38,18 +38,18 @@
     </div>
     <script>
         $("#passid").click(function () {
-            var username=$("#username").val();
-            if(!username){
-                alert('이름을 입력하세요.');
+            var email=$("#email").val();
+            if(!email){
+                alert('아이디를 입력하세요.');
                 return false;
             }
             var data = {
-                username : username
+                email : email
             };
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'post',
-                url: '{{ route('auth.finduserid') }}',
+                url: '{{ route('auth.passreset') }}',
                 dataType: 'json',
                 data: data,
                 success: function(data) {
