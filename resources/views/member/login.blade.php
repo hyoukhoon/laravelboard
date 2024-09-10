@@ -12,7 +12,7 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-8" style="padding-top: 50px">
+    <div class="col-lg-12" style="padding-top: 50px">
 
       <main class="form-signin w-50 m-auto">
       <form method="post" action="/loginok">
