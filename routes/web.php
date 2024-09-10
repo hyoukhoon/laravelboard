@@ -67,3 +67,4 @@ Route::post('/usernamecheck', [MemberController::class, 'usernamecheck'])->name(
 Route::post('/loginok', [MemberController::class, 'loginok']) -> name('auth.loginok');
 Route::post('/adminloginok', [MemberController::class, 'adminloginok']) -> name('admin.loginok');
 Route::post('/logout', [MemberController::class, 'logout']) -> name('auth.logout');
+Route::post('/idfind', [MemberController::class, 'idfind']) -> name('auth.idfind');
