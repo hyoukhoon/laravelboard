@@ -49,7 +49,7 @@
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'post',
-                url: '{{ route('auth.passreset') }}',
+                url: '{{ route('auth.passmailsend') }}',
                 dataType: 'json',
                 data: data,
                 success: function(data) {

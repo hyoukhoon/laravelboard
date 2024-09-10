@@ -5,6 +5,7 @@ use App\Http\Controllers\BoardController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\MailController;
 
 Route::get('/', function () {
     return view('/blog/index');
@@ -70,4 +71,4 @@ Route::post('/logout', [MemberController::class, 'logout']) -> name('auth.logout
 Route::get('/idfind', [MemberController::class, 'idfind']) -> name('auth.idfind');
 Route::get('/passfind', [MemberController::class, 'passfind']) -> name('auth.passfind');
 Route::post('/finduserid', [MemberController::class, 'finduserid'])->name('auth.finduserid');
-Route::post('/passreset', [MemberController::class, 'passreset'])->name('auth.passreset');
+Route::post('/passreset', [MailController::class, 'mailSendSubmit'])->name('auth.passmailsend');
