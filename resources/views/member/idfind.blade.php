@@ -26,7 +26,7 @@
         </div>
         <br>
         <span id="useridmsg"></span>
-        <button class="w-100 btn btn-lg btn-primary" type="button">아이디 찾기</button>
+        <button class="w-100 btn btn-lg btn-primary" type="button" id="findid">아이디 찾기</button>
       </form>
       </main>
 
@@ -34,4 +34,33 @@
     {{-- @include('blog.classroomside') --}}
     </div>
     </div>
+    <script>
+        $("#signup").click(function () {
+            var username=$("#username").val();
+            if(!username){
+            return false;
+            }
+            var data = {
+                username : username
+            };
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                type: 'post',
+                url: '{{ route('auth.finduserid') }}',
+                dataType: 'json',
+                data: data,
+                success: function(data) {
+                    if(data.result==true){
+                        $("#useridmsg").html("<font color='blue'>"+data.msg+"</font>");
+                    }else{
+                        $("#useridmsg").html("<font color='red'>"+data.msg+"</font>");
+                    }
+                },
+                error: function(data) {
+                console.log("error" +JSON.stringify(data));
+                }
+            });
+        });
+        
+    </script>
 @endsection

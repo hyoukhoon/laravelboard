@@ -87,6 +87,17 @@ class MemberController extends Controller
         }
     }
 
+    public function finduserid(Request $request){
+        $username = $request->username;
+        
+        $rs = Members::where('username', $username)->first();
+        if($rs){
+            return response()->json(array('msg'=> "아이디는 ".$rs->userid." 입니다", 'result'=>false), 200);
+        }else{
+            return response()->json(array('msg'=> "아이디가 없는 이름입니다.", 'result'=>true), 200);
+        }
+    }
+
     public function loginok(Request $request){
 
         $validated = $request->validate([
