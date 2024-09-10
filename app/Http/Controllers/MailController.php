@@ -21,16 +21,12 @@ class MailController extends Controller
             'toemail' => $email,
             'content' => $passwdo
         );
-
-        print_r($data_arr);
         
-        $data=Mail::send('mail.mail_form', ['data_arr' => $data_arr], function($message) use ($data_arr){
+        Mail::send('mail.mail_form', ['data_arr' => $data_arr], function($message) use ($data_arr){
             $message->to($data_arr['toemail'])->subject($data_arr['subject']);
             $message->from($data_arr['emailAddr']);
         });
 
-        print_r($data);
-        
         if($rs){
             return response()->json(array('msg'=> "입력하신 이메일로 비밀번호를 보내드렸습니다. 이메일을 확인해 주십시오. 이메일이 안오면 스팸함도 확인해 주십시오.", 'result'=>true), 200);
         }else{
