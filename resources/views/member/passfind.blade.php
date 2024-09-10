@@ -27,12 +27,11 @@
         <br>
         <div class="alert alert-primary" id="truemsg" style="display:none;" role="alert"></div>
         <div class="alert alert-danger" id="failmsg" style="display:none;" role="alert"></div>
-        <button class="btn btn-primary" type="button" disabled>
+        <button class="w-100 btn btn-lg btn-primary" type="button" id="passid">비밀번호 초기화 하기</button>
+        <button class="w-100 btn btn-primary" type="button" disabled id="loading" style="display:none;">
             <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
             <span role="status">전송중...</span>
         </button>
-        <button class="w-100 btn btn-lg btn-primary" type="button" id="passid">비밀번호 초기화 하기</button>
-
       </form>
       </main>
 
@@ -42,6 +41,8 @@
     </div>
     <script>
         $("#passid").click(function () {
+            $("#passid").hide();
+            $("#loading").show();
             var email=$("#email").val();
             if(!email){
                 alert('아이디를 입력하세요.');
@@ -57,6 +58,7 @@
                 dataType: 'json',
                 data: data,
                 success: function(data) {
+                    $("#loading").hide();
                     if(data.result==true){
                         $("#failmsg").hide();
                         $("#truemsg").show();
