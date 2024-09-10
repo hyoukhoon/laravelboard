@@ -1,4 +1,4 @@
-@extends('boards.layout')
+@extends('blog.layout')
 @section('content')
 <style>
     html,
@@ -87,43 +87,62 @@
       -webkit-overflow-scrolling: touch;
     }
   </style>
-<main class="form-signin w-100 m-auto">
-<form method="post" action="/loginok">
-  @csrf
-<div style="text-align:center;">
-  <img class="mb-4" src="/images/bootstrap-logo.svg" alt="" width="72" height="57">
-  <h1 class="h3 mb-3 fw-normal">로그인 페이지</h1>
-</div>
-  <div class="form-floating">
-    <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}">
-    <label for="floatingInput">아이디(이메일)</label>
-  </div>
-  <div class="form-floating">
-    <input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="Password">
-    <label for="floatingPassword">암호</label>
-  </div>
 
-  <div class="checkbox mb-3">
-    <label>
-      <input type="checkbox" value="1" name="remember"> Remember me
-    </label>
-  </div>
-  <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
 
-</form>
-</main>
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+<div class="container section-title" style="margin-bottom:0px;margin-top:10px;" data-aos="fade-up">
+  <div class="section-title-container d-flex align-items-center justify-content-between" style="padding-bottom:0px;">
+    <h2>회원가입</h2>
+    <p>회원가입 페이지입니다.</p>
+  </div>
 </div>
-@endif
-@if(Session::has('loginFail'))
-  <script type="text/javascript" >
-    alert("{{ session()->get('loginFail') }}");
-  </script>
-@endif
+<!-- End Section Title -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
+      <main class="form-signin w-100 m-auto">
+      <form method="post" action="/loginok">
+        @csrf
+      <div style="text-align:center;">
+        <img class="mb-4" src="/images/bootstrap-logo.svg" alt="" width="72" height="57">
+        <h1 class="h3 mb-3 fw-normal">로그인 페이지</h1>
+      </div>
+        <div class="form-floating">
+          <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com" value="{{ old('email') }}">
+          <label for="floatingInput">아이디(이메일)</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" name="passwd" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">암호</label>
+        </div>
+
+        <div class="checkbox mb-3">
+          <label>
+            <input type="checkbox" value="1" name="remember"> Remember me
+          </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+
+      </form>
+      </main>
+      @if ($errors->any())
+      <div class="alert alert-danger">
+          <ul>
+              @foreach ($errors->all() as $error)
+              <li>{{ $error }}</li>
+              @endforeach
+          </ul>
+      </div>
+      @endif
+      @if(Session::has('loginFail'))
+        <script type="text/javascript" >
+          alert("{{ session()->get('loginFail') }}");
+        </script>
+      @endif
+
+    </div>
+    {{-- @include('blog.classroomside') --}}
+    </div>
+    </div>
 @endsection
