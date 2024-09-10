@@ -17,6 +17,10 @@ class MemberController extends Controller
         return view('member.idfind');
     }
 
+    public function passfind(){
+        return view('member.passfind');
+    }
+
     public function signup()
     {
         return view('member.signup');

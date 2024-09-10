@@ -21,16 +21,14 @@
 
       </div>
         <div class="form-floating">
-          <input type="text" name="username" class="form-control" id="username" placeholder="이름(닉네임)을 입력하세요." value="{{ old('username') }}">
-          <label for="floatingInput">이름(닉네임)</label>
+          <input type="email" name="email" class="form-control" id="email" placeholder="아이디(이메일)을 입력하세요." value="{{ old('email') }}">
+          <label for="floatingInput">아이디(이메일)</label>
         </div>
         <br>
         <div class="alert alert-primary" id="truemsg" style="display:none;" role="alert"></div>
         <div class="alert alert-danger" id="failmsg" style="display:none;" role="alert"></div>
-        <button class="w-100 btn btn-lg btn-primary" type="button" id="findid">아이디 찾기</button>
-        <p style="padding-top:20px;">
-            <a href="/passfind"><button class="w-100 btn btn-lg btn-warning" type="button">비밀번호 찾기</button></a>
-        </p>
+        <button class="w-100 btn btn-lg btn-primary" type="button" id="passid">비밀번호 초기화 하기</button>
+
       </form>
       </main>
 
@@ -39,7 +37,7 @@
     </div>
     </div>
     <script>
-        $("#findid").click(function () {
+        $("#passid").click(function () {
             var username=$("#username").val();
             if(!username){
                 alert('이름을 입력하세요.');
