@@ -92,7 +92,7 @@ class MemberController extends Controller
         
         $rs = Members::where('username', $username)->first();
         if($rs){
-            return response()->json(array('msg'=> $username."님의 아이디는 ".$rs->userid." 입니다", 'result'=>true), 200);
+            return response()->json(array('msg'=> $username."님의 아이디는 ".$rs->email." 입니다", 'result'=>true), 200);
         }else{
             return response()->json(array('msg'=> "아이디가 없는 이름입니다.", 'result'=>false), 200);
         }
