@@ -35,7 +35,7 @@
     </div>
     </div>
     <script>
-        $("#signup").click(function () {
+        $("#findid").click(function () {
             var username=$("#username").val();
             if(!username){
             return false;
