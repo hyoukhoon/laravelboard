@@ -21,7 +21,7 @@
 
       </div>
         <div class="form-floating">
-          <input type="text" name="username" class="form-control" id="floatingInput" placeholder="이름(닉네임)을 입력하세요." value="{{ old('username') }}">
+          <input type="text" name="username" class="form-control" id="username" placeholder="이름(닉네임)을 입력하세요." value="{{ old('username') }}">
           <label for="floatingInput">이름(닉네임)</label>
         </div>
         <br>
@@ -38,7 +38,8 @@
         $("#findid").click(function () {
             var username=$("#username").val();
             if(!username){
-            return false;
+                alert('이름을 입력하세요.');
+                return false;
             }
             var data = {
                 username : username
