@@ -12,7 +12,7 @@ class MailController extends Controller
         $rs = Members::where('email', $email)->first();
 
         if($rs){
-            $email = "partenon@hanmail.net";//테스트용
+            //$email = "partenon@hanmail.net";//테스트용
             $passwdo = rand();
             $passwd = hash('sha512',$passwdo);
             Members::where('email', $email)->update(array('passwd' => $passwd));

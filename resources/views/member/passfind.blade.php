@@ -27,6 +27,10 @@
         <br>
         <div class="alert alert-primary" id="truemsg" style="display:none;" role="alert"></div>
         <div class="alert alert-danger" id="failmsg" style="display:none;" role="alert"></div>
+        <button class="btn btn-primary" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+            <span role="status">전송중...</span>
+        </button>
         <button class="w-100 btn btn-lg btn-primary" type="button" id="passid">비밀번호 초기화 하기</button>
 
       </form>
