@@ -25,11 +25,7 @@
           <label for="floatingInput">이름(닉네임)</label>
         </div>
         <br>
-        <div class="checkbox mb-3">
-          <label>
-            <input type="checkbox" value="1" name="remember"> Remember me
-          </label>
-        </div>
+        <span id="useridmsg"></span>
         <button class="w-100 btn btn-lg btn-primary" type="button">아이디 찾기</button>
       </form>
       </main>

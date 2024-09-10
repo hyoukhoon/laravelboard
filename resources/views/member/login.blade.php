@@ -36,8 +36,9 @@
           </label>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
-        <br>
+        <p style="padding-top:20px;">
         <a href="/idfind"><button class="w-100 btn btn-lg btn-warning" type="button">아이디/비밀번호 찾기</button></a>
+        </p>
       </form>
       </main>
       @if ($errors->any())
