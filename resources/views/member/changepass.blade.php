@@ -33,7 +33,7 @@
             <label for="floatingInput">새로운 비밀번호 확인</label>
         </div>
         <br>
-        <div class="alert alert-primary" id="truemsg" style="display:none;" role="alert"></div>
+        <div class="alert alert-primary" id="truemsg" style="display:block;" role="alert">비밀번호는 문자, 숫자, 특수문자를 포함해서 8자 이상 입력해 주십시오.</div>
         <div class="alert alert-danger" id="failmsg" style="display:none;" role="alert"></div>
         <button class="w-100 btn btn-lg btn-primary" type="button" id="changepass">비밀번호 변경하기</button>
       </form>

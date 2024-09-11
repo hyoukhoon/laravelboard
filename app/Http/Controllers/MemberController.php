@@ -118,13 +118,40 @@ class MemberController extends Controller
     }
 
     public function changepassok(Request $request){
-        $email = $request->email;
+        $validator = Validator::make($request->all(), [
+            'password' => ['required', 'confirmed', Password::min(8)
+                                                            ->letters()
+                                                            ->numbers()
+                                                            ->symbols()]
+        ]);
         
-        $rs = Members::where('email', $email)->first();
-        if($rs){
-            return response()->json(array('msg'=> "입력하신 이메일로 비밀번호를 보내드렸습니다. 이메일을 확인해 주십시오. 이메일이 안오면 스팸함도 확인해 주십시오.", 'result'=>true), 200);
+        if ($validator->fails()) {
+            return response()->json(array('msg'=> "비밀번호 규칙을 위반했습니다.", 'result'=>false), 200);
+            exit;
+        }
+
+        $oldpassword = $request->oldpassword;
+        $oldpassword = hash('sha512',$oldpassword);
+        $password = $request->password;
+        
+        $rs = Members::where('passwd', $oldpassword)->first();
+        if(!$rs){
+            return response()->json(array('msg'=> "기존 비밀번호가 일치하지 않습니다. 다시 확인 해 주십시오.", 'result'=>false), 200);
+            exit;
+        }
+        if(auth()->check()){
+
+            $passwd = hash('sha512',$password);
+            $cs=Members::where('email', Auth::user()->email)->update(array('passwd' => $passwd));
+            if($cs){
+                return response()->json(array('msg'=> "비밀번호를 변경했습니다.", 'result'=>true), 200);
+            }else{
+                return response()->json(array('msg'=> "비밀번호를 변경하지 못했습니다. 다시 시도해 주십시오.", 'result'=>false), 200);
+            }
+
         }else{
-            return response()->json(array('msg'=> "입력하신 아이디를 찾을 수 없습니다.", 'result'=>false), 200);
+
+            return response()->json(array('msg'=> "로그인 하십시오.", 'result'=>false), 200);
         }
     }
 
