@@ -69,6 +69,7 @@ Route::post('/loginok', [MemberController::class, 'loginok']) -> name('auth.logi
 Route::post('/adminloginok', [MemberController::class, 'adminloginok']) -> name('admin.loginok');
 Route::post('/logout', [MemberController::class, 'logout']) -> name('auth.logout');
 Route::get('/changepass', [MemberController::class, 'changepass']) -> name('auth.changepass');
+Route::post('/changepassok', [MailController::class, 'changepassok'])->name('auth.changepassok');
 Route::get('/idfind', [MemberController::class, 'idfind']) -> name('auth.idfind');
 Route::get('/passfind', [MemberController::class, 'passfind']) -> name('auth.passfind');
 Route::post('/finduserid', [MemberController::class, 'finduserid'])->name('auth.finduserid');

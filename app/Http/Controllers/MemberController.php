@@ -117,6 +117,17 @@ class MemberController extends Controller
         }
     }
 
+    public function changepassok(Request $request){
+        $email = $request->email;
+        
+        $rs = Members::where('email', $email)->first();
+        if($rs){
+            return response()->json(array('msg'=> "입력하신 이메일로 비밀번호를 보내드렸습니다. 이메일을 확인해 주십시오. 이메일이 안오면 스팸함도 확인해 주십시오.", 'result'=>true), 200);
+        }else{
+            return response()->json(array('msg'=> "입력하신 아이디를 찾을 수 없습니다.", 'result'=>false), 200);
+        }
+    }
+
     public function loginok(Request $request){
 
         $validated = $request->validate([
