@@ -20,7 +20,7 @@
       <div style="text-align:center;">
 
       </div>
-        <div class="form-floating">
+        <div class="form-floating" style="padding-bottom:10px;">
           <input type="password" name="oldpassword" class="form-control" id="oldpassword" placeholder="기존 비밀번호를 입력하세요.">
           <label for="floatingInput">기존 비밀번호</label>
         </div>
