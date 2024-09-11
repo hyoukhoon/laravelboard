@@ -1,7 +1,6 @@
 <table class="mail_form" border="0">
     <tr>
-        <th>제목</th>
-        <td>{{ $data_arr['subject'] }}</td>
+        <th colspan="2">문의하신 고객님의 비밀번호를 보내드립니다. 로그인하시고 반드시 비밀번호를 변경하세요.</th>
     </tr>
     <tr>
         <th>아이디</th>

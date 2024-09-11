@@ -92,6 +92,7 @@
               <form action="/logout" method="post" class="inline-block">
                   @csrf
                   <span class="text-xl text-blue-500">{{auth()->user()->userid}}</span> <a href="#">/</a> 
+                  <a href="/changepass"><button class="text-xl">비밀번호변경</button></a>
                   <a href="/logout"><button class="text-xl">로그아웃</button></a>
               </form>
           @endauth

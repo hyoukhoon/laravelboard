@@ -13,6 +13,10 @@ class MemberController extends Controller
         return view('member.login');
     }
 
+    public function changepass(){
+        return view('member.changepass');
+    }
+
     public function idfind(){
         return view('member.idfind');
     }
