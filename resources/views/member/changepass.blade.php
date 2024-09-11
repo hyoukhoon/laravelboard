@@ -24,10 +24,14 @@
           <input type="password" name="oldpassword" class="form-control" id="oldpassword" placeholder="기존 비밀번호를 입력하세요.">
           <label for="floatingInput">기존 비밀번호</label>
         </div>
-        <div class="form-floating">
-            <input type="password" name="newpassword" class="form-control" id="newpassword" placeholder="새로운 비밀번호를 입력하세요.">
+        <div class="form-floating" style="padding-bottom:10px;">
+            <input type="password" name="password" class="form-control" id="password" placeholder="새로운 비밀번호를 입력하세요.">
             <label for="floatingInput">새로운 비밀번호</label>
-          </div>
+        </div>
+        <div class="form-floating">
+            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" placeholder="새로운 비밀번호를 한번 더 입력하세요.">
+            <label for="floatingInput">새로운 비밀번호 확인</label>
+        </div>
         <br>
         <div class="alert alert-primary" id="truemsg" style="display:none;" role="alert"></div>
         <div class="alert alert-danger" id="failmsg" style="display:none;" role="alert"></div>
@@ -41,18 +45,31 @@
     </div>
     <script>
         $("#changepass").click(function () {
-            var username=$("#username").val();
-            if(!username){
-                alert('이름을 입력하세요.');
+            var oldpassword=$("#oldpassword").val();
+            var password=$("#password").val();
+            var password_confirmation=$("#password_confirmation").val();
+            if(!oldpassword){
+                alert('기존 비밀번호를 입력하세요.');
                 return false;
             }
+            if(!password){
+                alert('변경할 비밀번호를 입력하세요.');
+                return false;
+            }
+            if(password!=password_confirmation){
+                alert('비밀번호를 다시 확인해 주십시오.');
+                return false;
+            }
+        
             var data = {
-                username : username
+            oldpassword : oldpassword,
+            password : password,
+            password_confirmation : password_confirmation
             };
             $.ajax({
                 headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
                 type: 'post',
-                url: '{{ route('auth.finduserid') }}',
+                url: '{{ route('auth.changepassok') }}',
                 dataType: 'json',
                 data: data,
                 success: function(data) {
