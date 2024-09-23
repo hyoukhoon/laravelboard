@@ -288,12 +288,19 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      {{-- <li class="nav-item">
+      <li class="nav-item">
         <a class="nav-link collapsed" href="pages-faq.html">
           <i class="bi bi-question-circle"></i>
-          <span>F.A.Q</span>
+          <span>회원관리</span>
         </a>
-      </li><!-- End F.A.Q Page Nav --> --}}
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/adminarea/classroom">
+          <i class="bi bi-person"></i>
+          <span>게시판관리</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" href="pages-contact.html">
