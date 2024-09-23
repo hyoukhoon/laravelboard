@@ -44,7 +44,7 @@ class AdminController extends Controller
         $codes = DB::table('categories')->orderBy('code','desc')->first();
         $code = $codes->code + 1;
         $form_data = array(
-            'catename' => $request->catename,
+            'name' => $request->catename,
             'code' => $code
         );
 
