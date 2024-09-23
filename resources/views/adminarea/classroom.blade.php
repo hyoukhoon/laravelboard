@@ -36,7 +36,7 @@
                 <tbody>
                   @foreach ($cls as $cs)
                   <tr>
-                    <td>{{ $cs->cate }}</td>
+                    <td>{{ cateis($cs->cate) }}</td>
                     <td>{{ $cs->subject }}</td>
                     <td>{{ $cs->cnt }}</td>
                     <td>{{ $cs->memo_cnt }}</td>
