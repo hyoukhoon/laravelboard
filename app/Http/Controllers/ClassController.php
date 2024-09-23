@@ -43,7 +43,7 @@ class ClassController extends Controller
             return view('blog.classroom');
         }else{
             $cates = DB::table('categories')->get();
-            return view('blog.classwrite', ['id' => 0]);
+            return view('blog.classwrite', ['id' => 0, 'cates' => $cates]);
         }
     }
 
