@@ -1,6 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\File;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Classrooms;
+use App\Models\FileTables;
+use App\Models\Memos;
+use Illuminate\Support\Facades\DB;
 use App\Models\Members;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +26,9 @@ class AdminController extends Controller
         if(Auth::user()->memberlevels<10){
             return view('adminarea.login');
         }else{
-            return view('adminarea.classroom');
+            $cls = Classrooms::where('status',1)
+                    ->orderBy('id','desc')->get();
+            return view('adminarea.classroom', ['cls' => $cls]);
         }
     }
 
