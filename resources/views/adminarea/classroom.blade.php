@@ -87,5 +87,37 @@
         </div>
       </div>
     </section>
+<script>
+  $("#cateup").click(function () {
+		    var catename=$("#catename").val();
 
+        if(!catename){
+          alert('분류명을 입력해주세요.');
+          return false;
+        }
+
+        var data = {
+          catename : catename
+        };
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            type: 'post',
+            url: '{{ route('adminarea.cateup') }}',
+            dataType: 'json',
+            data: data,
+            success: function(data) {
+                if(data.result==true){
+                    alert(data.msg);
+                    location.reload();
+                }else{
+                    alert(data.msg);
+                    return false;
+                }
+            },
+            error: function(data) {
+            console.log("error" +JSON.stringify(data));
+            }
+        });
+    });
+</script>
 @endsection

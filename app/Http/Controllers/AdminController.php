@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Classrooms;
+use App\Models\Category;
 use App\Models\FileTables;
 use App\Models\Memos;
 use Illuminate\Support\Facades\DB;
@@ -36,5 +37,20 @@ class AdminController extends Controller
     public function logout(){
         auth() -> logout();
         return redirect() -> route('boards.index');
+    }
+
+    public function cateup(Request $request)
+    {
+        $codes = DB::table('categories')->orderBy('code','desc')->first();
+        $code = $codes->code + 1;
+        $form_data = array(
+            'catename' => $request->catename,
+            'code' => $code
+        );
+
+        if(auth()->check()){
+            $rs=Category::create($form_data);
+            return response()->json(array('result'=> true, 'msg'=>'생성했습니다.'), 200);
+        }
     }
 }
