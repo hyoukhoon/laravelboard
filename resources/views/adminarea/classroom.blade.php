@@ -18,17 +18,22 @@
           <div class="card">
             <div class="card-body">
               <h5 class="card-title">강의실 리스트</h5>
-              <p>
-                분류 관리
-              </p>
               
-              <div class="col form-group">
-                <select class="form-select" name="cate" id="cate" aria-label="Default select example">
-                  @foreach ($cates as $c)
-                  <option value="{{ $c->code }}">{{ $c->name }}</option>
-                  @endforeach
-                </select>
-              </div>
+              <table>
+                <tr>
+                  <td>
+                    <select class="form-select" name="cate" id="cate" aria-label="Default select example">
+                      <option value="">전체</option>
+                      @foreach ($cates as $c)
+                      <option value="{{ $c->code }}">{{ $c->name }}</option>
+                      @endforeach
+                    </select>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-primary">분류 관리</button>
+                  </td>
+                </tr>
+              </table>
               
               <!-- Table with stripped rows -->
               <table class="table datatable">
