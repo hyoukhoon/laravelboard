@@ -1,7 +1,7 @@
 @extends('adminarea.layout')
 @section('content')
     <div class="pagetitle">
-      <h1>Data Tables</h1>
+      <h1>강의실</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -17,16 +17,14 @@
 
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">Datatables</h5>
-              <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
+              <h5 class="card-title">강의실 리스트</h5>
+              <p></p>
 
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
                   <tr>
-                    <th>
-                      분류
-                    </th>
+                    <th>분류</th>
                     <th>제목</th>
                     <th>조회</th>
                     <th>댓글</th>
