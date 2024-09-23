@@ -28,6 +28,7 @@ class AdminController extends Controller
         }else{
             $cls = Classrooms::where('status',1)
                     ->orderBy('id','desc')->get();
+            $cates = DB::table('categories')->get();
             return view('adminarea.classroom', ['cls' => $cls]);
         }
     }
