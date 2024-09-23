@@ -21,15 +21,15 @@
               <p>
                 분류 관리
               </p>
-              <div class="row">
-                <div class="col form-group">
-                  <select class="form-select" name="cate" id="cate" aria-label="Default select example">
-                    @foreach ($cates as $c)
-                    <option value="{{ $c->code }}">{{ $c->name }}</option>
-                    @endforeach
-                  </select>
-                </div>
+              
+              <div class="col form-group">
+                <select class="form-select" name="cate" id="cate" aria-label="Default select example">
+                  @foreach ($cates as $c)
+                  <option value="{{ $c->code }}">{{ $c->name }}</option>
+                  @endforeach
+                </select>
               </div>
+              
               <!-- Table with stripped rows -->
               <table class="table datatable">
                 <thead>
