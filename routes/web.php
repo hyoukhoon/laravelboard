@@ -34,7 +34,7 @@ Route::get('/adminarea/login', function () {
 });
 Route::get('/adminarea', [AdminController::class, 'index'])->name('adminarea.index');
 Route::get('/adminarea/classroom', [AdminController::class, 'classroom'])->name('adminarea.classroom');
-Route::get('/adminarea/cateup', [AdminController::class, 'cateup'])->name('adminarea.cateup');
+Route::POST('/adminarea/cateup', [AdminController::class, 'cateup'])->name('adminarea.cateup');
 
 // Route::get('/', function () {
 //     return view('welcome');
