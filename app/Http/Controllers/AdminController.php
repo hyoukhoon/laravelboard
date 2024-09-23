@@ -27,8 +27,7 @@ class AdminController extends Controller
         if(Auth::user()->memberlevels<10){
             return view('adminarea.login');
         }else{
-            $cls = Classrooms::where('status',1)
-                    ->orderBy('id','desc')->get();
+            $cls = Classrooms::orderBy('id','desc')->get();
             $cates = DB::table('categories')->get();
             return view('adminarea.classroom', ['cls' => $cls,'cates' => $cates]);
         }
