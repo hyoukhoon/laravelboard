@@ -12,80 +12,60 @@
     </div><!-- End Page Title -->
 
     <section class="section">
-      <div class="row">
-        <div class="col-lg-12">
+      
+      <!-- News & Updates Traffic -->
+      <div class="card">
+        <div class="filter">
+          <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+            <li class="dropdown-header text-start">
+              <h6>Filter</h6>
+            </li>
 
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">강의실 리스트</h5>
-              
-              <table>
-                <tr>
-                  <td>
-                    <select class="form-select" name="cate" id="cate" aria-label="Default select example">
-                      <option value="">전체</option>
-                      @foreach ($cates as $c)
-                      <option value="{{ $c->code }}">{{ $c->name }}</option>
-                      @endforeach
-                    </select>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                      분류등록
-                    </button>
-                  </td>
-                </tr>
-              </table>
+            <li><a class="dropdown-item" href="#">Today</a></li>
+            <li><a class="dropdown-item" href="#">This Month</a></li>
+            <li><a class="dropdown-item" href="#">This Year</a></li>
+          </ul>
+        </div>
 
-              <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h1 class="modal-title fs-5" id="exampleModalLabel">분류 등록 하기</h1>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      <input name="catename" id="catename" type="text" class="form-control" placeholder="분류명을 입력하세요" value="">
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary" id="cateup">등록</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Table with stripped rows -->
-              <table class="table datatable">
-                <thead>
-                  <tr>
-                    <th>분류</th>
-                    <th>제목</th>
-                    <th>조회</th>
-                    <th>댓글</th>
-                    <th data-type="date" data-format="YYYY/DD/MM">등록일</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($cls as $cs)
-                  <tr>
-                    <td>{{ cateis($cs->cate) }}</td>
-                    <td>{{ $cs->subject }}</td>
-                    <td>{{ $cs->cnt }}</td>
-                    <td>{{ $cs->memo_cnt }}</td>
-                    <td>{{ $cs->created_at }}</td>
-                  </tr>
-                  @endforeach
-                </tbody>
-              </table>
-              <!-- End Table with stripped rows -->
+        <div class="card-body pb-0">
+          <h5 class="card-title">News &amp; Updates <span>| Today</span></h5>
 
+          <div class="news">
+            <div class="post-item clearfix">
+              <img src="/admin/assets/img/news-1.jpg" alt="">
+              <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
+              <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
             </div>
-          </div>
+
+            <div class="post-item clearfix">
+              <img src="/admin/assets/img/news-2.jpg" alt="">
+              <h4><a href="#">Quidem autem et impedit</a></h4>
+              <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
+            </div>
+
+            <div class="post-item clearfix">
+              <img src="/admin/assets/img/news-3.jpg" alt="">
+              <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
+              <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
+            </div>
+
+            <div class="post-item clearfix">
+              <img src="/admin/assets/img/news-4.jpg" alt="">
+              <h4><a href="#">Laborum corporis quo dara net para</a></h4>
+              <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
+            </div>
+
+            <div class="post-item clearfix">
+              <img src="/admin/assets/img/news-5.jpg" alt="">
+              <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
+              <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
+            </div>
+
+          </div><!-- End sidebar recent posts-->
 
         </div>
-      </div>
+      </div><!-- End News & Updates -->
     </section>
 <script>
   $("#cateup").click(function () {
