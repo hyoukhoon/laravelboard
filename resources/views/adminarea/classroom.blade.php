@@ -75,7 +75,7 @@
               <td>{{ $cs->subject }}</td>
               <td>{{ $cs->cnt }}</td>
               <td>{{ $cs->memo_cnt }}</td>
-              <td>{{ $cs->created_at }}</td>
+              <td>{{ disptime($cs->created_at) }}</td>
             </tr>
           @endforeach
         </tbody>
