@@ -59,13 +59,18 @@
             <th>제목</th>
             <th>조회</th>
             <th>댓글</th>
-            <th data-type="date" data-format="YYYY/DD/MM">등록일</th>
+            <th>등록일</th>
           </tr>
         </thead>
         <tbody>
+          <?php
+              $pagenumber = $_GET["page"]??1;
+              $total = $cls->total();
+              $idx = $total-(($cls->currentPage()-1) * 20);
+          ?>
           @foreach ($cls as $cs)
             <tr>
-              <td>1</td>
+              <td>{{ $idx-- }}</td>
               <td>{{ cateis($cs->cate) }}</td>
               <td>{{ $cs->subject }}</td>
               <td>{{ $cs->cnt }}</td>
@@ -76,6 +81,9 @@
         </tbody>
       </table>
       <!-- End Bordered Table -->
+      <div>
+        {!! $boards->withQueryString()->links() !!}
+    </dvi>
     </section>
 <script>
   $("#cateup").click(function () {
