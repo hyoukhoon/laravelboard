@@ -13,53 +13,66 @@
 
     <section class="section">
 
+      <table>
+        <tr>
+          <td>
+            <select class="form-select" name="cate" id="cate" aria-label="Default select example">
+              <option value="">전체</option>
+              @foreach ($cates as $c)
+              <option value="{{ $c->code }}">{{ $c->name }}</option>
+              @endforeach
+            </select>
+          </td>
+          <td>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              분류등록
+            </button>
+          </td>
+        </tr>
+      </table>
+
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">분류 등록 하기</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input name="catename" id="catename" type="text" class="form-control" placeholder="분류명을 입력하세요" value="">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="cateup">등록</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Bordered Table -->
       <table class="table table-bordered">
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Position</th>
-            <th scope="col">Age</th>
-            <th scope="col">Start Date</th>
+            <th scope="col">번호</th>
+            <th>분류</th>
+            <th>제목</th>
+            <th>조회</th>
+            <th>댓글</th>
+            <th data-type="date" data-format="YYYY/DD/MM">등록일</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Brandon Jacob</td>
-            <td>Designer</td>
-            <td>28</td>
-            <td>2016-05-25</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Bridie Kessler</td>
-            <td>Developer</td>
-            <td>35</td>
-            <td>2014-12-05</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Ashleigh Langosh</td>
-            <td>Finance</td>
-            <td>45</td>
-            <td>2011-08-12</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>Angus Grady</td>
-            <td>HR</td>
-            <td>34</td>
-            <td>2012-06-11</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>Raheem Lehner</td>
-            <td>Dynamic Division Officer</td>
-            <td>47</td>
-            <td>2011-04-19</td>
-          </tr>
+          @foreach ($cls as $cs)
+            <tr>
+              <td>1</td>
+              <td>{{ cateis($cs->cate) }}</td>
+              <td>{{ $cs->subject }}</td>
+              <td>{{ $cs->cnt }}</td>
+              <td>{{ $cs->memo_cnt }}</td>
+              <td>{{ $cs->created_at }}</td>
+            </tr>
+          @endforeach
         </tbody>
       </table>
       <!-- End Bordered Table -->
