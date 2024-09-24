@@ -82,7 +82,7 @@
       </table>
       <!-- End Bordered Table -->
       <div>
-        {!! $boards->withQueryString()->links() !!}
+        {!! $cls->withQueryString()->links() !!}
     </dvi>
     </section>
 <script>
